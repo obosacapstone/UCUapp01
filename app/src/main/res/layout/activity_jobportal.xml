@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".jobportal"
+    android:orientation="vertical">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mydrawer">
+
+
+
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationdrawer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        app:itemIconTint="@color/purple_700"
+        app:itemTextAppearance="@style/TextViewStyle"
+        app:itemHorizontalPadding="30dp"
+        app:menu="@menu/navdrawermenu"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navheader">
+
+    </com.google.android.material.navigation.NavigationView>
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/app_bar"/>
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+</LinearLayout>
