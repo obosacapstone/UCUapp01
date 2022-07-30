@@ -435,8 +435,12 @@ public class register extends AppCompatActivity implements View.OnClickListener,
                 String StringCityCodeSplit[] = StringCityCode3.split(",");
                 for(int y = 0; y<StringCityCodeSplit.length; y++){
                     String StringCityCodeSplit2[] = StringCityCodeSplit[y].split("/");
+                    String codecut = StringCityCodeSplit2[1].substring(0, 2);
                     if (item.equals(StringCityCodeSplit2[0])){
-                        item4 = StringCityCodeSplit2[1];
+                        if (codecut.equals(item2)){
+                            item4 = StringCityCodeSplit2[1];
+                        }
+
                     }
 //                    item4 = StringCityCodeSplit2[0];
                 }
