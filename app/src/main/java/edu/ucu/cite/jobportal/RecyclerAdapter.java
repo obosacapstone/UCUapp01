@@ -118,6 +118,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Produc
     public void filterList(List<jobhiringlist> filteredList){
 
         productList = filteredList;
+
         notifyDataSetChanged();
 
     }

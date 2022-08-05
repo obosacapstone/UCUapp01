@@ -9,6 +9,7 @@ public class Constants {
 
     public static final String URL_LOGIN=ROOT_URL+"login.php";
     public static final String URL_REGISTER=ROOT_URL+"insert.php";
+    public static final String URL_REGISTERNO=ROOT_URL+"insertno.php";
     public static final String URL_EVENT=ROOT_URL+"getevent.php";
     public static final String URL_NEWS=ROOT_URL+"getnews.php";
     public static final String URL_JOBHIRING=ROOT_URL+"getjobhiring.php";

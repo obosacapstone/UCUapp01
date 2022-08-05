@@ -2,12 +2,16 @@ package edu.ucu.cite.jobportal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,9 +30,9 @@ import java.util.Map;
 
 public class login extends AppCompatActivity implements View.OnClickListener{
     EditText textInputEditTextidnumber, textInputEditTextpassword;
-    Button buttonLogin;
+    Button buttonLogin,buttonpopupregister;
     private ProgressDialog progressDialog;
-
+    Dialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +43,23 @@ public class login extends AppCompatActivity implements View.OnClickListener{
             startActivity(new Intent(this, jobhiringinfo.class));
             return;
         }
+        dialog = new Dialog(login.this);
+        dialog.setContentView(R.layout.custom_register);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+
+
+//        Button ButtonYes = dialog.findViewById(R.id.btn_yes);
+//        Button ButtonNo = dialog.findViewById(R.id.btn_no);
+
+        buttonpopupregister = findViewById(R.id.popupregister);
+        buttonpopupregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.show();
+            }
+        });
         textInputEditTextidnumber = findViewById(R.id.username);
         textInputEditTextpassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.Login);
@@ -172,7 +193,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
-    public void Register(View view) {
+    public void RegisterYes(View view) {
         progressDialog.show();
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -209,6 +230,75 @@ public class login extends AppCompatActivity implements View.OnClickListener{
                                         );
 
                                 startActivity(new Intent(getApplicationContext(), register.class));
+                                finish();
+                            } else {
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Log.e("anyText", response);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.hide();
+
+                    }
+
+
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                return params;
+
+            }
+
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+    }
+    //register no
+    public void RegisterNo(View view) {
+        progressDialog.show();
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_DATABASE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+
+
+                            if (!jsonObject.getBoolean("error")) {
+                                SharedPrefManagerDatabase.getInstance(getApplicationContext())
+                                        .userDatabase(
+                                                jsonObject.getString("courses"),
+                                                jsonObject.getString("region"),
+                                                jsonObject.getString("regioncode1"),
+                                                jsonObject.getString("province"),
+                                                jsonObject.getString("provincecode1"),
+                                                jsonObject.getString("provincecode2"),
+                                                jsonObject.getString("city"),
+                                                jsonObject.getString("citycode1"),
+                                                jsonObject.getString("citycode2"),
+                                                jsonObject.getString("citycode3"),
+                                                jsonObject.getString("barangay"),
+                                                jsonObject.getString("barangaycode1"),
+                                                jsonObject.getString("barangaycode2"),
+                                                jsonObject.getString("barangaycode3")
+
+
+
+                                        );
+
+                                startActivity(new Intent(getApplicationContext(), registerno.class));
                                 finish();
                             } else {
 

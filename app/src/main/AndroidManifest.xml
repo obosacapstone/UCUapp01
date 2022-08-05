@@ -23,6 +23,9 @@
         android:theme="@style/Theme.JobPortal"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".registerno"
+            android:exported="false" />
+        <activity
             android:name=".location"
             android:exported="false" />
 

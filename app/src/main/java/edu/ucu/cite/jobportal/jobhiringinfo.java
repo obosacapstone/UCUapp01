@@ -69,11 +69,12 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
     int currentItems, totalItems, scrollOutItems;
     LinearLayoutManager mmager;
     ArrayList list;
+    TextView TextViewsearchempty;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jobhiringinfo);
-
+        TextViewsearchempty = findViewById(R.id.searchempty);
         searchView = findViewById(R.id.search_view);
 
         ImageViewNavProfile = findViewById(R.id.navprofile);
@@ -103,12 +104,16 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                TextViewsearchempty.setVisibility(LinearLayout.VISIBLE);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
                 filter(newText);
+
+
+
                 return true;
             }
         });

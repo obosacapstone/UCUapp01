@@ -191,22 +191,17 @@
                             android:textColor="#535252"
                             android:text="or"/>
 
+
                         <Button
-                            style="?android:attr/borderlessButtonStyle"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/popupregister"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/poppins"
-                            android:minWidth="0dp"
-                            android:minHeight="0dp"
-                            android:onClick="Register"
-                            android:paddingLeft="25dp"
-                            android:paddingRight="25dp"
-                            android:paddingBottom="10dp"
-                            android:text="Register"
+                            android:background="@android:color/transparent"
+                            android:textColor="#535252"
                             android:textAllCaps="false"
-                            android:textColor="#706F6F"
-                            android:visibility="visible" />
+                            android:textSize="15dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Register"/>
 
                     </LinearLayout>
 
