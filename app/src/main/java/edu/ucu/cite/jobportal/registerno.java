@@ -17,6 +17,7 @@ import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -24,6 +25,7 @@ import android.icu.util.Calendar;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -71,6 +73,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
 
 public class registerno extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     EditText EditTextlastname, EditTextfirstname, EditTextmiddlename, EditTextcontact, EditTextemail, EditTextidno, EditTextbirthdate;
@@ -136,6 +140,7 @@ public class registerno extends AppCompatActivity implements View.OnClickListene
     String item4;
 
     EditText EditTextHouse;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -752,6 +757,18 @@ public class registerno extends AppCompatActivity implements View.OnClickListene
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return false;
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 
 }

@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -39,6 +41,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
+
 public class jobhiringinfoall extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     ProgressBar progressBar;
     RecyclerView recyclerView;
@@ -56,6 +60,7 @@ public class jobhiringinfoall extends AppCompatActivity implements NavigationVie
     TextView TextViewNavFullname, TextViewNavIdno;
     ImageView ImageViewNavProfile;
     SearchView searchView;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -266,5 +271,17 @@ public class jobhiringinfoall extends AppCompatActivity implements NavigationVie
     public void Alljobs(View view) {
         Intent intent = new Intent(jobhiringinfoall.this,jobhiringinfo.class);
         startActivity(intent);
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

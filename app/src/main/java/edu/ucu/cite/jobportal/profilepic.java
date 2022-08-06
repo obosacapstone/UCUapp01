@@ -11,9 +11,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
@@ -46,6 +48,8 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
+
 public class profilepic extends AppCompatActivity implements View.OnClickListener,NavigationView.OnNavigationItemSelectedListener{
     EditText EditTextpassword, EditTextnewpassword, EditTextconfirmpassword;
     Button Buttonsubmit;
@@ -63,6 +67,7 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
     ProgressDialog progressDialog;
     TextView TextViewTitleNav;
     ImageView ImageViewtambling;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -328,6 +333,17 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
 
         return true;
     }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
 
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
 
 }

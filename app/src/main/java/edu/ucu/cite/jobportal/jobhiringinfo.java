@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.service.autofill.FieldClassification;
@@ -47,6 +49,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 
+import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
+
 public class jobhiringinfo extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     ProgressBar progressBar;
@@ -70,6 +74,7 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
     LinearLayoutManager mmager;
     ArrayList list;
     TextView TextViewsearchempty;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -322,5 +327,17 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
     public void Recommendedjobs(View view) {
         Intent intent = new Intent(jobhiringinfo.this,jobhiringinfoall.class);
         startActivity(intent);
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

@@ -9,6 +9,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +22,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
+
+import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
 
 public class profile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,PopupMenu.OnMenuItemClickListener{
     TextView TextViewfullname , TextViewidno,TextViewcourse , TextViewyeargrad, TextViewbirthdate , TextViewgender , TextViewcivilstatus , TextViewcontact , TextViewemail , TextViewskill , TextViewaddress ;
@@ -38,6 +42,7 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
     ImageView ImageViewNavProfile;
     CardView CardViewfivepercent,CardViewonepercent;
     LinearLayout LinearlayoutPostgraduatedGuide,LinearlayoutEmployedGuide,LinearlayoutFirstjobGuide;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -462,5 +467,17 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
             default:
                 return false;
         }
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

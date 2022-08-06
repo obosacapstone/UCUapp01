@@ -12,6 +12,8 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -48,6 +50,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
+import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
 
 public class otherinfo extends AppCompatActivity  implements View.OnClickListener,NavigationView.OnNavigationItemSelectedListener{
     ProgressDialog progressDialog;
@@ -153,6 +157,7 @@ public class otherinfo extends AppCompatActivity  implements View.OnClickListene
     boolean[] selectedfirstjobyes4y1;
     ArrayList<Integer> firstjobyes4y1list = new ArrayList<>();
     String[] Stringfirstjobyes4y1Array = {"Communication Skills","Human Relation Skills","Entrepreneural Skills","Information Technology Skills","Problem-solving Skills","Critical Thinking Skills"};
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -1014,5 +1019,17 @@ public class otherinfo extends AppCompatActivity  implements View.OnClickListene
         }
 
         return true;
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

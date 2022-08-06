@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -37,6 +39,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
+
 public class password extends AppCompatActivity  implements View.OnClickListener,NavigationView.OnNavigationItemSelectedListener {
     EditText EditTextpassword, EditTextnewpassword, EditTextconfirmpassword;
     Button Buttonsubmit;
@@ -49,6 +53,7 @@ public class password extends AppCompatActivity  implements View.OnClickListener
     ImageView ImageViewNavProfile;
     TextView TextViewTitleNav;
     NavigationView navigationView;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -309,5 +314,17 @@ public class password extends AppCompatActivity  implements View.OnClickListener
         }
 
         return true;
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }
