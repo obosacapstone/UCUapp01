@@ -323,7 +323,7 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
-                finish();
+                finishAffinity();
                 Intent intent5 = new Intent(profilepic.this,login.class);
                 startActivity(intent5);
                 break;

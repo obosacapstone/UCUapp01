@@ -97,7 +97,7 @@
                         android:scaleType="fitXY"
                         android:src="@drawable/waves" />
                     <LinearLayout
-                        android:layout_width="220dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginTop="20dp"
@@ -111,7 +111,7 @@
                             android:layout_height="wrap_content"
                             android:text="Full name Full name Full name Full name "
                             android:textColor="#fff"
-                            android:textSize="20dp" />
+                            android:textSize="18dp" />
                     <TextView
                         android:id="@+id/idno"
                         android:layout_width="match_parent"
@@ -133,7 +133,7 @@
                             android:id="@+id/graduatedimage"
                             android:layout_width="130dp"
                             android:layout_height="130dp"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="50dp"
                             android:src="@drawable/uculogo"
                             android:layout_marginBottom="5dp"
                             app:civ_border_color="#0277BD" />

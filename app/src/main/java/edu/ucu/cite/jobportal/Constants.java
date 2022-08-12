@@ -2,7 +2,7 @@ package edu.ucu.cite.jobportal;
 
 public class Constants {
 //        private static final String ROOT_URL = "http://127.1.1.1/GraduatedTracer/jobportal/";
-    private static final String ROOT_URL = "http://graduatetracer.site/graduatedtracer/jobportal/";
+    private static final String ROOT_URL = "https://graduatetracer.site/graduatedtracer/jobportal/";
 //    private static final String ROOT_URL = "http://192.168.100.4/graduatedtracer/jobportal/";
 //private static final String ROOT_URL = "http://192.168.1.105/graduatedtracer/jobportal/";
 //private static final String ROOT_URL = "http://176.100.141.207/graduatedtracer/jobportal/";

@@ -119,6 +119,10 @@ public class password extends AppCompatActivity  implements View.OnClickListener
                 EditTextpassword.setError("Please fill up");
                 EditTextpassword.requestFocus();
             }
+            if(Stringnewpassword.length() < 7){
+                EditTextnewpassword.setError("Password must be atleast 8 characters");
+                EditTextnewpassword.requestFocus();
+            }
             if(Stringnewpassword.isEmpty()){
                 EditTextnewpassword.setError("Please fill up");
                 EditTextnewpassword.requestFocus();
@@ -130,9 +134,12 @@ public class password extends AppCompatActivity  implements View.OnClickListener
 
 
             if(!(Stringpassword.isEmpty()) && !(Stringnewpassword.isEmpty()) && !(Stringconfirmpassword.isEmpty())) {
-                if (Stringpassword.equals(oldpassword)){
+                if (Stringnewpassword.length() < 7) {
+                }else{
 
-                    if (Stringnewpassword.equals(Stringconfirmpassword)){
+                if (Stringpassword.equals(oldpassword)) {
+
+                    if (Stringnewpassword.equals(Stringconfirmpassword)) {
                         progressDialog = new ProgressDialog(password.this);
                         progressDialog.setMessage("Please wait....");
                         StringRequest stringRequest = new StringRequest(Request.Method.POST,
@@ -144,7 +151,7 @@ public class password extends AppCompatActivity  implements View.OnClickListener
                                         try {
 
                                             JSONObject jsonObject = new JSONObject(response);
-                                            Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                                             EditTextpassword.setText("");
                                             EditTextnewpassword.setText("");
                                             EditTextconfirmpassword.setText("");
@@ -191,8 +198,6 @@ public class password extends AppCompatActivity  implements View.OnClickListener
                                                                 jsonObject.getString("firstjoby4y1")
 
 
-
-
                                                         );
 
                                                 startActivity(new Intent(getApplicationContext(), profile.class));
@@ -201,10 +206,9 @@ public class password extends AppCompatActivity  implements View.OnClickListener
                                             }
 
 
-
                                         } catch (JSONException e) {
                                             e.printStackTrace();
-                                            Log.e("anyText",response);
+                                            Log.e("anyText", response);
                                         }
 
                                     }
@@ -213,15 +217,15 @@ public class password extends AppCompatActivity  implements View.OnClickListener
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
 
-                                        Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                                     }
-                                }){
+                                }) {
                             @Nullable
                             @Override
                             protected Map<String, String> getParams() throws AuthFailureError {
-                                Map<String,String> params = new HashMap<>();
-                                params.put("idno",idno);
-                                params.put("Stringnewpassword",Stringnewpassword);
+                                Map<String, String> params = new HashMap<>();
+                                params.put("idno", idno);
+                                params.put("Stringnewpassword", Stringnewpassword);
 
 
                                 return params;
@@ -230,7 +234,7 @@ public class password extends AppCompatActivity  implements View.OnClickListener
                         };
                         RequestQueue requestQueue = Volley.newRequestQueue(this);
                         requestQueue.add(stringRequest);
-                    }else{
+                    } else {
                         EditTextpassword.setText("");
                         EditTextnewpassword.setText("");
                         EditTextconfirmpassword.setText("");
@@ -238,13 +242,14 @@ public class password extends AppCompatActivity  implements View.OnClickListener
                     }
 
 
-                }else{
+                } else {
                     EditTextpassword.setText("");
                     EditTextnewpassword.setText("");
                     EditTextconfirmpassword.setText("");
                     Toast.makeText(getApplicationContext(), "Wrong Password", Toast.LENGTH_SHORT).show();
                 }
 
+            }
 
 
 
@@ -305,7 +310,7 @@ public class password extends AppCompatActivity  implements View.OnClickListener
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
-                finish();
+                finishAffinity();
                 Intent intent5 = new Intent(password.this,login.class);
                 startActivity(intent5);
                 break;

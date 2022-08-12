@@ -246,7 +246,7 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
-                finish();
+                finishAffinity();
                 Intent intent5 = new Intent(eventinfo.this,login.class);
                 startActivity(intent5);
                 break;

@@ -8,6 +8,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -23,6 +25,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
+
 public class jobhiringinfodata extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     TextView textviewjobtitledata, textviewcompanydata, textviewemaildata, textviewcontactdata, textviewlocationdata, textviewdurationdata, textviewqualificationdata, textviewjobtypedata, textviewlinkdata, textviewdescriptiondata;
@@ -33,6 +37,7 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
     ActionBarDrawerToggle mytoggle=null;
     TextView TextViewNavFullname, TextViewNavIdno;
     ImageView ImageViewNavProfile;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -162,7 +167,7 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
-                finish();
+                finishAffinity();
                 Intent intent5 = new Intent(jobhiringinfodata.this,login.class);
                 startActivity(intent5);
                 break;
@@ -171,5 +176,17 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
         }
 
         return true;
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

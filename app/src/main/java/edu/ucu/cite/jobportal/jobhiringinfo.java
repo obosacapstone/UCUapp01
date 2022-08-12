@@ -312,7 +312,7 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
-                finish();
+                finishAffinity();
                 Intent intent5 = new Intent(jobhiringinfo.this,login.class);
                 startActivity(intent5);
                 break;

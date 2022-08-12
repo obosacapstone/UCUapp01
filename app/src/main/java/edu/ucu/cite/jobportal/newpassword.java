@@ -64,7 +64,10 @@ public class newpassword extends AppCompatActivity implements View.OnClickListen
 //            String email = "crisuser1234@gmail.com";
 //            String idno = "123";
 
-
+        if(password.length() < 7){
+            EditTextnewpassword.setError("Password must be atleast 8 characters");
+            EditTextnewpassword.requestFocus();
+        }
         if(password.isEmpty()){
             EditTextnewpassword.setError("Please fill up");
             EditTextnewpassword.requestFocus();
@@ -76,10 +79,11 @@ public class newpassword extends AppCompatActivity implements View.OnClickListen
 
 
 
-        if (password.equals(cpassword)){
+        if (password.equals(cpassword) && password.length() > 7){
 
 
-            progressDialog = new ProgressDialog(newpassword.this);
+
+                progressDialog = new ProgressDialog(newpassword.this);
             progressDialog.setMessage("Please wait....");
             progressDialog.show();
             StringRequest stringRequest = new StringRequest(Request.Method.POST,

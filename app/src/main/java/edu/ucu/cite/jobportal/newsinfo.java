@@ -245,7 +245,7 @@ public class newsinfo extends AppCompatActivity implements NavigationView.OnNavi
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
-                finish();
+                finishAffinity();
                 Intent intent5 = new Intent(newsinfo.this,login.class);
                 startActivity(intent5);
                 break;

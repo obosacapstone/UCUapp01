@@ -437,7 +437,7 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
-                finish();
+                finishAffinity();
                 Intent intent5 = new Intent(profile.this,login.class);
                 startActivity(intent5);
                 break;
