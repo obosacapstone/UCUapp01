@@ -75,7 +75,128 @@
                 android:layout_marginBottom="10dp"
                 />
         </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#297fa7"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:text="ID Number"
+            />
+        <EditText
+            android:id="@+id/idno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:hint="ID Number"
+            android:text=""
+            android:paddingLeft="14dp"
+            android:background="@android:drawable/edit_text"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#297fa7"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:text="Course"
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:hint="@string/select">
+
+            <AutoCompleteTextView
+                android:id="@+id/selectqcourse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#297fa7"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:text="Specialization"
+            />
+
+        <TextView
+            android:id="@+id/selectskill"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:padding="12dp"
+            android:textColor="#000"
+            android:layout_marginHorizontal="20dp"
+            android:drawableEnd="@android:drawable/arrow_down_float"
+            android:background="@android:drawable/edit_text"
+            android:text=""/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#297fa7"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:text="Classification"
+            />
+        <Spinner
+            android:id="@+id/classification"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/spinner_background"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#297fa7"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:text="Year Graduated"
+            />
+        <Spinner
+            android:id="@+id/yeargrad"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/spinner_background"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:layout_marginRight="2dp"
+                app:tint="#055E88"
+                android:src="@drawable/otherinformation" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Secondary Information"
+                android:textSize="20dp"
+                android:textColor="#055E88"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                />
+        </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,14 +234,14 @@
             android:paddingLeft="14dp"
             android:background="@android:drawable/edit_text"/>
         <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#297fa7"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
-        android:textSize="16dp"
-        android:text="Middle Name"
-        />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#297fa7"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:text="Middle Name"
+            />
         <EditText
             android:id="@+id/middlename"
             android:layout_width="match_parent"
@@ -349,127 +470,8 @@
             android:text=""
             android:paddingLeft="14dp"
             android:background="@android:drawable/edit_text"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="50px"
-                android:layout_height="50px"
-                android:layout_gravity="center"
-                android:scaleType="fitXY"
-                android:layout_marginRight="2dp"
-                app:tint="#055E88"
-                android:src="@drawable/otherinformation" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Secondary Information"
-                android:textSize="20dp"
-                android:textColor="#055E88"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                />
-        </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#297fa7"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:textSize="16dp"
-            android:text="ID Number"
-            />
-        <EditText
-            android:id="@+id/idno"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:hint="ID Number"
-            android:text=""
-            android:paddingLeft="14dp"
-            android:background="@android:drawable/edit_text"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#297fa7"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:textSize="16dp"
-            android:text="Course"
-            />
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-            android:hint="@string/select">
-
-            <AutoCompleteTextView
-                android:id="@+id/selectqcourse"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"/>
 
 
-        </com.google.android.material.textfield.TextInputLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#297fa7"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:textSize="16dp"
-            android:text="Specialization"
-            />
-
-        <TextView
-            android:id="@+id/selectskill"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:padding="12dp"
-            android:textColor="#000"
-            android:layout_marginHorizontal="20dp"
-            android:drawableEnd="@android:drawable/arrow_down_float"
-            android:background="@android:drawable/edit_text"
-            android:text=""/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#297fa7"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:textSize="16dp"
-            android:text="Classification"
-            />
-        <Spinner
-            android:id="@+id/classification"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginHorizontal="20dp"
-            android:background="@drawable/spinner_background"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#297fa7"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:textSize="16dp"
-            android:text="Year Graduated"
-            />
-        <Spinner
-            android:id="@+id/yeargrad"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginHorizontal="20dp"
-            android:background="@drawable/spinner_background"/>
 
 
 

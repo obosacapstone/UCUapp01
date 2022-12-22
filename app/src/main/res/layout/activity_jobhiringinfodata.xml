@@ -5,410 +5,504 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#E6E6E6"
+    android:background="#fff"
     tools:context=".jobhiringinfodata">
-    <androidx.drawerlayout.widget.DrawerLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/mydrawer">
+        android:layout_height="match_parent">
 
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigationdrawer"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="#fff"
-            app:itemIconTint="#07435f"
-            app:itemTextAppearance="@style/TextViewStyle"
-            app:menu="@menu/navdrawermenu"
-            app:headerLayout="@layout/navheader"
-            android:layout_gravity="start">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:orientation="vertical"
-                android:background="@drawable/register_background">>
-                <com.google.android.material.imageview.ShapeableImageView
-                    app:shapeAppearanceOverlay="@style/Circular"
-                    android:id="@+id/navprofile"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:layout_gravity="center"
-                    android:scaleType="fitXY"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/uculogo"
-
-                    />
-                <TextView
-                    android:id="@+id/navfullname"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="CRIS RAGOJOS OBOSA"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:layout_marginHorizontal="20dp"
-                    android:textColor="#fff"
-                    />
-                <TextView
-                    android:id="@+id/navidno"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="20181464"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:layout_marginHorizontal="20dp"
-                    android:textColor="#fff"
-                    />
-
-            </LinearLayout>
-
-
-        </com.google.android.material.navigation.NavigationView>
-
-
-
-        <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/mydrawer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <include
-                android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/navigationdrawer"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                layout="@layout/app_bar"/>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="20dp"
-                app:cardCornerRadius="7dp"
-                app:cardElevation="10dp"
-                android:layout_marginTop="10dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                app:cardElevation="6dp"
-                android:layout_marginHorizontal="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/jobtitledata"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:layout_gravity="center"
-                    android:textColor="#000"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textSize="20dp"
-                    android:layout_marginTop="10dp"
-                    android:textStyle="bold"
-                    android:layout_marginHorizontal="20dp"
-                    android:text="Job Title"/>
-                <TextView
-                    android:id="@+id/companynamedata"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:layout_gravity="center"
-                    android:textColor="#000"
-                    android:textSize="15dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:text="Company Name"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:scaleType="fitXY"
-                        android:background="@drawable/gmail"/>
-                <TextView
-                    android:id="@+id/emaildata"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000"
-                    android:textSize="13dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginLeft="5dp"
-                    android:text="Email"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:scaleType="fitXY"
-                        android:background="@drawable/phone"/>
-                    <TextView
-                        android:id="@+id/contactdata"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        android:textSize="13dp"
-                        android:layout_marginTop="1dp"
-                        android:layout_marginLeft="5dp"
-                        android:text="Contact"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:scaleType="fitXY"
-                        android:background="@drawable/location"/>
-                    <TextView
-                        android:id="@+id/locationdata"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        android:textSize="13dp"
-                        android:layout_marginTop="1dp"
-                        android:layout_marginLeft="5dp"
-                        android:text="Location"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="15dp"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:scaleType="fitXY"
-                        android:background="@drawable/schedule"/>
-                    <TextView
-                        android:id="@+id/durationdata"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        android:textSize="13dp"
-                        android:layout_marginTop="1dp"
-                        android:layout_marginLeft="5dp"
-                        android:text="Duration"/>
-                </LinearLayout>
-
-
-            </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-
-
-
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                app:cardElevation="6dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginHorizontal="10dp"
-                app:layout_constraintStart_toStartOf="parent">
+                android:layout_gravity="start"
+                android:background="#fff"
+                app:headerLayout="@layout/navheader"
+                app:itemIconTint="#07435f"
+                app:itemTextAppearance="@style/TextViewStyle"
+                app:menu="@menu/navdrawermenu">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="170dp"
+                    android:background="@drawable/register_background"
+                    android:orientation="vertical">>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
-                        android:layout_marginTop="5dp"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="27dp"
-                            android:layout_height="27dp"
-                            android:scaleType="fitXY"
-                            android:background="@drawable/inspection"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="#000"
-                            android:textSize="20dp"
-                            android:layout_marginTop="1dp"
-                            android:layout_marginLeft="5dp"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Qualification"/>
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/qualificationdata"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="left"
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/navprofile"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
                         android:layout_gravity="center"
-                        android:textColor="#2C2C2C"
-                        android:textSize="15dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginHorizontal="20dp"
-                        android:text="Qualification"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginHorizontal="5dp"
-                        android:background="#ACACAC"/>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
                         android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="27dp"
-                            android:layout_height="27dp"
-                            android:scaleType="fitXY"
-                            android:background="@drawable/savefile"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="#000"
-                            android:textSize="20dp"
-                            android:layout_marginTop="1dp"
-                            android:layout_marginLeft="5dp"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Additional Information"/>
-                    </LinearLayout>
+                        android:scaleType="fitXY"
+                        android:src="@drawable/uculogo"
+                        app:shapeAppearanceOverlay="@style/Circular"
+
+                        />
 
                     <TextView
+                        android:id="@+id/navfullname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="left"
-                        android:layout_gravity="center"
-                        android:textColor="#000"
-                        android:textSize="14dp"
-                        android:textStyle="bold"
+                        android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:layout_marginHorizontal="20dp"
-                        android:text="Job Type"/>
+                        android:gravity="center"
+                        android:text="CRIS RAGOJOS OBOSA"
+                        android:textColor="#fff" />
+
                     <TextView
-                        android:id="@+id/jobtypedata"
+                        android:id="@+id/navidno"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="left"
-                        android:layout_gravity="center"
-                        android:textColor="#2C2C2C"
-                        android:textSize="15dp"
                         android:layout_marginHorizontal="20dp"
-                        android:layout_marginBottom="5dp"
-                        android:text="Job type"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="left"
-                        android:layout_gravity="center"
-                        android:textColor="#000"
-                        android:textSize="14dp"
-                        android:textStyle="bold"
                         android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:layout_marginHorizontal="20dp"
-                        android:text="Company Website Link"/>
-                    <TextView
-                        android:id="@+id/linkdata"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="left"
-                        android:layout_gravity="center"
-                        android:textColor="#2C2C2C"
-                        android:textSize="15dp"
-                        android:layout_marginBottom="7dp"
-                        android:layout_marginHorizontal="20dp"
-                        android:text="Link"/>
+                        android:gravity="center"
+                        android:text="20181464"
+                        android:textColor="#fff" />
 
                 </LinearLayout>
 
 
+            </com.google.android.material.navigation.NavigationView>
 
 
-            </androidx.cardview.widget.CardView>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <androidx.cardview.widget.CardView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="100dp">
+
+                    <include
+                        layout="@layout/app_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="0dp"
+                        android:layout_marginTop="50dp"
+                        app:cardCornerRadius="7dp"
+                        app:cardElevation="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="10dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="10dp"
+                                app:cardElevation="6dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/jobtitledata"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginHorizontal="20dp"
+                                        android:layout_marginTop="10dp"
+                                        android:fontFamily="@font/poppins_medium"
+                                        android:gravity="left"
+                                        android:text="Job Title"
+                                        android:textColor="#000"
+                                        android:textSize="20dp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/companynamedata"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginHorizontal="20dp"
+                                        android:gravity="left"
+                                        android:text="Company Name"
+                                        android:textColor="#000"
+                                        android:textSize="15dp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginHorizontal="10dp"
+                                        android:layout_marginTop="5dp"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:background="@drawable/gmail"
+                                            android:scaleType="fitXY" />
+
+                                        <TextView
+                                            android:id="@+id/emaildata"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="1dp"
+                                            android:text="Email"
+                                            android:textColor="#000"
+                                            android:textSize="13dp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginHorizontal="10dp"
+                                        android:layout_marginTop="5dp"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:background="@drawable/phone"
+                                            android:scaleType="fitXY" />
+
+                                        <TextView
+                                            android:id="@+id/contactdata"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="1dp"
+                                            android:text="Contact"
+                                            android:textColor="#000"
+                                            android:textSize="13dp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginHorizontal="10dp"
+                                        android:layout_marginTop="5dp"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:background="@drawable/location"
+                                            android:scaleType="fitXY" />
+
+                                        <TextView
+                                            android:id="@+id/locationdata"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="1dp"
+                                            android:text="Location"
+                                            android:textColor="#000"
+                                            android:textSize="13dp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginHorizontal="10dp"
+                                        android:layout_marginTop="5dp"
+
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:background="@drawable/schedule"
+                                            android:scaleType="fitXY" />
+
+                                        <TextView
+                                            android:id="@+id/durationdata"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="1dp"
+                                            android:text="Duration"
+                                            android:textColor="#000"
+                                            android:textSize="13dp" />
+                                    </LinearLayout>
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginHorizontal="10dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_marginBottom="15dp"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:background="@drawable/pesos"
+                                            android:scaleType="fitXY" />
+
+                                        <TextView
+                                            android:id="@+id/salary"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="1dp"
+                                            android:text="Duration"
+                                            android:textColor="#000"
+                                            android:textSize="13dp" />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="10dp"
+                                    android:layout_marginTop="5dp"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="27dp"
+                                        android:layout_height="27dp"
+                                        android:background="@drawable/inspection"
+                                        android:scaleType="fitXY" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="1dp"
+                                        android:fontFamily="@font/poppins_medium"
+                                        android:text="Qualification"
+                                        android:textColor="#000"
+                                        android:textSize="20dp" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/qualificationdata"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginHorizontal="20dp"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="left"
+                                    android:text="Qualification"
+                                    android:textColor="#2C2C2C"
+                                    android:textSize="15dp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_marginHorizontal="5dp"
+                                    android:background="#ACACAC" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="27dp"
+                                        android:layout_height="27dp"
+                                        android:background="@drawable/savefile"
+                                        android:scaleType="fitXY" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="1dp"
+                                        android:fontFamily="@font/poppins_medium"
+                                        android:text="Additional Information"
+                                        android:textColor="#000"
+                                        android:textSize="20dp" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginHorizontal="20dp"
+                                    android:layout_marginTop="5dp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:gravity="left"
+                                    android:text="Job Type"
+                                    android:textColor="#000"
+                                    android:textSize="14dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/jobtypedata"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginHorizontal="20dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:gravity="left"
+                                    android:text="Job type"
+                                    android:textColor="#2C2C2C"
+                                    android:textSize="15dp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginHorizontal="20dp"
+                                    android:layout_marginTop="5dp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:gravity="left"
+                                    android:text="Company Website Link"
+                                    android:textColor="#000"
+                                    android:textSize="14dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/linkdata"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginHorizontal="20dp"
+                                    android:layout_marginBottom="7dp"
+                                    android:gravity="left"
+                                    android:text="Link"
+                                    android:textColor="#2C2C2C"
+                                    android:textSize="15dp" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginHorizontal="20dp"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:gravity="left"
+                                    android:text="Job Description"
+                                    android:textColor="#000"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/descriptiondata"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginHorizontal="20dp"
+                                    android:layout_marginBottom="7dp"
+                                    android:gravity="left"
+                                    android:justificationMode="inter_word"
+                                    android:text="Description"
+                                    android:textColor="#2C2C2C"
+                                    android:textSize="15dp" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+            </ScrollView>
+        </androidx.drawerlayout.widget.DrawerLayout>
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
-            app:cardElevation="6dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginHorizontal="10dp"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:background="#fff"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="21dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    android:onClick="backjob"
+                    android:src="@drawable/back"
+                    app:tint="#297fa7" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="back"
+                    android:textColor="#297fa7"
+                    android:onClick="backjob"
+                    android:textSize="20dp" />
+            </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:background="#fff">
 
-            <TextView
+
+            <Button
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:layout_gravity="center"
-                android:textColor="#000"
-                android:textSize="20dp"
-                android:layout_marginTop="10dp"
-                android:textStyle="bold"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_marginHorizontal="20dp"
-                android:text="Job Description"/>
+                android:layout_height="45dp"
+                android:layout_weight=".50"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/background_save"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="#297fa7"
+                android:textSize="17dp"
+                android:layout_marginVertical="10dp"
+                />
 
-            <TextView
-                android:id="@+id/descriptiondata"
+            <Button
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:layout_gravity="center"
-                android:textColor="#2C2C2C"
-                android:textSize="15dp"
-                android:layout_marginBottom="7dp"
-                android:layout_marginHorizontal="20dp"
-                android:justificationMode="inter_word"
-                android:text="Description"/>
-
-         </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
+                android:layout_height="45dp"
+                android:layout_weight=".50"
+                android:layout_marginHorizontal="10dp"
+                android:background="#730322"
+                android:text="Apply Now"
+                android:textAllCaps="false"
+                android:textSize="17dp"
+                android:layout_marginVertical="10dp"
+                />
 
 
         </LinearLayout>
+</RelativeLayout>
 
-
-
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-
-    </ScrollView>
-    </androidx.drawerlayout.widget.DrawerLayout>
-</LinearLayout>
+    </LinearLayout>

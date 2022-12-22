@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff"
+    android:background="#297fa7"
     tools:context=".profile">
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -73,11 +75,13 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="70dp">
 
                 <include
                     android:layout_width="match_parent"
@@ -86,22 +90,16 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="220dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="15dp"
-                        android:gravity="center"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/waves" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="120dp"
                         android:orientation="vertical">
 
 
@@ -111,6 +109,7 @@
                             android:layout_height="wrap_content"
                             android:text="Full name Full name Full name Full name "
                             android:textColor="#fff"
+                            android:textStyle="bold"
                             android:textSize="18dp" />
                     <TextView
                         android:id="@+id/idno"
@@ -126,113 +125,29 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="20dp"
                         android:orientation="vertical">
+
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/graduatedimage"
-                            android:layout_width="130dp"
-                            android:layout_height="130dp"
-                            android:layout_marginTop="50dp"
-                            android:src="@drawable/uculogo"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:layout_marginBottom="5dp"
+                            android:src="@drawable/uculogo"
                             app:civ_border_color="#0277BD" />
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="#D8DADD"
-                            app:cardCornerRadius="7dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent">
-
-                        <LinearLayout
-                            android:id="@+id/btnShow"
-                            android:layout_width="wrap_content"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:paddingRight="15dp"
-                            android:paddingLeft="15dp"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_marginTop="5dp"
-                                android:scaleType="fitXY"
-                                android:layout_marginRight="3dp"
-                                android:background="@drawable/edit"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="UPDATE"
-                                android:textSize="18dp"
-                                android:textColor="#0566B3"
-                                android:fontFamily="@font/poppins_medium"
-                                android:layout_marginTop="3dp"
-                                />
-
-
-                        </LinearLayout>
-
-                        </androidx.cardview.widget.CardView>
-
-
 
 
                     </LinearLayout>
 
                 </RelativeLayout>
 
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="20dp"
-                    app:cardCornerRadius="7dp"
-                    app:cardElevation="6dp"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
-                    <Button
-                        android:id="@+id/password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:text="PASSWORD MO TO"/>
-                    <Button
-                        android:id="@+id/profilepic"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:text="PROFILE MO TO"/>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                       android:layout_gravity="right"
-                        android:layout_marginRight="10dp"
-                        app:cardCornerRadius="7dp"
-                        app:cardElevation="6dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
-
-                    </androidx.cardview.widget.CardView>
-
-
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#fff">
 
                 </LinearLayout>
-                </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/fivepercent"
                 android:layout_width="match_parent"
@@ -244,8 +159,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:visibility="gone"
-                >
+                android:visibility="gone">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -433,35 +347,255 @@
 
 
 
-
-
-
-
-
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="10dp"
-                    app:cardCornerRadius="7dp"
-                    app:cardElevation="6dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#fff"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:orientation="vertical">
-                <Button
-                    android:id="@+id/otherinfo"
+                android:orientation="vertical"
+                android:visibility="visible">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:text="UPDATE MO TO"/>
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="5dp">
+                    <ImageView
+                        android:layout_width="0px"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_weight=".07"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/usericon"
+                        />
+                    <Button
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".85"
+                        android:background="#20000000"
+                        android:gravity="left"
+                        android:paddingLeft="25px"
+                        android:onClick="ChangeProfile"
+                        android:text="Profile Picture" />
+                    <ImageView
+                        android:layout_width="0px"
+                        android:layout_height="15dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight=".05"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/arrow_right"
+                        app:tint="#fff" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="5dp">
+                    <ImageView
+                        android:layout_width="0px"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_weight=".07"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/generalinformation"
+                       />
+                    <Button
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".85"
+                        android:background="#20000000"
+                        android:gravity="left"
+                        android:paddingLeft="25px"
+                        android:onClick="GeneralInfo"
+                        android:text="GENERAL INFO" />
+                    <ImageView
+                        android:layout_width="0px"
+                        android:layout_height="15dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight=".05"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/arrow_right"
+                        app:tint="#fff" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:weightSum="1"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="0px"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_weight=".07"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/advancestudy"
+                        app:tint="#fff"
+                       />
+                    <Button
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".85"
+                        android:background="#20000000"
+                        android:gravity="left"
+                        android:paddingLeft="25px"
+                        android:onClick="AdvanceStudy"
+                        android:text="ADVANCE STUDY" />
+                    <ImageView
+                        android:layout_width="0px"
+                        android:layout_height="15dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight=".05"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/arrow_right"
+                        app:tint="#fff" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="5dp">
+                    <ImageView
+                        android:layout_width="0px"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_weight=".07"
+                        android:scaleType="fitXY"
+                        app:tint="#fff"
+                        android:src="@drawable/firstjob"/>
+                    <Button
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".85"
+                        android:background="#20000000"
+                        android:gravity="left"
+                        android:paddingLeft="25px"
+                        android:onClick="FirstJob"
+                        android:text="FIRST JOB" />
+                    <ImageView
+                        android:layout_width="0px"
+                        android:layout_height="15dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight=".05"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/arrow_right"
+                        app:tint="#fff" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:weightSum="1"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="0px"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_weight=".07"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/employmentdata"
+                        app:tint="#fff" />
+                    <Button
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".85"
+                        android:background="#20000000"
+                        android:gravity="left"
+                        android:paddingLeft="25px"
+                        android:onClick="Employment"
+                        android:text="EMPLOYMENT" />
+                    <ImageView
+                        android:layout_width="0px"
+                        android:layout_height="15dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight=".05"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/arrow_right"
+                        app:tint="#fff" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="5dp">
+                    <ImageView
+                        android:layout_width="0px"
+                        android:layout_height="25dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_weight=".07"
+                        android:scaleType="fitXY"
+                        app:tint="#fff"
+                        android:src="@drawable/password"
+                        />
+                    <Button
+                        android:layout_width="0px"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".85"
+                        android:background="#20000000"
+                        android:gravity="left"
+                        android:paddingLeft="25px"
+                        android:onClick="Password"
+                        android:text="Password" />
+                    <ImageView
+                        android:layout_width="0px"
+                        android:layout_height="15dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight=".05"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/arrow_right"
+                        app:tint="#fff" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#fff">
+
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -481,7 +615,7 @@
                         android:layout_height="wrap_content"
                         android:text="Personal Information"
                         android:textSize="25dp"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold"
                         android:layout_marginTop="3dp"
                         />
@@ -495,7 +629,7 @@
                     android:text="email"
                     android:textSize="16dp"
                     android:layout_marginHorizontal="20dp"
-                    android:textColor="#000"/>
+                    android:textColor="#fff"/>
                 <TextView
                     android:id="@+id/contact"
                     android:layout_width="match_parent"
@@ -503,12 +637,12 @@
                     android:textSize="16dp"
                     android:layout_marginHorizontal="20dp"
                     android:text="Contact"
-                    android:textColor="#000"/>
+                    android:textColor="#fff"/>
                 <TextView
                     android:id="@+id/gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="16dp"
                     android:layout_marginHorizontal="20dp"
                     android:text="Gender"/>
@@ -516,7 +650,7 @@
                     android:id="@+id/birthdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="16dp"
                     android:layout_marginHorizontal="20dp"
                     android:text="Birthdate"/>
@@ -525,7 +659,7 @@
                     android:id="@+id/specialization"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="16dp"
                     android:layout_marginHorizontal="20dp"
                     android:text="Specialization"/>
@@ -533,7 +667,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#515151"
+                    android:textColor="#E1DFDF"
                     android:textSize="15dp"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="10dp"
@@ -542,14 +676,14 @@
                     android:id="@+id/address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="16dp"
                     android:layout_marginHorizontal="20dp"
                     android:text="Location"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#515151"
+                    android:textColor="#E1DFDF"
                     android:textSize="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
@@ -558,29 +692,24 @@
                     android:id="@+id/civilstatus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="16dp"
                     android:layout_marginHorizontal="20dp"
                     android:text="Civil status"/>
             </LinearLayout>
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="20dp"
-                    app:cardCornerRadius="7dp"
-                    app:cardElevation="6dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    android:layout_height="1dp"
+                    android:background="#fff">
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#fff"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -599,7 +728,7 @@
                             android:layout_height="wrap_content"
                             android:text="Education"
                             android:textSize="25dp"
-                            android:textColor="#000"
+                            android:textColor="#fff"
                             android:textStyle="bold"
                             android:layout_marginBottom="10dp"
                             />
@@ -609,7 +738,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textSize="16dp"
                         android:layout_marginHorizontal="20dp"
                         android:text="Urdaneta City University"/>
@@ -617,7 +746,7 @@
                         android:id="@+id/course"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#515151"
+                        android:textColor="#E1DFDF"
                         android:textSize="16dp"
                         android:layout_marginHorizontal="20dp"
                         android:text="course"/>
@@ -625,32 +754,26 @@
                         android:id="@+id/yeargrad"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#515151"
+                        android:textColor="#E1DFDF"
                         android:textSize="16dp"
                         android:layout_marginHorizontal="20dp"
                         android:text="year graduated"/>
 
                 </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="20dp"
-                    app:cardCornerRadius="7dp"
-                    app:cardElevation="6dp"
-                    android:layout_marginBottom="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-            <LinearLayout
+                    android:layout_height="1dp"
+                    android:background="#fff">
+                </LinearLayout>
+
+
+                <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#fff"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                    android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -663,23 +786,24 @@
                         android:scaleType="fitXY"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="3dp"
-                        android:src="@drawable/info"/>
+                        android:src="@drawable/notification"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Other Information"
+                        android:text="Notification"
                         android:textSize="25dp"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textStyle="bold"
                         android:layout_marginBottom="10dp"
                         />
 
                 </LinearLayout>
+
                 <TextView
                     android:id="@+id/qnotification"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="10dp"
                     android:textSize="16dp"
@@ -688,7 +812,7 @@
                     android:id="@+id/notification"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="16dp"
                     android:layout_marginHorizontal="20dp"
                     android:text="notification"/>
@@ -696,7 +820,7 @@
                     android:id="@+id/qnewsnotification"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginTop="10dp"
                     android:textSize="16dp"
                     android:layout_marginHorizontal="20dp"
@@ -705,7 +829,7 @@
                     android:id="@+id/newsnotification"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="16dp"
                     android:layout_marginHorizontal="20dp"
                     android:text="newsnotification"/>
@@ -713,7 +837,7 @@
                     android:id="@+id/qeventnotification"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginTop="10dp"
                     android:textSize="16dp"
                     android:layout_marginHorizontal="20dp"
@@ -722,15 +846,32 @@
                     android:id="@+id/eventnotification"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="16dp"
                     android:layout_marginHorizontal="20dp"
                     android:text="eventnotification"/>
+                </LinearLayout>
+
+
+
+
+
                 <LinearLayout
-                    android:id="@+id/postgraduateguide"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+                    android:orientation="vertical"
+                    android:id="@+id/postgraduateguide"
+                    android:visibility="gone">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#fff">
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="30dp"
@@ -745,76 +886,97 @@
                         android:layout_height="wrap_content"
                         android:text="Post Graduated"
                         android:textSize="20dp"
-                        android:textColor="#000"
-
+                        android:textColor="#fff"
                         android:layout_marginBottom="10dp"
                         />
-
                 </LinearLayout>
-                <TextView
-                    android:id="@+id/qpostgraduate"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/qpostgraduate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#E1DFDF"
+                        android:layout_marginHorizontal="20dp"
+                        android:textSize="16dp"
+                        android:text="postgraduate"/>
+                    <TextView
+                        android:id="@+id/postgraduate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#fff"
+                        android:layout_marginHorizontal="20dp"
+                        android:textSize="16dp"
+                        android:text="postgraduate"/>
+                </LinearLayout>
+                </LinearLayout>
 
-                    android:layout_marginHorizontal="20dp"
-                    android:textSize="16dp"
-                    android:visibility="gone"
-                    android:text="postgraduate"/>
-                <TextView
-                    android:id="@+id/postgraduate"
+                <LinearLayout
+                    android:id="@+id/postgraduateyes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
-                    android:layout_marginHorizontal="20dp"
-                    android:textSize="16dp"
-                    android:visibility="gone"
-                    android:text="postgraduate"/>
+                    android:orientation="vertical"
+                    android:visibility="gone">
                 <TextView
                     android:id="@+id/qpostgraduatey1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="postgraduatey1"/>
                 <TextView
                     android:id="@+id/postgraduatey1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:layout_marginHorizontal="20dp"
                     android:text="postgraduatey1"/>
                 <TextView
                     android:id="@+id/qpostgraduatey2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="postgraduatey2"/>
                 <TextView
                     android:id="@+id/postgraduatey2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="postgraduatey2"/>
+                 </LinearLayout>
+
+
+
+
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:id="@+id/employedguide"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#fff">
+                    </LinearLayout>
+
+                <LinearLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:visibility="gone"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
                     <ImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
@@ -828,150 +990,172 @@
                         android:layout_height="wrap_content"
                         android:text="Employment"
                         android:textSize="20dp"
-                        android:textColor="#000"
-
-                        android:layout_marginBottom="10dp"
-                        />
-
+                        android:textColor="#fff" />
                 </LinearLayout>
+                </LinearLayout>
+            <LinearLayout
+                android:id="@+id/employedyes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                android:visibility="gone">
                 <TextView
                     android:id="@+id/qemployed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="employed"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/employed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="employed"/>
+
                 <TextView
                     android:id="@+id/qemployedy1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="employedy1"/>
                 <TextView
                     android:id="@+id/employedy1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="employedy1"/>
                 <TextView
                     android:id="@+id/qemployedy2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="employedy2"/>
                 <TextView
                     android:id="@+id/employedy2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="employedy2"/>
                 <TextView
                     android:id="@+id/qemployedy3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="employedy3"/>
                 <TextView
                     android:id="@+id/employedy3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="employedy3"/>
                 <TextView
                     android:id="@+id/qemployedy4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="employedy4"/>
                 <TextView
                     android:id="@+id/employedy4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="employedy4"/>
                 <TextView
                     android:id="@+id/qemployedy5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="employedy5"/>
                 <TextView
                     android:id="@+id/employedy5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="employedy5"/>
-                <TextView
-                    android:id="@+id/qemployedn1"
+                </LinearLayout>
+
+
+            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/employedno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginHorizontal="20dp"
-                    android:textSize="16dp"
-                    android:visibility="gone"
-                    android:text="employedn1"/>
-                <TextView
-                    android:id="@+id/employedn1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000"
-                    android:layout_marginHorizontal="20dp"
-                    android:textSize="16dp"
-                    android:visibility="gone"
-                    android:text="employedn1"/>
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <TextView
+                        android:id="@+id/qemployedn1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#E1DFDF"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginHorizontal="20dp"
+                        android:textSize="16dp"
+                        android:text="employedn1"/>
+                    <TextView
+                        android:id="@+id/employedn1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#fff"
+                        android:layout_marginHorizontal="20dp"
+                        android:textSize="16dp"
+                        android:text="employedn1"/>
+
+                </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/firstjobguide"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#fff">
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:visibility="gone"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="23dp"
@@ -986,110 +1170,116 @@
                         android:layout_height="wrap_content"
                         android:text="First Job"
                         android:textSize="20dp"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:layout_marginBottom="10dp"
                         />
 
                 </LinearLayout>
-                <TextView
-                    android:id="@+id/qfirstjob"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
-                    android:layout_marginHorizontal="20dp"
-                    android:textSize="16dp"
-                    android:visibility="gone"
-                    android:text="firstjob"/>
-                <TextView
-                    android:id="@+id/firstjob"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000"
-                    android:layout_marginHorizontal="20dp"
-                    android:textSize="16dp"
-                    android:visibility="gone"
-                    android:text="firstjob"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/qfirstjob"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E1DFDF"
+                            android:layout_marginHorizontal="20dp"
+                            android:textSize="16dp"
+                            android:text="firstjob"/>
+                        <TextView
+                            android:id="@+id/firstjob"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#fff"
+                            android:layout_marginHorizontal="20dp"
+                            android:textSize="16dp"
+                            android:text="firstjob"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/firstjobyes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+
+
                 <TextView
                     android:id="@+id/qfirstjoby1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="firstjoby1"/>
                 <TextView
                     android:id="@+id/firstjoby1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="firstjoby1"/>
                 <TextView
                     android:id="@+id/qfirstjoby2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="firstjoby2"/>
                 <TextView
                     android:id="@+id/firstjoby2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="firstjoby2"/>
                 <TextView
                     android:id="@+id/qfirstjoby3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="firstjoby3"/>
                 <TextView
                     android:id="@+id/firstjoby3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="firstjoby3"/>
                 <TextView
                     android:id="@+id/qfirstjoby4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="firstjoby4"/>
                 <TextView
                     android:id="@+id/firstjoby4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
-                    android:visibility="gone"
                     android:text="firstjoby4"/>
                 <TextView
                     android:id="@+id/qfirstjoby4y1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#297fa7"
+                    android:textColor="#E1DFDF"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
@@ -1099,26 +1289,67 @@
                     android:id="@+id/firstjoby4y1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#000"
+                    android:textColor="#fff"
                     android:layout_marginHorizontal="20dp"
                     android:textSize="16dp"
                     android:visibility="gone"
                     android:text="firstjoby4y1"/>
+                <TextView
+                    android:id="@+id/qfirstjoby5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#E1DFDF"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="16dp"
+                    android:text="firstjoby5"/>
+                <TextView
+                    android:id="@+id/firstjoby5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="16dp"
+                    android:text="firstjoby5"/>
+                <TextView
+                    android:id="@+id/qfirstjoby6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#E1DFDF"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="16dp"
+                    android:text="firstjoby6"/>
+                <TextView
+                    android:id="@+id/firstjoby6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:layout_marginHorizontal="20dp"
+                    android:textSize="16dp"
+                    android:text="firstjoby6"/>
+
+            </LinearLayout>
 
 
             </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-
-
-
-
-            </LinearLayout>
-
-
-
         </ScrollView>
 
     </androidx.drawerlayout.widget.DrawerLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
 
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/naview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:elevation="120dp"
+        app:itemIconSize="25dp"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/homenav" />
+</RelativeLayout>
 </LinearLayout>

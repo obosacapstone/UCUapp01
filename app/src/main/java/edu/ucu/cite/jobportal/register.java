@@ -655,10 +655,23 @@ public class register extends AppCompatActivity implements View.OnClickListener,
             EditTextbirthdate.setError("Please fill up");
             EditTextbirthdate.requestFocus();
         }
-        if (idno.isEmpty()) {
-            EditTextidno.setError("Please fill up");
-            EditTextidno.requestFocus();
+        if(classification.equals("Graduating")){
+            if (idno.isEmpty()) {
+                EditTextidno.setError("Please fill up");
+                EditTextidno.requestFocus();
+            }
+
         }
+
+
+
+//        if(classification.equals("Alumni")){
+//
+//        }else{
+//
+//        }
+
+
         if (gender.isEmpty()) {
             RadioButtonqqgenderno.setError("Please fill up");
             RadioButtonqqgenderno.requestFocus();
@@ -687,70 +700,153 @@ public class register extends AppCompatActivity implements View.OnClickListener,
 
 
 
-            if (!lastname.isEmpty() && !firstname.isEmpty() && !middlename.isEmpty() && !email.isEmpty() && email.matches(emailPattern) && !contact.isEmpty() && contact.length() == 11 && !birthdate.isEmpty() && !idno
-                .isEmpty() && !gender.isEmpty() && !civilstatus.isEmpty()  && !course.isEmpty() && !skills.isEmpty() && !classification.isEmpty() &&
+            if (!lastname.isEmpty() && !firstname.isEmpty() && !middlename.isEmpty() && !email.isEmpty() && email.matches(emailPattern) && !contact.isEmpty() && contact.length() == 11 && !birthdate.isEmpty()&& !gender.isEmpty() && !civilstatus.isEmpty()  && !course.isEmpty() && !skills.isEmpty() && !classification.isEmpty() &&
                 !yeargrad.isEmpty()){
-                progressDialog.show();
-            StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                    Constants.URL_REGISTER,
-                    new Response.Listener<String>() {
+                if(classification.equals("Alumni")){
+                    progressDialog.show();
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                            Constants.URL_REGISTER,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    progressDialog.dismiss();
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(response);
+
+
+
+
+
+                                        if (!jsonObject.getBoolean("error")) {
+                                            Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                                            startActivity(new Intent(getApplicationContext(), login.class));
+                                            finish();
+                                        }else{
+//                                            Toast.makeText(getApplicationContext(), "Email Already Exist", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                                        }
+
+
+
+
+
+
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                        Log.e("anyText",response);
+                                    }
+
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+                                }
+                            })
+                    {
+                        @Nullable
                         @Override
-                        public void onResponse(String response) {
-                            progressDialog.dismiss();
-                            try {
-                                JSONObject jsonObject = new JSONObject(response);
-                                Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String,String> params = new HashMap<>();
+                            params.put("lastname",lastname);
+                            params.put("firstname",firstname);
+                            params.put("middlename",middlename);
+                            params.put("gender",gender);
+                            params.put("email",email);
+                            params.put("contact",contact);
+                            params.put("birthdate",birthdate);
+                            params.put("civilstatus",civilstatus);
+                            params.put("idno",idno);
+                            params.put("course",course);
+                            params.put("skills",skills);
+                            params.put("classification",classification);
+                            params.put("yeargrad",yeargrad);
+                            params.put("region",region);
+                            params.put("province",province);
+                            params.put("city",city);
+                            params.put("barangay",barangay);
+                            params.put("house",house);
 
-                                startActivity(new Intent(getApplicationContext(), login.class));
-                                finish();
-
-
-
-
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                                Log.e("anyText",response);
-                            }
+                            return params;
 
                         }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
-                        }
-                    })
-            {
-                @Nullable
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String,String> params = new HashMap<>();
-                    params.put("lastname",lastname);
-                    params.put("firstname",firstname);
-                    params.put("middlename",middlename);
-                    params.put("gender",gender);
-                    params.put("email",email);
-                    params.put("contact",contact);
-                    params.put("birthdate",birthdate);
-                    params.put("civilstatus",civilstatus);
-                    params.put("idno",idno);
-                    params.put("course",course);
-                    params.put("skills",skills);
-                    params.put("classification",classification);
-                    params.put("yeargrad",yeargrad);
-                    params.put("region",region);
-                    params.put("province",province);
-                    params.put("city",city);
-                    params.put("barangay",barangay);
-                    params.put("house",house);
-
-                    return params;
-
+                    };
+                    RequestQueue requestQueue = Volley.newRequestQueue(this);
+                    requestQueue.add(stringRequest);
                 }
-            };
-            RequestQueue requestQueue = Volley.newRequestQueue(this);
-            requestQueue.add(stringRequest);
+                if(classification.equals("Graduating") && !idno.isEmpty()){
+                    progressDialog.show();
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                            Constants.URL_REGISTER,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    progressDialog.dismiss();
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(response);
+
+
+                                        if (!jsonObject.getBoolean("error")) {
+                                            Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                                            startActivity(new Intent(getApplicationContext(), login.class));
+                                            finish();
+                                        }else{
+//                                            Toast.makeText(getApplicationContext(), "Email Already Exist", Toast.LENGTH_SHORT).show();
+
+                                            Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+                                        }
+
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                        Log.e("anyText",response);
+                                    }
+
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+                                }
+                            })
+                    {
+                        @Nullable
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String,String> params = new HashMap<>();
+                            params.put("lastname",lastname);
+                            params.put("firstname",firstname);
+                            params.put("middlename",middlename);
+                            params.put("gender",gender);
+                            params.put("email",email);
+                            params.put("contact",contact);
+                            params.put("birthdate",birthdate);
+                            params.put("civilstatus",civilstatus);
+                            params.put("idno",idno);
+                            params.put("course",course);
+                            params.put("skills",skills);
+                            params.put("classification",classification);
+                            params.put("yeargrad",yeargrad);
+                            params.put("region",region);
+                            params.put("province",province);
+                            params.put("city",city);
+                            params.put("barangay",barangay);
+                            params.put("house",house);
+
+                            return params;
+
+                        }
+                    };
+                    RequestQueue requestQueue = Volley.newRequestQueue(this);
+                    requestQueue.add(stringRequest);
+                }
+                if (classification.equals("Graduating") && idno.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "All Fields are required", Toast.LENGTH_SHORT).show();
+                }
+
         }else{
             Toast.makeText(getApplicationContext(), "All Fields are required", Toast.LENGTH_SHORT).show();
         }

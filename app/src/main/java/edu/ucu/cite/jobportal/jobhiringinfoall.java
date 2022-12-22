@@ -30,6 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -76,7 +77,34 @@ public class jobhiringinfoall extends AppCompatActivity implements NavigationVie
         String idno = SharedPrefManager.getInstance(this).getIDno();
         String graduatedimage = SharedPrefManager.getInstance(this).getGraduatedimage();
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.naview);
+        bottomNavigationView.setItemIconTintList(null);
+        bottomNavigationView.setSelectedItemId(R.id.Jobs);
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()){
 
+                case R.id.Jobs:
+                    return true;
+                case R.id.News:
+                    startActivity(new Intent(getApplicationContext(),newsinfo.class));
+                    finish();
+                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                    return true;
+                case R.id.Events:
+                    startActivity(new Intent(getApplicationContext(),eventinfo.class));
+                    finish();
+                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                    return true;
+                case R.id.Profile:
+                    startActivity(new Intent(getApplicationContext(),profile.class));
+                    finish();
+                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                    return true;
+
+
+            }
+            return false;
+        });
 
         Glide.with(jobhiringinfoall.this).load(graduatedimage).into(ImageViewNavProfile);
         TextViewNavFullname.setText(firstname + " " + middlename + " " + lastname);
@@ -172,7 +200,10 @@ public class jobhiringinfoall extends AppCompatActivity implements NavigationVie
                                             product.getString("description"),
                                             product.getString("jobstatus"),
                                             product.getString("courseuploaded"),
-                                            product.getString("jobpostdate")
+                                            product.getString("jobpostdate"),
+                                            product.getString("minimumsalary"),
+                                            product.getString("maximumsalary"),
+                                            product.getString("views")
 
 
                                     ));
@@ -269,8 +300,13 @@ public class jobhiringinfoall extends AppCompatActivity implements NavigationVie
 
 
     public void Alljobs(View view) {
+        overridePendingTransition(0, 0);
+        finish();
+        overridePendingTransition(0, 0);
         Intent intent = new Intent(jobhiringinfoall.this,jobhiringinfo.class);
         startActivity(intent);
+        overridePendingTransition(0, 0);
+
     }
     @Override
     protected void onStart() {

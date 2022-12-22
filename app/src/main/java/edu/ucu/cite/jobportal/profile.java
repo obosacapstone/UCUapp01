@@ -21,14 +21,15 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
 
 public class profile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,PopupMenu.OnMenuItemClickListener{
     TextView TextViewfullname , TextViewidno,TextViewcourse , TextViewyeargrad, TextViewbirthdate , TextViewgender , TextViewcivilstatus , TextViewcontact , TextViewemail , TextViewskill , TextViewaddress ;
-    TextView TextViewnotification , TextViewnewsnotification, TextVieweventnotification, TextViewpostgraduate, TextViewpostgraduatey1, TextViewpostgraduatey2, TextViewemployed, TextViewemployedy1, TextViewemployedy2, TextViewemployedy3, TextViewemployedy4, TextViewemployedy5, TextViewemployedn1, TextViewfirstjob, TextViewfirstjoby1, TextViewfirstjoby2, TextViewfirstjoby3, TextViewfirstjoby4, TextViewfirstjoby4y1;
-    TextView qTextViewpostgraduate, qTextViewpostgraduatey1, qTextViewpostgraduatey2, qTextViewemployed, qTextViewemployedy1, qTextViewemployedy2, qTextViewemployedy3, qTextViewemployedy4, qTextViewemployedy5, qTextViewemployedn1, qTextViewfirstjob, qTextViewfirstjoby1, qTextViewfirstjoby2, qTextViewfirstjoby3, qTextViewfirstjoby4, qTextViewfirstjoby4y1;
+    TextView TextViewnotification , TextViewnewsnotification, TextVieweventnotification, TextViewpostgraduate, TextViewpostgraduatey1, TextViewpostgraduatey2, TextViewemployed, TextViewemployedy1, TextViewemployedy2, TextViewemployedy3, TextViewemployedy4, TextViewemployedy5, TextViewemployedn1, TextViewfirstjob, TextViewfirstjoby1, TextViewfirstjoby2, TextViewfirstjoby3, TextViewfirstjoby4, TextViewfirstjoby4y1,TextViewfirstjoby5,TextViewfirstjoby6;
+    TextView qTextViewpostgraduate, qTextViewpostgraduatey1, qTextViewpostgraduatey2, qTextViewemployed, qTextViewemployedy1, qTextViewemployedy2, qTextViewemployedy3, qTextViewemployedy4, qTextViewemployedy5, qTextViewemployedn1, qTextViewfirstjob, qTextViewfirstjoby1, qTextViewfirstjoby2, qTextViewfirstjoby3, qTextViewfirstjoby4, qTextViewfirstjoby4y1,qTextViewfirstjoby5,qTextViewfirstjoby6;
     ImageView ImageViewgraduatedimage;
     Button ButtonOtherInfo;
     Button ButtonPassword;
@@ -41,16 +42,29 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
     TextView TextViewNavFullname, TextViewNavIdno;
     ImageView ImageViewNavProfile;
     CardView CardViewfivepercent,CardViewonepercent;
-    LinearLayout LinearlayoutPostgraduatedGuide,LinearlayoutEmployedGuide,LinearlayoutFirstjobGuide;
+    //postgraduate
+    LinearLayout LinearlayoutPostgraduatedGuide,LinearlayoutPostgraduatedYes,LinearlayoutPostgraduatedNo;
+    //employed
+    LinearLayout LinearlayoutEmployedGuide,LinearlayoutEmployedYes,LinearlayoutEmployedNo;
+    //firstjob
+    LinearLayout LinearlayoutFirstjobGuide,LinearlayoutFirstjobYes;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        //postgraduate
         LinearlayoutPostgraduatedGuide = findViewById(R.id.postgraduateguide);
+        LinearlayoutPostgraduatedYes = findViewById(R.id.postgraduateyes);
+        //employed
         LinearlayoutEmployedGuide = findViewById(R.id.employedguide);
+        LinearlayoutEmployedYes = findViewById(R.id.employedyes);
+        LinearlayoutEmployedNo = findViewById(R.id.employedno);
+
+        //firstjob
         LinearlayoutFirstjobGuide = findViewById(R.id.firstjobguide);
+        LinearlayoutFirstjobYes = findViewById(R.id.firstjobyes);
 
 
         ImageViewNavProfile = findViewById(R.id.navprofile);
@@ -71,32 +85,7 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
         TextViewNavIdno.setText(idno);
 
 
-        ButtonProfilepic = findViewById(R.id.profilepic);
-        ButtonProfilepic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(profile.this,profilepic.class);
-                startActivity(intent);
 
-            }
-        });
-        ButtonOtherInfo = findViewById(R.id.otherinfo);
-        ButtonOtherInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(profile.this,otherinfo.class);
-                startActivity(intent);
-
-            }
-        });
-        ButtonPassword = findViewById(R.id.password);
-        ButtonPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(profile.this,password.class);
-                startActivity(intent);
-            }
-        });
 
 
         TextViewfullname = findViewById(R.id.fullname);
@@ -131,6 +120,8 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
         TextViewfirstjoby3 = findViewById(R.id.firstjoby3);
         TextViewfirstjoby4 = findViewById(R.id.firstjoby4);
         TextViewfirstjoby4y1 = findViewById(R.id.firstjoby4y1);
+        TextViewfirstjoby5 = findViewById(R.id.firstjoby5);
+        TextViewfirstjoby6 = findViewById(R.id.firstjoby6);
         //question
         qTextViewpostgraduate = findViewById(R.id.qpostgraduate);
         qTextViewpostgraduatey1 = findViewById(R.id.qpostgraduatey1);
@@ -148,6 +139,9 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
         qTextViewfirstjoby3 = findViewById(R.id.qfirstjoby3);
         qTextViewfirstjoby4 = findViewById(R.id.qfirstjoby4);
         qTextViewfirstjoby4y1 = findViewById(R.id.qfirstjoby4y1);
+        qTextViewfirstjoby5 = findViewById(R.id.qfirstjoby5);
+        qTextViewfirstjoby6 = findViewById(R.id.qfirstjoby6);
+
         //nav bar
         TextViewTitleNav = findViewById(R.id.titlenav);
         TextViewTitleNav.setText("Profile Preview");
@@ -195,6 +189,8 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
         String firstjoby3 = SharedPrefManager.getInstance(this).getFirstjoby3();
         String firstjoby4 = SharedPrefManager.getInstance(this).getFirstjoby4();
         String firstjoby4y1 = SharedPrefManager.getInstance(this).getFirstjoby4y1();
+        String firstjoby5 = SharedPrefManager.getInstance(this).getFirstjoby5();
+        String firstjoby6 = SharedPrefManager.getInstance(this).getFirstjoby6();
 
 
 
@@ -231,6 +227,8 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
         TextViewfirstjoby3.setText(" - " + firstjoby3);
         TextViewfirstjoby4.setText(" - " + firstjoby4);
         TextViewfirstjoby4y1.setText(" - " + firstjoby4y1);
+        TextViewfirstjoby5.setText(" - " + firstjoby5);
+        TextViewfirstjoby6.setText(" - " + firstjoby6);
 
 
         //nav bar
@@ -247,25 +245,14 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
 
         if (postgraduate.equals("Yes")){
             LinearlayoutPostgraduatedGuide.setVisibility(TextView.VISIBLE);
-
+            LinearlayoutPostgraduatedYes.setVisibility(TextView.VISIBLE);
             qTextViewpostgraduate.setText("Post graduate studies.");
-            qTextViewpostgraduate.setVisibility(TextView.VISIBLE);
-            TextViewpostgraduate.setVisibility(TextView.VISIBLE);
-
             qTextViewpostgraduatey1.setText("Current post graduate studies.");
-            qTextViewpostgraduatey1.setVisibility(TextView.VISIBLE);
-            TextViewpostgraduatey1.setVisibility(TextView.VISIBLE);
-
             qTextViewpostgraduatey2.setText("Pursue advance studies.");
-            qTextViewpostgraduatey2.setVisibility(TextView.VISIBLE);
-            TextViewpostgraduatey2.setVisibility(TextView.VISIBLE);
         }
         if (postgraduate.equals("No")){
             LinearlayoutPostgraduatedGuide.setVisibility(TextView.VISIBLE);
-
             qTextViewpostgraduate.setText("Post graduate studies.");
-            qTextViewpostgraduate.setVisibility(TextView.VISIBLE);
-            TextViewpostgraduate.setVisibility(TextView.VISIBLE);
         }
 
 
@@ -275,43 +262,22 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
 
         if (employed.equals("Yes")){
             LinearlayoutEmployedGuide.setVisibility(TextView.VISIBLE);
-
+            LinearlayoutEmployedYes.setVisibility(TextView.VISIBLE);
             qTextViewemployed.setText("Current Employed.");
-            qTextViewemployed.setVisibility(TextView.VISIBLE);
-            TextViewemployed.setVisibility(TextView.VISIBLE);
-
             qTextViewemployedy1.setText("Present employment status.");
-            qTextViewemployedy1.setVisibility(TextView.VISIBLE);
-            TextViewemployedy1.setVisibility(TextView.VISIBLE);
-
             qTextViewemployedy2.setText("Place of work.");
-            qTextViewemployedy2.setVisibility(TextView.VISIBLE);
-            TextViewemployedy2.setVisibility(TextView.VISIBLE);
-
             qTextViewemployedy3.setText("Present Occupation.");
-            qTextViewemployedy3.setVisibility(TextView.VISIBLE);
-            TextViewemployedy3.setVisibility(TextView.VISIBLE);
-
             qTextViewemployedy4.setText("Company you are employed.");
-            qTextViewemployedy4.setVisibility(TextView.VISIBLE);
-            TextViewemployedy4.setVisibility(TextView.VISIBLE);
-
             qTextViewemployedy5.setText("College relevant to your present job.");
-            qTextViewemployedy5.setVisibility(TextView.VISIBLE);
-            TextViewemployedy5.setVisibility(TextView.VISIBLE);
-
-
         }
         if (employed.equals("No")){
             LinearlayoutEmployedGuide.setVisibility(TextView.VISIBLE);
-
+            LinearlayoutEmployedNo.setVisibility(TextView.VISIBLE);
             qTextViewemployed.setText("Current Employed.");
-            qTextViewemployed.setVisibility(TextView.VISIBLE);
-            TextViewemployed.setVisibility(TextView.VISIBLE);
-
             qTextViewemployedn1.setText("Main reason why you are not yet employed.");
-            qTextViewemployedn1.setVisibility(TextView.VISIBLE);
-            TextViewemployedn1.setVisibility(TextView.VISIBLE);
+        }
+        if (employed.equals("")){
+            LinearlayoutEmployedGuide.setVisibility(TextView.GONE);
         }
 
         //firstjob
@@ -320,34 +286,19 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
 
         if (firstjob.equals("Yes")){
             LinearlayoutFirstjobGuide.setVisibility(TextView.VISIBLE);
-
+            LinearlayoutFirstjobYes.setVisibility(TextView.VISIBLE);
             qTextViewfirstjob.setText("Do you have your first job after college.");
-            qTextViewfirstjob.setVisibility(TextView.VISIBLE);
-            TextViewfirstjob.setVisibility(TextView.VISIBLE);
             qTextViewfirstjoby1.setText("Find first job.");
-            qTextViewfirstjoby1.setVisibility(TextView.VISIBLE);
-            TextViewfirstjoby1.setVisibility(TextView.VISIBLE);
-
             qTextViewfirstjoby2.setText("Reasons for accepting the first job.");
-            qTextViewfirstjoby2.setVisibility(TextView.VISIBLE);
-            TextViewfirstjoby2.setVisibility(TextView.VISIBLE);
-
             qTextViewfirstjoby3.setText("Level Position in your first job.");
-            qTextViewfirstjoby3.setVisibility(TextView.VISIBLE);
-            TextViewfirstjoby3.setVisibility(TextView.VISIBLE);
-
             qTextViewfirstjoby4.setText("College relevant to your first job.");
-            qTextViewfirstjoby4.setVisibility(TextView.VISIBLE);
-            TextViewfirstjoby4.setVisibility(TextView.VISIBLE);
-
+            qTextViewfirstjoby5.setText("What is your initial gross monthly earning in your first job after college?");
+            qTextViewfirstjoby6.setText("How long did it take you to land your first job?");
 
         }
         if (firstjob.equals("No")){
             LinearlayoutFirstjobGuide.setVisibility(TextView.VISIBLE);
-
             qTextViewfirstjob.setText("Do you have your first job after college.");
-            qTextViewfirstjob.setVisibility(TextView.VISIBLE);
-            TextViewfirstjob.setVisibility(TextView.VISIBLE);
         }
         if (firstjoby4.equals("Yes")){
             qTextViewfirstjoby4y1.setText("Competencies learned in college did you find very useful  in first job.");
@@ -372,24 +323,46 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
         setSupportActionBar(toolbar);
         navigationView.setNavigationItemSelectedListener(this);
 
-        LinearLayout btn = (LinearLayout) findViewById(R.id.btnShow);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PopupMenu popup = new PopupMenu(profile.this, v);
-                popup.setOnMenuItemClickListener(profile.this);
-                popup.inflate(R.menu.popup_menu);
-                popup.show();
-            }
-        });
+
 
         CardViewfivepercent = findViewById(R.id.fivepercent);
         CardViewonepercent = findViewById(R.id.onepercent);
         if (postgraduate.isEmpty() || employed.isEmpty() || firstjob.isEmpty()){
-            CardViewfivepercent.setVisibility(TextView.VISIBLE);
+            CardViewfivepercent.setVisibility(TextView.GONE);
         }else{
-            CardViewonepercent.setVisibility(TextView.VISIBLE);
+            CardViewonepercent.setVisibility(TextView.GONE);
         }
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.naview);
+        bottomNavigationView.setItemIconTintList(null);
+        bottomNavigationView.setSelectedItemId(R.id.Profile);
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()){
+
+                case R.id.Jobs:
+                    startActivity(new Intent(getApplicationContext(),jobhiringinfo.class));
+                    finish();
+                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                    return true;
+                case R.id.News:
+                    startActivity(new Intent(getApplicationContext(),newsinfo.class));
+                    finish();
+                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                    return true;
+                case R.id.Events:
+                    startActivity(new Intent(getApplicationContext(),eventinfo.class));
+                    finish();
+                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                    return true;
+                case R.id.Profile:
+
+                    return true;
+
+
+            }
+            return false;
+        });
+
 
     }
 
@@ -461,7 +434,7 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
                 startActivity(intent2);
                 return true;
             case R.id.otherinfo:
-                Intent intent3 = new Intent(profile.this,otherinfo.class);
+                Intent intent3 = new Intent(profile.this,generalinfo.class);
                 startActivity(intent3);
                 return true;
             default:
@@ -480,4 +453,36 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }
+
+
+    public void GeneralInfo(View view) {
+        Intent intent = new Intent(profile.this,generalinfo.class);
+        startActivity(intent);
+    }
+
+    public void AdvanceStudy(View view) {
+        Intent intent = new Intent(profile.this,advancestudy.class);
+        startActivity(intent);
+    }
+
+    public void FirstJob(View view) {
+        Intent intent = new Intent(profile.this,firstjob.class);
+        startActivity(intent);
+    }
+
+    public void Employment(View view) {
+        Intent intent = new Intent(profile.this,employment.class);
+        startActivity(intent);
+    }
+
+    public void ChangeProfile(View view) {
+        Intent intent = new Intent(profile.this,profilepic.class);
+        startActivity(intent);
+    }
+
+    public void Password(View view) {
+        Intent intent = new Intent(profile.this,password.class);
+        startActivity(intent);
+    }
+
 }

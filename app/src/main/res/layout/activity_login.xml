@@ -193,16 +193,26 @@
                             android:text="or"/>
 
 
+<!--                        <Button-->
+<!--                            android:id="@+id/popupregister"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@android:color/transparent"-->
+<!--                            android:textColor="#535252"-->
+<!--                            android:textAllCaps="false"-->
+<!--                            android:textSize="15dp"-->
+<!--                            android:fontFamily="@font/poppins"-->
+<!--                            android:text="Register"/>-->
                         <Button
-                            android:id="@+id/popupregister"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@android:color/transparent"
-                            android:textColor="#535252"
-                            android:textAllCaps="false"
-                            android:textSize="15dp"
-                            android:fontFamily="@font/poppins"
-                            android:text="Register"/>
+                                                    android:onClick="RegisterYes"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:background="@android:color/transparent"
+                                                    android:textColor="#535252"
+                                                    android:textAllCaps="false"
+                                                    android:textSize="15dp"
+                                                    android:fontFamily="@font/poppins"
+                                                    android:text="Register"/>
 
                     </LinearLayout>
 

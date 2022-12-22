@@ -39,7 +39,7 @@ public class RecyclerAdapterAll extends RecyclerView.Adapter<RecyclerAdapterAll.
         holder.textViewCompanyName.setText(product.getCompanyName());
         holder.textViewJobType.setText(product.getJobType());
         holder.textViewLoocation.setText(product.getLocation());
-        holder.textViewQualification.setText(" • " +splitted[0]);
+        holder.textViewQualification.setText("PHP " + product.getMinimumSalary() + " - " + product.getMaximumSalary() + " Monthly");
 
 
         holder.btnjobhiring.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +61,9 @@ public class RecyclerAdapterAll extends RecyclerView.Adapter<RecyclerAdapterAll.
                 intent.putExtra("jobstatus", product.getJobStatus());
                 intent.putExtra("courseuploaded", product.getCourseUploaded());
                 intent.putExtra("jobpostdate", product.getJobPostDate());
+                intent.putExtra("minimumsalary", product.getMinimumSalary());
+                intent.putExtra("maximumsalary", product.getMaximumSalary());
+                intent.putExtra("views", product.getViews());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mCtx.startActivity(intent);
             }

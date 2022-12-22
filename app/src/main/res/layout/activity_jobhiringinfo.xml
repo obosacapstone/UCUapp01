@@ -8,6 +8,7 @@
     android:background="#EAEAEA"
     tools:context=".jobhiringinfo">
 
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -66,136 +67,196 @@
 
     </com.google.android.material.navigation.NavigationView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <include
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                layout="@layout/app_bar"/>
+            android:layout_height="wrap_content">
 
-            <androidx.cardview.widget.CardView
-                android:onClick="Recommendedjobs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginRight="10dp"
-                app:cardCornerRadius="7dp"
-                app:cardElevation="6dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
                 <LinearLayout
-                    android:onClick="Recommendedjobs"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right"
-                    android:paddingRight="15dp"
-                    android:paddingLeft="15dp"
-                    android:background="#fff"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:onClick="Recommendedjobs"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include
+                        layout="@layout/app_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="5dp"
-                        android:scaleType="fitXY"
-                        app:tint="#0D93C1"
-                        android:layout_marginRight="3dp"
-                        android:src="@drawable/jobhiring"/>
-                    <Button
-                        android:onClick="Recommendedjobs"
-                        android:id="@+id/btnShow"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <androidx.cardview.widget.CardView
+
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="7dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="0.50"
+                            android:paddingBottom="10dp"
+                            app:cardCornerRadius="7dp"
+                            app:cardElevation="10dp">
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="38dp"
+                                android:layout_gravity="right"
+                                android:background="#fff"
+                                android:orientation="horizontal"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp">
+
+                                <Button
+
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:gravity="center"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:padding="0dp"
+                                    android:text="Recommended Jobs"
+                                    android:textColor="#0D93C1"
+                                    android:textSize="15dp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="7dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_weight="0.50"
+                            android:onClick="Recommendedjobs"
+                            android:paddingBottom="10dp"
+                            app:cardCornerRadius="7dp"
+                            app:cardElevation="2dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="38dp"
+                                android:layout_gravity="right"
+                                android:background="#fff"
+                                android:onClick="Recommendedjobs"
+                                android:orientation="horizontal"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp">
+
+                                <Button
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:gravity="center"
+                                    android:minWidth="0dp"
+                                    android:minHeight="0dp"
+                                    android:onClick="Recommendedjobs"
+                                    android:padding="0dp"
+                                    android:text="All Jobs"
+                                    android:textColor="#C2C9CC"
+                                    android:textSize="14dp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
-                        style="?android:attr/borderlessButtonStyle"
                         android:layout_height="wrap_content"
-                        android:textColor="#0D93C1"
-                        android:text="All Jobs"
-                        android:padding="0dp"
-                        android:minWidth="0dp"
-                        android:minHeight="0dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:onClick="Recommendedjobs"
+                        app:cardCornerRadius="7dp"
+                        app:cardElevation="6dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_gravity="right"
-                        />
+                        app:layout_constraintStart_toStartOf="parent">
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="7dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="80dp"
+                        android:paddingBottom="10dp"
+                        app:cardCornerRadius="7dp"
+                        app:cardElevation="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.SearchView
+                                android:id="@+id/search_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="15dp"
+                                android:background="@drawable/search_border"
+                                android:queryHint="Search here"
+                                app:iconifiedByDefault="false"
+                                app:queryHint="Search Here..." />
+
+                            <TextView
+                                android:id="@+id/searchempty"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Empty"
+                                android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycleview"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                    <ProgressBar
+                        android:id="@+id/progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:visibility="gone" />
 
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="7dp"
-            android:layout_marginBottom="10dp"
-            app:cardCornerRadius="7dp"
-            app:cardElevation="10dp"
-            android:paddingBottom="10dp"
+            </LinearLayout>
 
-            android:layout_marginTop="20dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/search_view"
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/naview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:queryHint="Search here"
-                android:layout_marginHorizontal="20dp"
-                app:iconifiedByDefault="false"
-                app:queryHint="Search Here..."
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/search_border"/>
-            <TextView
-                android:id="@+id/searchempty"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:text="Empty"
-                />
-            <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycleview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                android:layout_alignParentBottom="true"
+                android:elevation="120dp"
+                app:itemIconSize="25dp"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/homenav" />
 
 
 
+        </RelativeLayout>
 
 
-
-
-
-
-            <ProgressBar
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:visibility="gone"
-                android:id="@+id/progress"/>
-
-
-
-        </LinearLayout>
-
-
-
-
-
-
-    </LinearLayout>
     </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

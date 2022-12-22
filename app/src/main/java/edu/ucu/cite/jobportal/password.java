@@ -164,6 +164,7 @@ public class password extends AppCompatActivity  implements View.OnClickListener
                                                                 jsonObject.getString("middlename"),
                                                                 jsonObject.getString("lastname"),
                                                                 jsonObject.getString("course"),
+                                                                jsonObject.getString("college"),
                                                                 jsonObject.getString("yeargrad"),
                                                                 jsonObject.getString("gender"),
                                                                 jsonObject.getString("birthdate"),
@@ -176,6 +177,9 @@ public class password extends AppCompatActivity  implements View.OnClickListener
                                                                 jsonObject.getString("city"),
                                                                 jsonObject.getString("barangay"),
                                                                 jsonObject.getString("street"),
+                                                                jsonObject.getString("facebook"),
+                                                                jsonObject.getString("instagram"),
+                                                                jsonObject.getString("bookmark"),
                                                                 jsonObject.getString("graduatedimage"),
                                                                 jsonObject.getString("notification"),
                                                                 jsonObject.getString("newsnotification"),
@@ -195,7 +199,10 @@ public class password extends AppCompatActivity  implements View.OnClickListener
                                                                 jsonObject.getString("firstjoby2"),
                                                                 jsonObject.getString("firstjoby3"),
                                                                 jsonObject.getString("firstjoby4"),
-                                                                jsonObject.getString("firstjoby4y1")
+                                                                jsonObject.getString("firstjoby4y1"),
+                                                                jsonObject.getString("firstjoby5"),
+                                                                jsonObject.getString("firstjoby6")
+
 
 
                                                         );

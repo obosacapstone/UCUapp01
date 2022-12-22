@@ -35,6 +35,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -93,7 +94,34 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
         String idno = SharedPrefManager.getInstance(this).getIDno();
         String graduatedimage = SharedPrefManager.getInstance(this).getGraduatedimage();
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.naview);
+        bottomNavigationView.setItemIconTintList(null);
+        bottomNavigationView.setSelectedItemId(R.id.Jobs);
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()){
 
+                case R.id.Jobs:
+                    return true;
+                case R.id.News:
+                    startActivity(new Intent(getApplicationContext(),newsinfo.class));
+                    finish();
+                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                    return true;
+                case R.id.Events:
+                    startActivity(new Intent(getApplicationContext(),eventinfo.class));
+                    finish();
+                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                    return true;
+                case R.id.Profile:
+                    startActivity(new Intent(getApplicationContext(),profile.class));
+                    finish();
+                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                    return true;
+
+
+            }
+            return false;
+        });
 
         Glide.with(jobhiringinfo.this).load(graduatedimage).into(ImageViewNavProfile);
         TextViewNavFullname.setText(firstname + " " + middlename + " " + lastname);
@@ -101,6 +129,7 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
 
         recyclerView =findViewById(R.id.recycleview);
         manager = new GridLayoutManager(jobhiringinfo.this, 1);
+
         recyclerView.setLayoutManager(manager);
         productList = new ArrayList<>();
 
@@ -109,14 +138,14 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                TextViewsearchempty.setVisibility(LinearLayout.VISIBLE);
+//                TextViewsearchempty.setVisibility(LinearLayout.GONE);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+//                TextViewsearchempty.setVisibility(LinearLayout.VISIBLE);
                 filter(newText);
-
 
 
                 return true;
@@ -241,7 +270,10 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
                                         product.getString("description"),
                                         product.getString("jobstatus"),
                                         product.getString("courseuploaded"),
-                                        product.getString("jobpostdate")
+                                        product.getString("jobpostdate"),
+                                        product.getString("minimumsalary"),
+                                        product.getString("maximumsalary"),
+                                        product.getString("views")
 
 
                                 ));
@@ -325,8 +357,12 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
 
 
     public void Recommendedjobs(View view) {
+        overridePendingTransition(0, 0);
+        finish();
+        overridePendingTransition(0, 0);
         Intent intent = new Intent(jobhiringinfo.this,jobhiringinfoall.class);
         startActivity(intent);
+        overridePendingTransition(0, 0);
     }
     @Override
     protected void onStart() {
@@ -340,4 +376,5 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }
+
 }

@@ -72,12 +72,8 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profilepic);
-        TextViewTitleNav = findViewById(R.id.titlenav);
-        TextViewTitleNav.setText("Profile Picture");
 
-        ImageViewNavProfile = findViewById(R.id.navprofile);
-        TextViewNavFullname = findViewById(R.id.navfullname);
-        TextViewNavIdno = (TextView)  findViewById(R.id.navidno);
+
         ImageProfile = findViewById(R.id.imageUpload);
         String firstname = SharedPrefManager.getInstance(this).getFirstname();
         String middlename = SharedPrefManager.getInstance(this).getMiddlename();
@@ -87,9 +83,7 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
 
 
         Glide.with(profilepic.this).load(graduatedimage).into(ImageProfile);
-        Glide.with(profilepic.this).load(graduatedimage).into(ImageViewNavProfile);
-        TextViewNavFullname.setText(firstname + " " + middlename + " " + lastname);
-        TextViewNavIdno.setText(idno);
+
 
 
         mydrawer = findViewById(R.id.mydrawer);
@@ -154,6 +148,7 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
                                                 jsonObject.getString("middlename"),
                                                 jsonObject.getString("lastname"),
                                                 jsonObject.getString("course"),
+                                                jsonObject.getString("college"),
                                                 jsonObject.getString("yeargrad"),
                                                 jsonObject.getString("gender"),
                                                 jsonObject.getString("birthdate"),
@@ -166,6 +161,9 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
                                                 jsonObject.getString("city"),
                                                 jsonObject.getString("barangay"),
                                                 jsonObject.getString("street"),
+                                                jsonObject.getString("facebook"),
+                                                jsonObject.getString("instagram"),
+                                                jsonObject.getString("bookmark"),
                                                 jsonObject.getString("graduatedimage"),
                                                 jsonObject.getString("notification"),
                                                 jsonObject.getString("newsnotification"),
@@ -185,7 +183,10 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
                                                 jsonObject.getString("firstjoby2"),
                                                 jsonObject.getString("firstjoby3"),
                                                 jsonObject.getString("firstjoby4"),
-                                                jsonObject.getString("firstjoby4y1")
+                                                jsonObject.getString("firstjoby4y1"),
+                                                jsonObject.getString("firstjoby5"),
+                                                jsonObject.getString("firstjoby6")
+
 
 
 
@@ -346,4 +347,7 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
         super.onStop();
     }
 
+    public void back(View view) {
+        finish();
+    }
 }

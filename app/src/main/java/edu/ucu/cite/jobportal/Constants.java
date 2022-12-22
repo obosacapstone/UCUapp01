@@ -1,15 +1,17 @@
 package edu.ucu.cite.jobportal;
 
 public class Constants {
-//        private static final String ROOT_URL = "http://127.1.1.1/GraduatedTracer/jobportal/";
-    private static final String ROOT_URL = "https://graduatetracer.site/graduatedtracer/jobportal/";
-//    private static final String ROOT_URL = "http://192.168.100.4/graduatedtracer/jobportal/";
-//private static final String ROOT_URL = "http://192.168.1.105/graduatedtracer/jobportal/";
-//private static final String ROOT_URL = "http://176.100.141.207/graduatedtracer/jobportal/";
+
+    private static final String ROOT_URL = "http://192.168.1.45/graduatedtracer/jobportal/";
+//private static final String ROOT_URL = "http://192.168.100.4/graduatedtracer/jobportal/";
 
     public static final String URL_LOGIN=ROOT_URL+"login.php";
     public static final String URL_REGISTER=ROOT_URL+"insert.php";
     public static final String URL_REGISTERNO=ROOT_URL+"insertno.php";
+    public static final String URL_GENERALINFO = ROOT_URL+"generalinfo.php";
+    public static final String URL_ADVANCESTUDY = ROOT_URL+"advancestudy.php";
+    public static final String URL_FIRSTJOB = ROOT_URL+"firstjob.php";
+    public static final String URL_EMPLOYMENT = ROOT_URL+"employment.php";
     public static final String URL_EVENT=ROOT_URL+"getevent.php";
     public static final String URL_NEWS=ROOT_URL+"getnews.php";
     public static final String URL_JOBHIRING=ROOT_URL+"getjobhiring.php";
@@ -21,4 +23,5 @@ public class Constants {
     public static final String URL_DATABASE=ROOT_URL+"getdatabase.php";
     public static final String URL_NOTINTERESTED=ROOT_URL+"notinterested.php";
     public static final String URL_FORGOTPASSWORD = ROOT_URL+"forgot-password.php";
+
 }

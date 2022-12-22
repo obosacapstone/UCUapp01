@@ -15,6 +15,7 @@ public class SharedPrefManager {
     private static final String KEY_MIDDLENAME = "middlename";
     private static final String KEY_LASTNAME = "lastname";
     private static final String KEY_COURSE = "course";
+    private static final String KEY_COLLEGE = "college";
     private static final String KEY_YEARGRAD = "yeargrad";
     private static final String KEY_GENDER = "gender";
     private static final String KEY_BIRTHDATE = "birthdate";
@@ -27,6 +28,9 @@ public class SharedPrefManager {
     private static final String KEY_CITY = "city";
     private static final String KEY_BARANGAY = "barangay";
     private static final String KEY_STREET = "street";
+    private static final String KEY_FACEBOOK = "facebook";
+    private static final String KEY_INSTAGRAM = "instagram";
+    private static final String KEY_BOOKMARK = "bookmark";
     private static final String KEY_GRADUATEDIMAGE = "graduatedimage";
     private static final String KEY_NOTIFICATION = "notification";
     private static final String KEY_NEWSNOTIFICATION = "newsnotification";
@@ -47,6 +51,8 @@ public class SharedPrefManager {
     private static final String KEY_FIRSTJOBY3 = "firstjoby3";
     private static final String KEY_FIRSTJOBY4 = "firstjoby4";
     private static final String KEY_FIRSTJOBY4Y1 = "firstjoby4y1";
+    private static final String KEY_FIRSTJOBY5 = "firstjoby5";
+    private static final String KEY_FIRSTJOBY6 = "firstjoby6";
 
 
 
@@ -66,8 +72,9 @@ public class SharedPrefManager {
         }
         return mInstance;
     }
-    public boolean userLogin( String idno, String password, String firstname, String middlename, String lastname,  String yeargrad , String course, String gender, String birthdate, String civilstatus, String contact, String email, String specialization, String region, String province, String city, String barangay, String street, String graduatedimage, String notification, String newsnotification, String eventnotification
-    , String postgraduate, String postgraduatey1, String postgraduatey2, String employed, String employedy1, String employedy2, String employedy3, String employedy4, String employedy5, String employedn1, String firstjob, String firstjoby1, String firstjoby2, String firstjoby3, String firstjoby4, String firstjoby4y1){
+    public boolean userLogin( String idno, String password, String firstname, String middlename, String lastname,  String yeargrad , String course, String college, String gender, String birthdate, String civilstatus, String contact, String email, String specialization, String region, String province, String city, String barangay, String street,
+            String facebook, String instagram, String bookmark,String graduatedimage, String notification, String newsnotification, String eventnotification
+    , String postgraduate, String postgraduatey1, String postgraduatey2, String employed, String employedy1, String employedy2, String employedy3, String employedy4, String employedy5, String employedn1, String firstjob, String firstjoby1, String firstjoby2, String firstjoby3, String firstjoby4, String firstjoby4y1, String firstjoby5, String firstjoby6){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -78,6 +85,7 @@ public class SharedPrefManager {
         editor.putString(KEY_MIDDLENAME, middlename);
         editor.putString(KEY_LASTNAME, lastname);
         editor.putString(KEY_COURSE, course);
+        editor.putString(KEY_COLLEGE, college);
         editor.putString(KEY_YEARGRAD, yeargrad);
         editor.putString(KEY_GENDER, gender);
         editor.putString(KEY_BIRTHDATE, birthdate);
@@ -90,6 +98,9 @@ public class SharedPrefManager {
         editor.putString(KEY_CITY, city);
         editor.putString(KEY_BARANGAY, barangay);
         editor.putString(KEY_STREET, street);
+        editor.putString(KEY_FACEBOOK, facebook);
+        editor.putString(KEY_INSTAGRAM, instagram);
+        editor.putString(KEY_BOOKMARK, bookmark);
         editor.putString(KEY_GRADUATEDIMAGE, graduatedimage);
         editor.putString(KEY_NOTIFICATION, notification);
         editor.putString(KEY_NEWSNOTIFICATION, newsnotification);
@@ -110,6 +121,8 @@ public class SharedPrefManager {
         editor.putString(KEY_FIRSTJOBY3, firstjoby3);
         editor.putString(KEY_FIRSTJOBY4, firstjoby4);
         editor.putString(KEY_FIRSTJOBY4Y1, firstjoby4y1);
+        editor.putString(KEY_FIRSTJOBY5, firstjoby5);
+        editor.putString(KEY_FIRSTJOBY6, firstjoby6);
 
 
 
@@ -164,6 +177,10 @@ public class SharedPrefManager {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_COURSE, null);
     }
+    public String getCollege(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_COLLEGE, null);
+    }
     public String getYeargrad(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_YEARGRAD, null);
@@ -204,6 +221,15 @@ public class SharedPrefManager {
     }public String getStreet(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_STREET, null);
+    }public String getFacebook(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_FACEBOOK, null);
+    }public String getInstagram(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_INSTAGRAM, null);
+    }public String getBookmark(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_BOOKMARK, null);
     }public String getGraduatedimage(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_GRADUATEDIMAGE, null);
@@ -265,6 +291,12 @@ public class SharedPrefManager {
     }public String getFirstjoby4y1(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_FIRSTJOBY4Y1, null);
+    }public String getFirstjoby5() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_FIRSTJOBY5, null);
+    }public String getFirstjoby6() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_FIRSTJOBY6, null);
     }
 
 

@@ -12,6 +12,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,7 +30,7 @@ import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
 
 public class jobhiringinfodata extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    TextView textviewjobtitledata, textviewcompanydata, textviewemaildata, textviewcontactdata, textviewlocationdata, textviewdurationdata, textviewqualificationdata, textviewjobtypedata, textviewlinkdata, textviewdescriptiondata;
+    TextView textviewjobtitledata, textviewcompanydata, textviewemaildata, textviewcontactdata, textviewlocationdata, textviewdurationdata, textviewqualificationdata, textviewjobtypedata, textviewlinkdata, textviewdescriptiondata,textviewsalary;
     TextView TextViewTitleNav;
     NavigationView navigationView;
     DrawerLayout mydrawer;
@@ -69,6 +70,7 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
         textviewjobtypedata = findViewById(R.id.jobtypedata);
         textviewlinkdata = findViewById(R.id.linkdata);
         textviewdescriptiondata = findViewById(R.id.descriptiondata);
+        textviewsalary = findViewById(R.id.salary);
 
 
 
@@ -103,6 +105,10 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
         textviewjobtypedata.setText(getIntent().getStringExtra("jobtype"));
         textviewlinkdata.setText(getIntent().getStringExtra("link"));
         textviewdescriptiondata.setText(getIntent().getStringExtra("description"));
+
+        String Salary1 = getIntent().getStringExtra("minimumsalary");
+        String Salary2 = getIntent().getStringExtra("maximumsalary");
+        textviewsalary.setText(Salary1 + " - " +Salary2 + " Monthly");
 
 
 
@@ -188,5 +194,9 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
     protected void onStop() {
         unregisterReceiver(networkChangeListener);
         super.onStop();
+    }
+
+    public void backjob(View view) {
+        finish();
     }
 }
