@@ -256,6 +256,7 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
 
                                 //adding the product to product list
                                 productList.add(new jobhiringlist(
+                                        product.getString("id"),
                                         product.getString("jobtitle"),
                                         product.getString("companyname"),
                                         product.getString("email"),

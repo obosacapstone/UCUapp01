@@ -477,6 +477,8 @@
 
 
             <Button
+                android:id="@+id/save"
+                android:onClick="Save"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_weight=".50"
@@ -487,6 +489,22 @@
                 android:textColor="#297fa7"
                 android:textSize="17dp"
                 android:layout_marginVertical="10dp"
+                android:visibility="gone"
+                />
+            <Button
+                android:id="@+id/saved"
+                android:onClick="Saved"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_weight=".50"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/background_save"
+                android:text="Saved"
+                android:textAllCaps="false"
+                android:textColor="#297fa7"
+                android:textSize="17dp"
+                android:layout_marginVertical="10dp"
+                android:visibility="gone"
                 />
 
             <Button

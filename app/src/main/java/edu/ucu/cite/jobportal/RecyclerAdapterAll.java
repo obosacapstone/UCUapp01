@@ -46,6 +46,7 @@ public class RecyclerAdapterAll extends RecyclerView.Adapter<RecyclerAdapterAll.
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mCtx,jobhiringinfodata.class);
+                intent.putExtra("id", product.getId());
                 intent.putExtra("jobtitle", product.getJobTitle());
                 intent.putExtra("companyname", product.getCompanyName());
                 intent.putExtra("email", product.getEmail());

@@ -186,6 +186,7 @@ public class jobhiringinfoall extends AppCompatActivity implements NavigationVie
                                 //adding the product to product list
 
                                     productList.add(new jobhiringlist(
+                                            product.getString("id"),
                                             product.getString("jobtitle"),
                                             product.getString("companyname"),
                                             product.getString("email"),

@@ -1,11 +1,13 @@
 package edu.ucu.cite.jobportal;
 
 public class jobhiringlist {
-    private String jobtitle, companyname, email, contact, startdate, enddate, jobtype, location, specialization,link, qualification,description, jobstatus, courseuploaded, jobpostdate, minimumsalary, maximumsalary, views;
+    private String id, jobtitle, companyname, email, contact, startdate, enddate, jobtype, location, specialization,link, qualification,description, jobstatus, courseuploaded, jobpostdate, minimumsalary, maximumsalary, views;
 
 
-    public jobhiringlist(String jobtitle, String companyname, String email, String contact, String startdate, String enddate, String jobtype, String location, String specialization, String link, String qualification, String description, String jobstatus,
+    public jobhiringlist(String id,String jobtitle, String companyname, String email, String contact, String startdate, String enddate, String jobtype, String location, String specialization, String link, String qualification, String description, String jobstatus,
                          String courseuploaded, String jobpostdate, String minimumsalary, String maximumsalary, String views) {
+
+        this.id = id;
         this.jobtitle = jobtitle;
         this.companyname = companyname;
         this.email = email;
@@ -26,6 +28,12 @@ public class jobhiringlist {
         this.views = views;
 
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {this.id = id;}
 
     public String getJobTitle() {
         return jobtitle;
