@@ -1,12 +1,13 @@
 package edu.ucu.cite.jobportal;
 
 public class eventlist {
-    private String uploadedevent,eventdetail, startdate, starttime, enddate, endtime, venue, address, description, eventtype, eventtopic, organizer, sponsor, eventimage, eventdate,interested, notinterested;
+    private String uploadedevent,eventcollege,eventdetail, startdate, starttime, enddate, endtime, venue, address, description, eventtype, eventtopic, organizer, sponsor, eventimage, eventdate,interested, notinterested;
     private String eventid;
 
-    public eventlist(String uploadedevent,String eventdetail, String startdate, String starttime, String enddate, String endtime, String venue, String address, String description, String eventtype, String eventtopic,
+    public eventlist(String uploadedevent,String eventcollege,String eventdetail, String startdate, String starttime, String enddate, String endtime, String venue, String address, String description, String eventtype, String eventtopic,
                      String organizer, String sponsor, String eventimage, String eventdate, String interested, String notinterested,String eventid) {
         this.uploadedevent = uploadedevent;
+        this.eventcollege = eventcollege;
         this.eventdetail = eventdetail;
         this.startdate = startdate;
         this.starttime = starttime;
@@ -34,6 +35,12 @@ public class eventlist {
         this.uploadedevent = uploadedevent;
     }
 
+    public String getEventCollege() {
+        return eventcollege;
+    }
+    public void setEventCollege(String eventcollege) {
+        this.eventcollege = eventcollege;
+    }
 
     public String getEventDetaill() {
         return eventdetail;

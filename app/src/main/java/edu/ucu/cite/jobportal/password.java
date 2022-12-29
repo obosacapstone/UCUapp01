@@ -339,4 +339,8 @@ public class password extends AppCompatActivity  implements View.OnClickListener
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }
+
+    public void back(View view) {
+        finish();
+    }
 }

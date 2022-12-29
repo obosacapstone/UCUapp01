@@ -48,8 +48,8 @@ public class interested extends AppCompatActivity implements View.OnClickListene
     ImageView ImageVieweventimagedata;
     ProgressDialog progressDialog;
     String eventid,StringInterestedPlain,StringNotInterestedPlain,StringInterestedSelected,StringNotInterestedSelected;
-    Date DateUploaded,DateStartDate , DateEndDate,qEndDate,qCurrentDate;
-    String StringStartDate,StringEndDate,StartTime,EndTime,StringqEndDate,StringqCurrentDate;
+    Date DateUploaded,DateStartDate , DateEndDate,qEndDate,qStartDate,qCurrentDate;
+    String StringStartDate,StringEndDate,StartTime,EndTime,StringqStartDate,StringqEndDate,StringqCurrentDate;
     LinearLayout linearLayoutdatevalidation;
     Button ButtonInterestedPlain,ButtonNotInterestedPlain,ButtonInterestedSelected,ButtonNotInterestedSelected;
     String idno,Submitinterested,Submitnotinterested;
@@ -180,33 +180,73 @@ public class interested extends AppCompatActivity implements View.OnClickListene
         }
 
         //uploading date time
-        String StringDateeDuration = "<b>Date: </b>" + StringStartDate + " to " + StringEndDate + "<br>"
-                + "<b>Time: </b>" + StartTime + " to " + EndTime;
+        String StringEndDateValidate = getIntent().getStringExtra("eventenddate");
+        String StringDateeDuration;
+        if (StringEndDateValidate.isEmpty()){
+            StringDateeDuration = "<b>Date: </b>" + StringStartDate  + "<br>"
+                    + "<b>Time: </b>" + StartTime + " to " + EndTime;
+            TextViewdatedurationdata.setText(HtmlCompat.fromHtml(StringDateeDuration, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
 
-        TextViewdatedurationdata.setText(HtmlCompat.fromHtml(StringDateeDuration, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
+            //start date only
+            String date4 = getIntent().getStringExtra("eventstartdate");
+            SimpleDateFormat input4 = new SimpleDateFormat("yy-MM-dd");
+            SimpleDateFormat output4 = new SimpleDateFormat("yMMdd");
+            try {
+                qStartDate = input.parse(date4);
+                StringqStartDate= output4.format(qStartDate);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+        }
+        String date3 = getIntent().getStringExtra("eventenddate");
+
+        if (!StringEndDateValidate.isEmpty()){
+            StringDateeDuration = "<b>Date: </b>" + StringStartDate + " to " + StringEndDate + "<br>"
+                    + "<b>Time: </b>" + StartTime + " to " + EndTime;
+            TextViewdatedurationdata.setText(HtmlCompat.fromHtml(StringDateeDuration, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
+
+
+            SimpleDateFormat input3 = new SimpleDateFormat("MMM/d/y");
+            SimpleDateFormat output3 = new SimpleDateFormat("yMMdd");
+            try {
+                qEndDate = input.parse(date3);
+                StringqEndDate = output3.format(qEndDate);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
 
 
         //are you interested
-        String date3 = getIntent().getStringExtra("eventenddate");
-        SimpleDateFormat input3 = new SimpleDateFormat("yy-MM-dd");
-        SimpleDateFormat output3 = new SimpleDateFormat("yMMdd");
-        try {
-            qEndDate = input.parse(date3);
-            StringqEndDate = output3.format(qEndDate);
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
+
 
         linearLayoutdatevalidation = findViewById(R.id.datevalidationdata);
         Calendar c = Calendar.getInstance();
         SimpleDateFormat sdf1 = new SimpleDateFormat("yMMdd");
         StringqCurrentDate = sdf1.format(c.getTime());
         int IntegerCurrentDate = Integer.parseInt(StringqCurrentDate);
-        int IntegerEnddate = Integer.parseInt(StringqEndDate);
-        if (IntegerEnddate > IntegerCurrentDate){
-            linearLayoutdatevalidation.setVisibility(LinearLayout.VISIBLE);
+
+        int IntegerStartdate = Integer.parseInt(StringqStartDate);
+
+        if (date3.isEmpty()){
+            if (IntegerStartdate > IntegerCurrentDate){
+                linearLayoutdatevalidation.setVisibility(LinearLayout.VISIBLE);
+            }
+        }else {
+            int IntegerEnddate = Integer.parseInt(StringqEndDate);
+            if (IntegerEnddate > IntegerCurrentDate){
+                linearLayoutdatevalidation.setVisibility(LinearLayout.VISIBLE);
+            }
         }
+
 
         //Sponsor Organizer
         String StringSponsor = getIntent().getStringExtra("eventsponsor");

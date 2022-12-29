@@ -1,11 +1,8 @@
 package edu.ucu.cite.jobportal;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.icu.util.Calendar;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,35 +10,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.core.text.HtmlCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
 
-public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEvent.ProductViewHolder>{
+public class RecyclerAdapterEventAll extends RecyclerView.Adapter<RecyclerAdapterEventAll.ProductViewHolder>{
+
     private Context mCtx;
     private List<eventlist> eventlists;
     Date DateUploaded,DateStartDate , DateEndDate,qEndDate,qCurrentDate;
@@ -49,21 +31,21 @@ public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEv
 
     String StringInterested, StringNotInterested,StringIdno;
     Integer IntegerInterested;
-    public RecyclerAdapterEvent(Context mCtx, List<eventlist> eventlists) {
+    public RecyclerAdapterEventAll(Context mCtx, List<eventlist> eventlists) {
         this.mCtx = mCtx;
         this.eventlists = eventlists;
     }
 
     @Override
-    public RecyclerAdapterEvent.ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerAdapterEventAll.ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.recycleevent, null);
 
-        return new RecyclerAdapterEvent.ProductViewHolder(view);
+        return new RecyclerAdapterEventAll.ProductViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ProductViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerAdapterEventAll.ProductViewHolder holder, int position) {
         eventlist productevent = eventlists.get(position);
         holder.textViewEventDetail.setText(productevent.getEventDetaill());
         holder.textViewInterested.setText(productevent.getEventid());
@@ -222,22 +204,42 @@ public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEv
 //            int IntegerCurrentDate = Integer.parseInt(StringqCurrentDate);
 //            int IntegerEnddate = Integer.parseInt(StringqEndDate);
         }
+//
+//
+//        String StringCollege = productevent.getEventCollege();
+//        String StringCollegeAlumni = SharedPrefManager.getInstance(mCtx.getApplicationContext()).getCollege();;
+//        //related event
+//        holder.btnevent.setVisibility(LinearLayout.GONE);
+//        String splitcollege[] = StringCollege.split(",,,");
+//
+//        for(int i =0; i<splitcollege.length; i++){
+//
+//            if (splitcollege[i].equals(StringCollegeAlumni)){
+//                holder.btnevent.setVisibility(LinearLayout.VISIBLE);
+//            }
+//
+//        }
 
 
-        String StringCollege = productevent.getEventCollege();
-        String StringCollegeAlumni = SharedPrefManager.getInstance(mCtx.getApplicationContext()).getCollege();;
-        //related event
-        holder.btnevent.setVisibility(LinearLayout.GONE);
-        String splitcollege[] = StringCollege.split(",,,");
 
-        for(int i =0; i<splitcollege.length; i++){
 
-            if (splitcollege[i].equals(StringCollegeAlumni)){
+
+
+
+
+        String StringCourse = SharedPrefManager.getInstance(mCtx.getApplicationContext()).getYeargrad();
+        String StringUploaded = productevent.getUploadedevent();
+        String splitteduploadedevent[] = StringUploaded.split(",,,");
+
+
+        for(int x=0; x<splitteduploadedevent.length; x++){
+            if (splitteduploadedevent[x].equals(StringCourse)){
                 holder.btnevent.setVisibility(LinearLayout.VISIBLE);
             }
 
-        }
 
+
+        }
 
 
 
@@ -246,7 +248,6 @@ public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEv
         holder.textViewAddress.setVisibility(LinearLayout.GONE);
         holder.textViewDescription.setVisibility(LinearLayout.GONE);
         holder.textViewEventdate.setVisibility(LinearLayout.GONE);
-
 
     }
 

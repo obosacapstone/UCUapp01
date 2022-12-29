@@ -25,19 +25,45 @@
         android:layout_marginBottom="2dp"
         android:background="#F5F5F5">
 
-        <TextView
-            android:id="@+id/jobtitle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="left"
-            android:layout_gravity="center"
-            android:textColor="#07435f"
-            android:textSize="20dp"
-            android:layout_marginTop="5dp"
-            android:textStyle="bold"
-            android:padding="5dp"
-            android:layout_marginHorizontal="20dp"
-            android:text="Job Title"/>
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <TextView
+                android:id="@+id/jobtitle"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:layout_gravity="center"
+                android:textColor="#07435f"
+                android:textSize="20dp"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:layout_marginHorizontal="20dp"
+                android:text="Job Title"
+                android:layout_weight=".90"/>
+           <ImageView
+               android:id="@+id/save"
+               android:layout_width="20dp"
+               android:layout_height="30dp"
+               android:layout_weight=".10"
+               android:layout_marginTop="10dp"
+               app:tint="#07435f"
+               android:visibility="visible"
+               android:src="@drawable/save"/>
+            <ImageView
+                android:id="@+id/saved"
+                android:layout_width="20dp"
+                android:layout_height="30dp"
+                android:layout_weight=".10"
+                android:layout_marginTop="10dp"
+                app:tint="#07435f"
+                android:visibility="gone"
+                android:src="@drawable/saved"/>
+        </LinearLayout>
+
         <TextView
             android:id="@+id/companyname"
             android:layout_width="match_parent"

@@ -19,7 +19,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -39,8 +38,7 @@ import java.util.List;
 
 import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
 
-public class eventinfo extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-
+public class eventinfoall extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     androidx.appcompat.widget.Toolbar toolbar;
@@ -55,13 +53,13 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
     eventinfo eventinfo;
     TextView TextViewNavFullname, TextViewNavIdno;
     ImageView ImageViewNavProfile;
-    RecyclerAdapterEvent adapterEvent;
+    RecyclerAdapterEventAll adapterEvent;
     SearchView searchView;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eventinfo);
+        setContentView(R.layout.activity_eventinfoall);
         ImageViewNavProfile = findViewById(R.id.navprofile);
         TextViewNavFullname = findViewById(R.id.navfullname);
         TextViewNavIdno = (TextView)  findViewById(R.id.navidno);
@@ -90,9 +88,7 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
                     overridePendingTransition(R.anim.fadein,R.anim.fadeout);
                     return true;
                 case R.id.Events:
-
                     return true;
-
                 case R.id.Profile:
                     startActivity(new Intent(getApplicationContext(),profile.class));
                     finish();
@@ -104,12 +100,12 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
             return false;
         });
 
-        Glide.with(eventinfo.this).load(graduatedimage).into(ImageViewNavProfile);
+        Glide.with(eventinfoall.this).load(graduatedimage).into(ImageViewNavProfile);
         TextViewNavFullname.setText(firstname + " " + middlename + " " + lastname);
         TextViewNavIdno.setText(idno);
 
         recyclerViewEvent =findViewById(R.id.recycleviewevent);
-        managerevent = new GridLayoutManager(eventinfo.this, 1);
+        managerevent = new GridLayoutManager(eventinfoall.this, 1);
         recyclerViewEvent.setLayoutManager(managerevent);
         productListEvent= new ArrayList<>();
 
@@ -148,7 +144,7 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
         });
     }
     private void filter(String newText) {
-        List<eventlist>filteredList = new ArrayList<>();
+        List<eventlist> filteredList = new ArrayList<>();
         for (eventlist item : productListEvent){
             if (item.getEventDetaill().toLowerCase().contains(newText.toLowerCase()) || item.getEventTopic().toLowerCase().contains(newText.toLowerCase())){
                 filteredList.add(item);
@@ -209,7 +205,7 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
                             }
 
                             //creating adapter object and setting it to recyclerview
-                            adapterEvent = new RecyclerAdapterEvent(eventinfo.this, productListEvent);
+                            adapterEvent = new RecyclerAdapterEventAll(eventinfoall.this, productListEvent);
                             recyclerViewEvent.setAdapter(adapterEvent);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -261,25 +257,25 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
         switch (item.getItemId()){
 
             case R.id.profile:
-                Intent intent1 = new Intent(eventinfo.this,profile.class);
+                Intent intent1 = new Intent(eventinfoall.this,profile.class);
                 startActivity(intent1);
                 break;
             case R.id.jobhiring:
-                Intent intent2 = new Intent(eventinfo.this,jobhiringinfo.class);
+                Intent intent2 = new Intent(eventinfoall.this,jobhiringinfo.class);
                 startActivity(intent2);
                 break;
             case R.id.news:
-                Intent intent3 = new Intent(eventinfo.this,newsinfo.class);
+                Intent intent3 = new Intent(eventinfoall.this,newsinfo.class);
                 startActivity(intent3);
                 break;
             case R.id.event:
-                Intent intent4 = new Intent(eventinfo.this,eventinfo.class);
+                Intent intent4 = new Intent(eventinfoall.this,eventinfo.class);
                 startActivity(intent4);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
                 finishAffinity();
-                Intent intent5 = new Intent(eventinfo.this,login.class);
+                Intent intent5 = new Intent(eventinfoall.this,login.class);
                 startActivity(intent5);
                 break;
 
@@ -303,8 +299,10 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
         super.onStop();
     }
 
-    public void ALlEvents(View view) {
-        Intent intent = new Intent(eventinfo.this,eventinfoall.class);
+
+
+    public void RelatedEvents(View view) {
+        Intent intent = new Intent(eventinfoall.this,eventinfo.class);
         startActivity(intent);
     }
 }

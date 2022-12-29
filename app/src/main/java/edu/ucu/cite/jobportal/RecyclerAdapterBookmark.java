@@ -7,11 +7,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
@@ -29,36 +32,48 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RecyclerAdapterAll extends RecyclerView.Adapter<RecyclerAdapterAll.ProductViewHolder> {
+public class RecyclerAdapterBookmark extends RecyclerView.Adapter<RecyclerAdapterBookmark.ProductViewHolder> {
+
     private Context mCtx;
     private List<jobhiringlist> productList;
+    ArrayAdapter<String> arrayAdapter;
+    ListView listView;
+    String StringQualification,StringSkills;
     ProgressDialog progressDialog;
-    String StringQualification;
-    public RecyclerAdapterAll(Context mCtx, List<jobhiringlist> productList) {
+    public RecyclerAdapterBookmark(Context mCtx, List<jobhiringlist> productList) {
         this.mCtx = mCtx;
         this.productList = productList;
+
     }
 
     @Override
-    public RecyclerAdapterAll.ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerAdapterBookmark.ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.recyclejobhiringall, null);
+        View view = inflater.inflate(R.layout.recyclebookmark, null);
 
-        return new RecyclerAdapterAll.ProductViewHolder(view);
+        return new RecyclerAdapterBookmark.ProductViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerAdapterAll.ProductViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerAdapterBookmark.ProductViewHolder holder, int position) {
 
         jobhiringlist product = productList.get(position);
         StringQualification = product.getQualification();
+        StringSkills = product.getSpecialization();
         String Stringid = product.getId();
-        String splitted[] = StringQualification.split(",");
+
+        holder.btnjobhiring.setVisibility(LinearLayout.GONE);
+
+
+
         holder.textViewJobTitle.setText(product.getJobTitle());
         holder.textViewCompanyName.setText(product.getCompanyName());
         holder.textViewJobType.setText(product.getJobType());
         holder.textViewLoocation.setText(product.getLocation());
+
+
         holder.textViewQualification.setText("PHP " + product.getMinimumSalary() + " - " + product.getMaximumSalary() + " Monthly");
+
 
 
         holder.ImageViewSave.setVisibility(LinearLayout.VISIBLE);
@@ -73,6 +88,7 @@ public class RecyclerAdapterAll extends RecyclerView.Adapter<RecyclerAdapterAll.
             if (splitbookmark[i].equals(Stringid)){
                 holder.ImageViewSave.setVisibility(LinearLayout.GONE);
                 holder.ImageViewSaved.setVisibility(LinearLayout.VISIBLE);
+                holder.btnjobhiring.setVisibility(LinearLayout.VISIBLE);
             }
 
         }
@@ -288,6 +304,8 @@ public class RecyclerAdapterAll extends RecyclerView.Adapter<RecyclerAdapterAll.
 
 
 
+
+
         holder.btnjobhiring.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -322,17 +340,21 @@ public class RecyclerAdapterAll extends RecyclerView.Adapter<RecyclerAdapterAll.
     public int getItemCount() {
         return productList.size();
     }
+
     public void filterList(List<jobhiringlist> filteredList){
 
         productList = filteredList;
+
         notifyDataSetChanged();
 
     }
 
+
+
     class ProductViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewJobTitle,textViewCompanyName,textViewJobType,textViewLoocation,textViewQualification;
-        LinearLayout btnjobhiring;
+        CardView btnjobhiring;
         ImageView ImageViewSave,ImageViewSaved;
 
         public ProductViewHolder(View itemView) {
@@ -350,4 +372,5 @@ public class RecyclerAdapterAll extends RecyclerView.Adapter<RecyclerAdapterAll.
             ImageViewSaved = itemView.findViewById(R.id.saved);
         }
     }
+
 }

@@ -23,6 +23,12 @@
         android:theme="@style/Theme.JobPortal"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".eventinfoall"
+            android:exported="false" />
+        <activity
+            android:name=".bookmarkinfo"
+            android:exported="false" />
+        <activity
             android:name=".employment"
             android:exported="false" />
         <activity

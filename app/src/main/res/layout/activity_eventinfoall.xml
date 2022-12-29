@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#F3F0F0"
-    tools:context=".eventinfo">
+    tools:context=".eventinfoall">
     <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -88,6 +88,45 @@
                     android:orientation="horizontal"
                     android:weightSum="1">
 
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="7dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="0.50"
+                        android:onClick="RelatedEvents"
+                        android:paddingBottom="10dp"
+                        app:cardCornerRadius="7dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="38dp"
+                            android:layout_gravity="right"
+                            android:background="#fff"
+                            android:onClick="RelatedEvents"
+                            android:orientation="horizontal"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp">
+
+                            <Button
+                                style="?android:attr/borderlessButtonStyle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:gravity="center"
+                                android:minWidth="0dp"
+                                android:minHeight="0dp"
+                                android:onClick="RelatedEvents"
+                                android:padding="0dp"
+                                android:text="Related events"
+                                android:textColor="#C2C9CC"
+                                android:textSize="14dp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
                     <androidx.cardview.widget.CardView
 
                         android:layout_width="50dp"
@@ -120,50 +159,11 @@
                                 android:minWidth="0dp"
                                 android:minHeight="0dp"
                                 android:padding="0dp"
-                                android:text="Related Events"
+                                android:text="All Events"
                                 android:textColor="#0D93C1"
                                 android:textSize="15dp" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="7dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_weight="0.50"
-                        android:onClick="ALlEvents"
-                        android:paddingBottom="10dp"
-                        app:cardCornerRadius="7dp"
-                        app:cardElevation="2dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="38dp"
-                            android:layout_gravity="right"
-                            android:background="#fff"
-                            android:onClick="ALlEvents"
-                            android:orientation="horizontal"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp">
-
-                            <Button
-                                style="?android:attr/borderlessButtonStyle"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="3dp"
-                                android:gravity="center"
-                                android:minWidth="0dp"
-                                android:minHeight="0dp"
-                                android:onClick="ALlEvents"
-                                android:padding="0dp"
-                                android:text="All events"
-                                android:textColor="#C2C9CC"
-                                android:textSize="14dp" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
 
                 </LinearLayout>
 
@@ -216,7 +216,7 @@
 
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
 
     </androidx.drawerlayout.widget.DrawerLayout>

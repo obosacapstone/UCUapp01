@@ -5,7 +5,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -17,17 +16,13 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.service.autofill.FieldClassification;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
-import android.widget.Adapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -42,18 +37,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Array;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
-import java.util.regex.Matcher;
 
 import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
 
-public class jobhiringinfo extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+public class bookmarkinfo extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     ProgressBar progressBar;
     RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -62,14 +52,14 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
     DrawerLayout mydrawer ,drawerLayout;
     Toolbar toolbar;
     ActionBarDrawerToggle mtoggle=null ,  mytoggle=null;
-    private  List<jobhiringlist> productList;
+    private List<jobhiringlist> productList;
     jobhiringlist jobhiringlist;
     TextView TextViewTitleNav;
     SearchView searchView;
     private MenuItem item;
     TextView TextViewNavFullname, TextViewNavIdno;
     ImageView ImageViewNavProfile;
-    RecyclerAdapter adapter;
+    RecyclerAdapterBookmark adapter;
     Boolean isScrolling = false;
     int currentItems, totalItems, scrollOutItems;
     LinearLayoutManager mmager;
@@ -79,8 +69,7 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jobhiringinfo);
-
+        setContentView(R.layout.activity_bookmarkinfo);
         TextViewsearchempty = findViewById(R.id.searchempty);
         searchView = findViewById(R.id.search_view);
 
@@ -124,12 +113,12 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
             return false;
         });
 
-        Glide.with(jobhiringinfo.this).load(graduatedimage).into(ImageViewNavProfile);
+        Glide.with(bookmarkinfo.this).load(graduatedimage).into(ImageViewNavProfile);
         TextViewNavFullname.setText(firstname + " " + middlename + " " + lastname);
         TextViewNavIdno.setText(idno);
 
         recyclerView =findViewById(R.id.recycleview);
-        manager = new GridLayoutManager(jobhiringinfo.this, 1);
+        manager = new GridLayoutManager(bookmarkinfo.this, 1);
 
         recyclerView.setLayoutManager(manager);
         productList = new ArrayList<>();
@@ -172,50 +161,50 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
         mmager = new LinearLayoutManager(this);
 
 //        String[] a = {"asd","asdas","asd","asdas","asd","asdas","asd","asdas","asd","asdas"};
-            list = new ArrayList(Arrays.asList(productList));
+        list = new ArrayList(Arrays.asList(productList));
 //           adapter = new RecyclerAdapter(this, productList);
 
-         recyclerView.setAdapter(adapter);
-         recyclerView.setLayoutManager(manager);
-         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-             @Override
-             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                 super.onScrollStateChanged(recyclerView, newState);
-                 if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
-                     isScrolling = true;
-                 }
-             }
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(manager);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
+                    isScrolling = true;
+                }
+            }
 
-             @Override
-             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                 super.onScrolled(recyclerView, dx, dy);
-                 currentItems = mmager.getChildCount();
-                 totalItems = mmager.getItemCount();
-                 scrollOutItems = mmager.findFirstVisibleItemPosition();
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                currentItems = mmager.getChildCount();
+                totalItems = mmager.getItemCount();
+                scrollOutItems = mmager.findFirstVisibleItemPosition();
 
-                 if (isScrolling && (currentItems + scrollOutItems == totalItems)){
-                     isScrolling = false;
-                     fetchData();
+                if (isScrolling && (currentItems + scrollOutItems == totalItems)){
+                    isScrolling = false;
+                    fetchData();
 
-                 }
-             }
-         });
+                }
+            }
+        });
 
 
     }
 
     private void fetchData() {
         progressBar.setVisibility(View.VISIBLE);
-     new Handler().postDelayed(new Runnable() {
-         @Override
-         public void run() {
-            for (int i = 0 ; i < 2 ; i++){
-                list.add(Math.floor(Math.random()*100) + "");
-                adapter.notifyDataSetChanged();
-                progressBar.setVisibility(View.GONE);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0 ; i < 2 ; i++){
+                    list.add(Math.floor(Math.random()*100) + "");
+                    adapter.notifyDataSetChanged();
+                    progressBar.setVisibility(View.GONE);
+                }
             }
-         }
-     },5000);
+        },5000);
     }
 
     private void filter(String newText) {
@@ -287,7 +276,7 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
                             }
 
                             //creating adapter object and setting it to recyclerview
-                            adapter = new RecyclerAdapter(jobhiringinfo.this, productList);
+                            adapter = new RecyclerAdapterBookmark(bookmarkinfo.this, productList);
                             recyclerView.setAdapter(adapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -329,25 +318,25 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
         switch (item.getItemId()){
 
             case R.id.profile:
-                Intent intent1 = new Intent(jobhiringinfo.this,bookmarkinfo.class);
+                Intent intent1 = new Intent(bookmarkinfo.this,profile.class);
                 startActivity(intent1);
                 break;
             case R.id.jobhiring:
-                Intent intent2 = new Intent(jobhiringinfo.this,jobhiringinfo.class);
+                Intent intent2 = new Intent(bookmarkinfo.this,jobhiringinfo.class);
                 startActivity(intent2);
                 break;
             case R.id.news:
-                Intent intent3 = new Intent(jobhiringinfo.this,newsinfo.class);
+                Intent intent3 = new Intent(bookmarkinfo.this,newsinfo.class);
                 startActivity(intent3);
                 break;
             case R.id.event:
-                Intent intent4 = new Intent(jobhiringinfo.this,eventinfo.class);
+                Intent intent4 = new Intent(bookmarkinfo.this,eventinfo.class);
                 startActivity(intent4);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
                 finishAffinity();
-                Intent intent5 = new Intent(jobhiringinfo.this,login.class);
+                Intent intent5 = new Intent(bookmarkinfo.this,login.class);
                 startActivity(intent5);
                 break;
 
@@ -358,14 +347,7 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
     }
 
 
-    public void Recommendedjobs(View view) {
-        overridePendingTransition(0, 0);
-        finish();
-        overridePendingTransition(0, 0);
-        Intent intent = new Intent(jobhiringinfo.this,jobhiringinfoall.class);
-        startActivity(intent);
-        overridePendingTransition(0, 0);
-    }
+
     @Override
     protected void onStart() {
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
