@@ -67,24 +67,25 @@ public class jobportal extends AppCompatActivity  implements NavigationView.OnNa
 
         switch (item.getItemId()){
 
-            case R.id.profile:
-                Intent intent1 = new Intent(jobportal.this,profile.class);
+            case R.id.Alumni:
+                Intent intent1 = new Intent(jobportal.this,alumni.class);
                 startActivity(intent1);
                 break;
-            case R.id.jobhiring:
-                Intent intent2 = new Intent(jobportal.this,jobhiringinfo.class);
+            case R.id.Trending:
+                Intent intent2 = new Intent(jobportal.this,trendinginfo.class);
                 startActivity(intent2);
                 break;
-            case R.id.news:
-                Intent intent4 = new Intent(jobportal.this,newsinfo.class);
-                startActivity(intent4);
+            case R.id.Bookmark:
+                Intent intent3 = new Intent(jobportal.this,bookmarkinfo.class);
+                startActivity(intent3);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
-                finish();
-                Intent intent3 = new Intent(jobportal.this,login.class);
-                startActivity(intent3);
+                finishAffinity();
+                Intent intent5 = new Intent(jobportal.this,login.class);
+                startActivity(intent5);
                 break;
+
 
 
         }

@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -58,6 +59,7 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
     RecyclerAdapterEvent adapterEvent;
     SearchView searchView;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,7 +162,8 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
 
 
     private void loadEvent() {
-
+        progressDialog = new ProgressDialog(eventinfo.this);
+        progressDialog.setMessage("Please wait...");
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL_EVENT,
                 new Response.Listener<String>() {
                     @Override
@@ -204,6 +207,7 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
 
 
 
+                                progressDialog.dismiss();
 
 
                             }
@@ -260,21 +264,17 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
 
         switch (item.getItemId()){
 
-            case R.id.profile:
-                Intent intent1 = new Intent(eventinfo.this,profile.class);
+            case R.id.Alumni:
+                Intent intent1 = new Intent(eventinfo.this,alumni.class);
                 startActivity(intent1);
                 break;
-            case R.id.jobhiring:
-                Intent intent2 = new Intent(eventinfo.this,jobhiringinfo.class);
+            case R.id.Trending:
+                Intent intent2 = new Intent(eventinfo.this,trendinginfo.class);
                 startActivity(intent2);
                 break;
-            case R.id.news:
-                Intent intent3 = new Intent(eventinfo.this,newsinfo.class);
+            case R.id.Bookmark:
+                Intent intent3 = new Intent(eventinfo.this,bookmarkinfo.class);
                 startActivity(intent3);
-                break;
-            case R.id.event:
-                Intent intent4 = new Intent(eventinfo.this,eventinfo.class);
-                startActivity(intent4);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -76,6 +77,7 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
     ArrayList list;
     TextView TextViewsearchempty;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -239,7 +241,8 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
 
     }
     private void loadProducts() {
-
+        progressDialog = new ProgressDialog(jobhiringinfo.this);
+        progressDialog.setMessage("Please wait...");
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL_JOBHIRING,
                 new Response.Listener<String>() {
                     @Override
@@ -281,7 +284,7 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
                                 ));
 
 
-
+                                progressDialog.dismiss();
 
 
                             }
@@ -328,21 +331,17 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
 
         switch (item.getItemId()){
 
-            case R.id.profile:
-                Intent intent1 = new Intent(jobhiringinfo.this,bookmarkinfo.class);
+            case R.id.Alumni:
+                Intent intent1 = new Intent(jobhiringinfo.this,alumni.class);
                 startActivity(intent1);
                 break;
-            case R.id.jobhiring:
-                Intent intent2 = new Intent(jobhiringinfo.this,jobhiringinfo.class);
+            case R.id.Trending:
+                Intent intent2 = new Intent(jobhiringinfo.this,trendinginfo.class);
                 startActivity(intent2);
                 break;
-            case R.id.news:
-                Intent intent3 = new Intent(jobhiringinfo.this,newsinfo.class);
+            case R.id.Bookmark:
+                Intent intent3 = new Intent(jobhiringinfo.this,bookmarkinfo.class);
                 startActivity(intent3);
-                break;
-            case R.id.event:
-                Intent intent4 = new Intent(jobhiringinfo.this,eventinfo.class);
-                startActivity(intent4);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
@@ -350,6 +349,7 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
                 Intent intent5 = new Intent(jobhiringinfo.this,login.class);
                 startActivity(intent5);
                 break;
+
 
 
         }

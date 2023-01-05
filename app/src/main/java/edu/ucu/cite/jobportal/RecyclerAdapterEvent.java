@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.icu.util.Calendar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -66,7 +67,7 @@ public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEv
     public void onBindViewHolder(ProductViewHolder holder, int position) {
         eventlist productevent = eventlists.get(position);
         holder.textViewEventDetail.setText(productevent.getEventDetaill());
-        holder.textViewInterested.setText(productevent.getEventid());
+        holder.textViewEventType.setText(productevent.getEventType());
         holder.btnevent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,36 +99,14 @@ public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEv
         SimpleDateFormat output = new SimpleDateFormat("dd MMM yyyy");
         try {
             DateUploaded = input.parse(date);                 // parse input
-            holder.textViewEventdate.setText(output.format(DateUploaded));    // format output
+//            holder.textViewEventdate.setText(output.format(DateUploaded));    // format output
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
 
 
-        //startdate
-        String date1 = productevent.getStartDate();
-        SimpleDateFormat input1 = new SimpleDateFormat("yy-MM-dd");
-        SimpleDateFormat output1 = new SimpleDateFormat("dd MMM yyyy");
-        try {
-            DateStartDate = input.parse(date1);
-            StringStartDate = output.format(DateStartDate);
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        //enddate
-        String date2 = productevent.getEndDate();
-        SimpleDateFormat input2 = new SimpleDateFormat("yy-MM-dd");
-        SimpleDateFormat output2 = new SimpleDateFormat("dd MMM yyyy");
-        try {
-            DateEndDate = input.parse(date2);
-            StringEndDate = output.format(DateEndDate);
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
 
         //time
         String dateString3 = productevent.getStartTime();
@@ -149,15 +128,9 @@ public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEv
 
 
 
-
-
-        Glide.with(mCtx).load(productevent.getEventImage()).into(holder.imageViewEventImage);
-
         String StringAddress = "<b> Address: </b>" + productevent.getAddress();
         holder.textViewAddress.setText(HtmlCompat.fromHtml(StringAddress, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
 
-        String StringVenue = "<b> Venue: </b>" + productevent.getVenue();
-        holder.textViewVenue.setText(HtmlCompat.fromHtml(StringVenue, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
 
         String StringSponsor = productevent.getSponsor();
         String splitted[] = StringSponsor.split(",,,");
@@ -173,31 +146,18 @@ public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEv
             StringAllOrganizer +=   splitted1[i] + "<br>";
         }
 
-//        String StringDescription = productevent.getDescription() +
-//                "<br><br><br><p><b>Sponsor</b><br>" + StringAllSponsor + "</p><br>" +
-//                "<p><b>Organizer/s</b><br>" + StringAllOrganizer + "</p>";
+
 
         String StringDescription = productevent.getDescription();
 
 
-
-
-        holder.textViewDescription.setText(HtmlCompat.fromHtml(StringDescription, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
-
+            holder.textViewDescription.setText(HtmlCompat.fromHtml(StringDescription, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
 
 
 
-        //enddate
-        String date3 = productevent.getEndDate();
-        SimpleDateFormat input3 = new SimpleDateFormat("yy-MM-dd");
-        SimpleDateFormat output3 = new SimpleDateFormat("yMMdd");
-        try {
-            qEndDate = input.parse(date3);
-            StringqEndDate = output3.format(qEndDate);
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
+
         //currentdate
         Calendar c = Calendar.getInstance();
         SimpleDateFormat sdf1 = new SimpleDateFormat("yMMdd");
@@ -206,21 +166,50 @@ public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEv
         String StringEndDateValidate = productevent.getEndDate();
         String StringDateeDuration;
         if (StringEndDateValidate.isEmpty()){
+            //startdate
+            String date1 = productevent.getStartDate();
+            SimpleDateFormat input1 = new SimpleDateFormat("yy-MM-dd");
+            SimpleDateFormat output1 = new SimpleDateFormat("dd MMM yyyy");
+            try {
+                DateStartDate = input1.parse(date1);
+                StringStartDate = output1.format(DateStartDate);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
             StringDateeDuration = "<b>Date: </b>" + StringStartDate ;
             holder.textViewDateDuration.setText(HtmlCompat.fromHtml(StringDateeDuration, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
 
         }
         if (!StringEndDateValidate.isEmpty()){
+            //startdate
+            String date1 = productevent.getStartDate();
+            SimpleDateFormat input1 = new SimpleDateFormat("M/dd/yyyyy");
+            SimpleDateFormat output1 = new SimpleDateFormat("dd MMM yyyy");
+            try {
+                DateStartDate = input1.parse(date1);
+                StringStartDate = output1.format(DateStartDate);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            //enddate
+            String date2 = productevent.getEndDate();
+            SimpleDateFormat input2 = new SimpleDateFormat("M/dd/yyyyy");
+            SimpleDateFormat output2 = new SimpleDateFormat("dd MMM yyyy");
+            try {
+                DateEndDate = input2.parse(date2);
+                StringEndDate = output2.format(DateEndDate);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             StringDateeDuration = "<b>Date: </b>" + StringStartDate + " to " + StringEndDate;
             holder.textViewDateDuration.setText(HtmlCompat.fromHtml(StringDateeDuration, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
 
 
-
-
-
-
-//            int IntegerCurrentDate = Integer.parseInt(StringqCurrentDate);
-//            int IntegerEnddate = Integer.parseInt(StringqEndDate);
         }
 
 
@@ -242,13 +231,9 @@ public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEv
 
 
 
-        holder.textViewVenue.setVisibility(LinearLayout.GONE);
-        holder.textViewAddress.setVisibility(LinearLayout.GONE);
-        holder.textViewDescription.setVisibility(LinearLayout.GONE);
-        holder.textViewEventdate.setVisibility(LinearLayout.GONE);
-
 
     }
+
 
     @Override
     public int getItemCount() {
@@ -265,23 +250,17 @@ public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEv
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewEventDetail,textViewEventdate ,textViewDateDuration ,textViewAddress ,textViewVenue ,textViewDescription ,textViewInterested ;
+        TextView textViewEventDetail,textViewEventdate ,textViewDateDuration ,textViewAddress ,textViewEventType ,textViewDescription ;
         CardView btnevent;
-        ImageView imageViewEventImage;
-        LinearLayout linearLayoutdatevalidation;
-        Button ButtonInterested;
+
 
         public ProductViewHolder(View itemView) {
             super(itemView);
             textViewEventDetail = itemView.findViewById(R.id.eventdetail);
-            textViewEventdate = itemView.findViewById(R.id.eventdate);
             textViewDateDuration = itemView.findViewById(R.id.dateduration);
-            imageViewEventImage  = itemView.findViewById(R.id.eventimage);
             textViewAddress = itemView.findViewById(R.id.address);
-            textViewVenue = itemView.findViewById(R.id.venue);
+            textViewEventType = itemView.findViewById(R.id.eventtype);
             textViewDescription = itemView.findViewById(R.id.description);
-            textViewInterested = itemView.findViewById(R.id.qinterested);
-            linearLayoutdatevalidation = itemView.findViewById(R.id.datevalidation);
             btnevent = itemView.findViewById(R.id.bgbutton);
 
 

@@ -25,5 +25,7 @@ private static final String ROOT_URL = "http://192.168.100.4/graduatedtracer/job
     public static final String URL_DATABASE=ROOT_URL+"getdatabase.php";
     public static final String URL_NOTINTERESTED=ROOT_URL+"notinterested.php";
     public static final String URL_FORGOTPASSWORD = ROOT_URL+"forgot-password.php";
+    public static final String URL_ALUMNI=ROOT_URL+"getalumni.php";
+    public static final String URL_APPLYNOW=ROOT_URL+"applynow.php";
 
 }

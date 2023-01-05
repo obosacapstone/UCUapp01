@@ -463,21 +463,17 @@ public class generalinfo extends AppCompatActivity  implements View.OnClickListe
 
         switch (item.getItemId()){
 
-            case R.id.profile:
-                Intent intent1 = new Intent(generalinfo.this,profile.class);
+            case R.id.Alumni:
+                Intent intent1 = new Intent(generalinfo.this,alumni.class);
                 startActivity(intent1);
                 break;
-            case R.id.jobhiring:
-                Intent intent2 = new Intent(generalinfo.this,jobhiringinfo.class);
+            case R.id.Trending:
+                Intent intent2 = new Intent(generalinfo.this,trendinginfo.class);
                 startActivity(intent2);
                 break;
-            case R.id.news:
-                Intent intent3 = new Intent(generalinfo.this,newsinfo.class);
+            case R.id.Bookmark:
+                Intent intent3 = new Intent(generalinfo.this,bookmarkinfo.class);
                 startActivity(intent3);
-                break;
-            case R.id.event:
-                Intent intent4 = new Intent(generalinfo.this,eventinfo.class);
-                startActivity(intent4);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
@@ -485,6 +481,7 @@ public class generalinfo extends AppCompatActivity  implements View.OnClickListe
                 Intent intent5 = new Intent(generalinfo.this,login.class);
                 startActivity(intent5);
                 break;
+
 
 
         }

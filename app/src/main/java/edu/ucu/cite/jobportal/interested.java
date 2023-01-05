@@ -12,6 +12,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -61,6 +62,8 @@ public class interested extends AppCompatActivity implements View.OnClickListene
     ImageView ImageViewNavProfile;
     Button btnChoose, btnUpload;
     ImageView imageUpload ,ImageProfile;
+    Button ButtonTitleEvent;
+    String StringTitleLength,StringTitleOverflow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +81,15 @@ public class interested extends AppCompatActivity implements View.OnClickListene
         idno = SharedPrefManager.getInstance(this).getIDno();
         String graduatedimage = SharedPrefManager.getInstance(this).getGraduatedimage();
 
+        ButtonTitleEvent = findViewById(R.id.TitleEvent);
+        StringTitleLength =  getIntent().getStringExtra("eventdetail");
+
+        if (14 >= StringTitleLength.length() ){
+            ButtonTitleEvent.setText(getIntent().getStringExtra("eventdetail"));
+        }else {
+            StringTitleOverflow = getSafeSubstring(getIntent().getStringExtra("eventdetail"), 11);
+            ButtonTitleEvent.setText(StringTitleOverflow + "...");
+        }
 
 //        Glide.with(interested.this).load(graduatedimage).into(ImageProfile);
         Glide.with(interested.this).load(graduatedimage).into(ImageViewNavProfile);
@@ -97,7 +109,6 @@ public class interested extends AppCompatActivity implements View.OnClickListene
         navigationView.setNavigationItemSelectedListener(this);
 
         TextViewEventDetailData = findViewById(R.id.eventdetaildata);
-        TextViewEventDateData = findViewById(R.id.eventdatedata);
         TextViewdatedurationdata = findViewById(R.id.datedurationdata);
         TextViewAddressData = findViewById(R.id.addressdata);
         TextViewVenueData = findViewById(R.id.venuedata);
@@ -132,31 +143,7 @@ public class interested extends AppCompatActivity implements View.OnClickListene
         SimpleDateFormat output = new SimpleDateFormat("dd MMM yyyy");
         try {
             DateUploaded = input.parse(date);                 // parse input
-            TextViewEventDateData.setText(output.format(DateUploaded));    // format output
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        //duration event
-        //startdate
-        String date1 = getIntent().getStringExtra("eventstartdate");
-        SimpleDateFormat input1 = new SimpleDateFormat("yy-MM-dd");
-        SimpleDateFormat output1 = new SimpleDateFormat("dd MMM yyyy");
-        try {
-            DateStartDate = input.parse(date1);
-            StringStartDate = output.format(DateStartDate);
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        //enddate
-        String date2 = getIntent().getStringExtra("eventenddate");
-        SimpleDateFormat input2 = new SimpleDateFormat("yy-MM-dd");
-        SimpleDateFormat output2 = new SimpleDateFormat("dd MMM yyyy");
-        try {
-            DateEndDate = input.parse(date2);
-            StringEndDate = output.format(DateEndDate);
-
+//            TextViewEventDateData.setText(output.format(DateUploaded));    // format output
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -180,43 +167,109 @@ public class interested extends AppCompatActivity implements View.OnClickListene
         }
 
         //uploading date time
+
+
+//        String StringDateeDuration;
+//        if (StringEndDateValidate.isEmpty()){
+//            StringDateeDuration = "<b>Date: </b>" + StringStartDate  + "<br>"
+//                    + "<b>Time: </b>" + StartTime + " to " + EndTime;
+//            TextViewdatedurationdata.setText(HtmlCompat.fromHtml(StringDateeDuration, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
+//
+//            //start date only
+//            String date4 = getIntent().getStringExtra("eventstartdate");
+//            SimpleDateFormat input4 = new SimpleDateFormat("yy-MM-dd");
+//            SimpleDateFormat output4 = new SimpleDateFormat("yMMdd");
+//            try {
+//                qStartDate = input.parse(date4);
+//                StringqStartDate= output4.format(qStartDate);
+//
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//
+//        }
+//        String date3 = getIntent().getStringExtra("eventenddate");
+//
+//        if (!StringEndDateValidate.isEmpty()){
+//            StringDateeDuration = "<b>Date: </b>" + StringStartDate + " to " + StringEndDate + "<br>"
+//                    + "<b>Time: </b>" + StartTime + " to " + EndTime;
+//            TextViewdatedurationdata.setText(HtmlCompat.fromHtml(StringDateeDuration, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
+//
+//
+//            SimpleDateFormat input3 = new SimpleDateFormat("MMM/d/y");
+//            SimpleDateFormat output3 = new SimpleDateFormat("yMMdd");
+//            try {
+//                qEndDate = input.parse(date3);
+//                StringqEndDate = output3.format(qEndDate);
+//
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//        }
+
+
+        //currentdate
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yMMdd");
+        StringqCurrentDate = sdf1.format(c.getTime());
+        int IntegerCurrentDate = Integer.parseInt(StringqCurrentDate);
+        int IntegerEnddate = 0;
         String StringEndDateValidate = getIntent().getStringExtra("eventenddate");
         String StringDateeDuration;
+        
         if (StringEndDateValidate.isEmpty()){
-            StringDateeDuration = "<b>Date: </b>" + StringStartDate  + "<br>"
-                    + "<b>Time: </b>" + StartTime + " to " + EndTime;
-            TextViewdatedurationdata.setText(HtmlCompat.fromHtml(StringDateeDuration, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
-
-            //start date only
-            String date4 = getIntent().getStringExtra("eventstartdate");
-            SimpleDateFormat input4 = new SimpleDateFormat("yy-MM-dd");
-            SimpleDateFormat output4 = new SimpleDateFormat("yMMdd");
+            //startdate
+            String date1 = getIntent().getStringExtra("eventstartdate");
+            SimpleDateFormat input1 = new SimpleDateFormat("yy-MM-dd");
+            SimpleDateFormat output1 = new SimpleDateFormat("dd MMM yyyy");
+            SimpleDateFormat input1validation = new SimpleDateFormat("yMMdd");
             try {
-                qStartDate = input.parse(date4);
-                StringqStartDate= output4.format(qStartDate);
+                DateStartDate = input1.parse(date1);
+                StringStartDate = output1.format(DateStartDate);
+                StringqStartDate = input1validation.format(DateStartDate);
 
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+            IntegerEnddate = Integer.parseInt(StringqStartDate);
+            StringDateeDuration = "<b>Date: </b>" + StringStartDate ;
+            TextViewdatedurationdata.setText(HtmlCompat.fromHtml(StringDateeDuration, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
 
         }
-        String date3 = getIntent().getStringExtra("eventenddate");
-
         if (!StringEndDateValidate.isEmpty()){
-            StringDateeDuration = "<b>Date: </b>" + StringStartDate + " to " + StringEndDate + "<br>"
-                    + "<b>Time: </b>" + StartTime + " to " + EndTime;
-            TextViewdatedurationdata.setText(HtmlCompat.fromHtml(StringDateeDuration, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
+            //startdate
+            String date1 = getIntent().getStringExtra("eventstartdate");
+            SimpleDateFormat input1 = new SimpleDateFormat("M/dd/yyyyy");
+            SimpleDateFormat output1 = new SimpleDateFormat("dd MMM yyyy");
 
-
-            SimpleDateFormat input3 = new SimpleDateFormat("MMM/d/y");
-            SimpleDateFormat output3 = new SimpleDateFormat("yMMdd");
             try {
-                qEndDate = input.parse(date3);
-                StringqEndDate = output3.format(qEndDate);
+                DateStartDate = input1.parse(date1);
+                StringStartDate = output1.format(DateStartDate);
+
+
 
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+
+            //enddate
+            String date2 = getIntent().getStringExtra("eventenddate");
+            SimpleDateFormat input2 = new SimpleDateFormat("M/dd/yyyyy");
+            SimpleDateFormat output2 = new SimpleDateFormat("dd MMM yyyy");
+            SimpleDateFormat input2validation = new SimpleDateFormat("yMMdd");
+            try {
+                DateEndDate = input2.parse(date2);
+                StringEndDate = output2.format(DateEndDate);
+                StringqEndDate = input2validation.format(DateEndDate);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            IntegerEnddate = Integer.parseInt(StringqEndDate);
+            StringDateeDuration = "<b>Date: </b>" + StringStartDate + " to " + StringEndDate;
+            TextViewdatedurationdata.setText(HtmlCompat.fromHtml(StringDateeDuration, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
+
+
         }
 
 
@@ -224,41 +277,36 @@ public class interested extends AppCompatActivity implements View.OnClickListene
 
 
         //are you interested
+        if (IntegerEnddate > IntegerCurrentDate){
+            linearLayoutdatevalidation = findViewById(R.id.datevalidationdata);
+            String StringCollege =  getIntent().getStringExtra("eventcollege");
+            String StringCollegeAlumni = SharedPrefManager.getInstance(this).getCollege();
+            //related event
+            String splitcollege[] = StringCollege.split(",,,");
 
+            for(int i =0; i<splitcollege.length; i++){
 
+                if (splitcollege[i].equals(StringCollegeAlumni)){
+                    linearLayoutdatevalidation.setVisibility(LinearLayout.VISIBLE);
+                }
 
-
-        linearLayoutdatevalidation = findViewById(R.id.datevalidationdata);
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat sdf1 = new SimpleDateFormat("yMMdd");
-        StringqCurrentDate = sdf1.format(c.getTime());
-        int IntegerCurrentDate = Integer.parseInt(StringqCurrentDate);
-
-        int IntegerStartdate = Integer.parseInt(StringqStartDate);
-
-        if (date3.isEmpty()){
-            if (IntegerStartdate > IntegerCurrentDate){
-                linearLayoutdatevalidation.setVisibility(LinearLayout.VISIBLE);
             }
-        }else {
-            int IntegerEnddate = Integer.parseInt(StringqEndDate);
-            if (IntegerEnddate > IntegerCurrentDate){
-                linearLayoutdatevalidation.setVisibility(LinearLayout.VISIBLE);
-            }
+
+
         }
 
 
         //Sponsor Organizer
         String StringSponsor = getIntent().getStringExtra("eventsponsor");
         String splitted[] = StringSponsor.split(",,,");
-        String StringAllSponsor = "<b>Sponsor</b><br>";
+        String StringAllSponsor = "<b>Sponsor</b><br><br>";
         for(int i =0; i<splitted.length; i++){
             StringAllSponsor +=   splitted[i] + "<br>";
         }
 
         String StringOrganizer = getIntent().getStringExtra("eventorganizer");
         String splitted1[] = StringOrganizer.split(",,,");
-        String StringAllOrganizer = "<b>Organizer</b><br>";
+        String StringAllOrganizer = "<b>Organizer</b><br><br>";
         for(int i =0; i<splitted1.length; i++){
             StringAllOrganizer +=   splitted1[i] + "<br>";
         }
@@ -310,10 +358,14 @@ public class interested extends AppCompatActivity implements View.OnClickListene
     }
 
 
-
-
-
-
+    public String getSafeSubstring(String s, int maxLength){
+        if(!TextUtils.isEmpty(s)){
+            if(s.length() >= maxLength){
+                return s.substring(0, maxLength);
+            }
+        }
+        return s;
+    }
 
 
     public void SubmitInterested(View view) {
@@ -452,21 +504,17 @@ public class interested extends AppCompatActivity implements View.OnClickListene
 
         switch (item.getItemId()){
 
-            case R.id.profile:
-                Intent intent1 = new Intent(interested.this,profile.class);
+            case R.id.Alumni:
+                Intent intent1 = new Intent(interested.this,alumni.class);
                 startActivity(intent1);
                 break;
-            case R.id.jobhiring:
-                Intent intent2 = new Intent(interested.this,jobhiringinfo.class);
+            case R.id.Trending:
+                Intent intent2 = new Intent(interested.this,trendinginfo.class);
                 startActivity(intent2);
                 break;
-            case R.id.news:
-                Intent intent3 = new Intent(interested.this,newsinfo.class);
+            case R.id.Bookmark:
+                Intent intent3 = new Intent(interested.this,bookmarkinfo.class);
                 startActivity(intent3);
-                break;
-            case R.id.event:
-                Intent intent4 = new Intent(interested.this,eventinfo.class);
-                startActivity(intent4);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
@@ -479,5 +527,9 @@ public class interested extends AppCompatActivity implements View.OnClickListene
         }
 
         return true;
+    }
+
+    public void back(View view) {
+        finish();
     }
 }

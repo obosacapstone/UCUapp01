@@ -86,11 +86,13 @@ public class bookmarkinfo extends AppCompatActivity implements NavigationView.On
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.naview);
         bottomNavigationView.setItemIconTintList(null);
-        bottomNavigationView.setSelectedItemId(R.id.Jobs);
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()){
 
                 case R.id.Jobs:
+                    startActivity(new Intent(getApplicationContext(),jobhiringinfo.class));
+                    finish();
+                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
                     return true;
                 case R.id.News:
                     startActivity(new Intent(getApplicationContext(),newsinfo.class));
@@ -156,7 +158,7 @@ public class bookmarkinfo extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         //nav bar
         TextViewTitleNav = findViewById(R.id.titlenav);
-        TextViewTitleNav.setText("Recommended Jobs");
+        TextViewTitleNav.setText("Bookmark");
 
         mmager = new LinearLayoutManager(this);
 
@@ -317,21 +319,17 @@ public class bookmarkinfo extends AppCompatActivity implements NavigationView.On
 
         switch (item.getItemId()){
 
-            case R.id.profile:
-                Intent intent1 = new Intent(bookmarkinfo.this,profile.class);
+            case R.id.Alumni:
+                Intent intent1 = new Intent(bookmarkinfo.this,alumni.class);
                 startActivity(intent1);
                 break;
-            case R.id.jobhiring:
-                Intent intent2 = new Intent(bookmarkinfo.this,jobhiringinfo.class);
+            case R.id.Trending:
+                Intent intent2 = new Intent(bookmarkinfo.this,trendinginfo.class);
                 startActivity(intent2);
                 break;
-            case R.id.news:
-                Intent intent3 = new Intent(bookmarkinfo.this,newsinfo.class);
+            case R.id.Bookmark:
+                Intent intent3 = new Intent(bookmarkinfo.this,bookmarkinfo.class);
                 startActivity(intent3);
-                break;
-            case R.id.event:
-                Intent intent4 = new Intent(bookmarkinfo.this,eventinfo.class);
-                startActivity(intent4);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();

@@ -32,93 +32,181 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:textColor="#0418A5"
+                android:textColor="#07435f"
                 android:textSize="20dp"
                 android:fontFamily="@font/poppins_medium"
                 android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="5dp"
                 android:text="News Detail"/>
-            <TextView
-                android:id="@+id/newsdate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
 
-                android:layout_gravity="center"
-                android:textColor="#CC0505"
-                android:textSize="12dp"
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight=".40">
+                <ImageView
+                    android:id="@+id/newsimage"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:scaleType="fitXY"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="#fff"
+                    android:src="@drawable/uculogo"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_marginHorizontal="20dp"
-                android:text="News date"/>
+                android:layout_weight=".60">
 
-                <TextView
-                    android:id="@+id/newstopic"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#2C2C2C"
-                    android:textSize="15dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center"
-                    android:layout_marginHorizontal="10dp"
-                    android:text="News Topic"/>
-            <TextView
-                android:id="@+id/category"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#2C2C2C"
-                android:textSize="15dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:layout_marginHorizontal="10dp"
-                android:text="Category"/>
-
-
-            <ImageView
-                android:id="@+id/newsimage"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:scaleType="fitXY"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textColor="#fff"
-                android:src="@drawable/uculogo"/>
-
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:text="Address"
-                android:textColor="#2C2C2C"
-                android:textSize="15dp" />
-
-            <TextView
-                    android:id="@+id/venue"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <ImageView
+                    android:id="@+id/newsimage1"
+                    android:layout_weight=".333"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleType="fitXY"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="#fff"
+                    android:src="@drawable/uculogo"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/newsimage2"
+                    android:layout_weight=".333"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleType="fitXY"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="#fff"
+                    android:src="@drawable/uculogo"
+                    android:visibility="gone"/>
+                <ImageView
+                    android:id="@+id/newsimage3"
+                    android:layout_weight=".333"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleType="fitXY"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColor="#fff"
+                    android:src="@drawable/uculogo"
+                    android:visibility="gone"/>
+            </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#2C2C2C"
-                    android:textSize="15dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center"
-                    android:layout_marginHorizontal="10dp"
-                    android:text="Venue"/>
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+                    <ImageView
+                        android:id="@+id/newsimage4"
+                        android:layout_weight=".333"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitXY"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="#fff"
+                        android:src="@drawable/uculogo"
+                        android:visibility="gone"/>
+                    <ImageView
+                        android:id="@+id/newsimage5"
+                        android:layout_weight=".333"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitXY"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="#fff"
+                        android:src="@drawable/uculogo"
+                        android:visibility="gone"/>
+                    <ImageView
+                        android:id="@+id/newsimage6"
+                        android:layout_weight=".333"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitXY"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="#fff"
+                        android:src="@drawable/uculogo"
+                        android:visibility="gone"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+                    <ImageView
+                        android:id="@+id/newsimage7"
+                        android:layout_weight=".333"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitXY"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="#fff"
+                        android:src="@drawable/uculogo"
+                        android:visibility="gone"/>
+                    <ImageView
+                        android:id="@+id/newsimage8"
+                        android:layout_weight=".333"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitXY"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="#fff"
+                        android:src="@drawable/uculogo"
+                        android:visibility="gone"/>
+                    <ImageView
+                        android:id="@+id/newsimage9"
+                        android:layout_weight=".333"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitXY"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="#fff"
+                        android:src="@drawable/uculogo"
+                        android:visibility="gone"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
 
             <com.borjabravo.readmoretextview.ReadMoreTextView
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
-                android:textColor="#000"
+                android:textColor="#4C4C4C"
+                android:justificationMode="inter_word"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
-                android:text="Description"
-                android:gravity="center"
+                android:text="Description Description asda sDescription Description  asdasdas Description Description asdas Description Description  sadas Description Description  sadasd Description Description  sada"
                 app:trimExpandedText="See more"
                 app:trimCollapsedText="See less"
                 app:colorClickableText="#A11036BC"
                 app:trimMode="trimModeLength"
                 app:trimLength="100"
-
+                android:layout_marginBottom="10dp"
                 />
 
 

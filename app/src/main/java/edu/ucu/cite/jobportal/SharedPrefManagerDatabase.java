@@ -8,6 +8,7 @@ public class SharedPrefManagerDatabase {
     private static Context mCtx;
 
     private static final String SHARED_PREF_NAME = "mysharedpref12";
+
     private static final String KEY_Courses = "courses";
     private static final String KEY_Region = "region";
     private static final String KEY_RegionCode1 = "regioncode1";
@@ -40,7 +41,7 @@ public class SharedPrefManagerDatabase {
         }
         return mInstance;
     }
-    public boolean userDatabase( String courses,String region, String regioncode1, String province , String provincecode1, String provincecode2, String city, String citycode1, String citycode2, String citycode3,
+    public boolean userDatabase(String courses,String region, String regioncode1, String province , String provincecode1, String provincecode2, String city, String citycode1, String citycode2, String citycode3,
                                  String barangay, String barangaycode1,String barangaycode2,String barangaycode3){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

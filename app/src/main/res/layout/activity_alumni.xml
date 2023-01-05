@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F3F0F0"
-    tools:context=".newsinfo">
+    tools:context=".alumni">
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -69,74 +69,73 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
-
-
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <include
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    layout="@layout/app_bar"/>
+                android:layout_height="match_parent">
 
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="7dp"
-                    android:layout_marginBottom="80dp"
-                    app:cardCornerRadius="7dp"
-                    app:cardElevation="10dp"
-                    android:layout_marginTop="20dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:orientation="vertical">
-                    <androidx.appcompat.widget.SearchView
-                        android:id="@+id/search_view"
+
+                    <include
+                        layout="@layout/app_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:queryHint="Search here"
-                        android:layout_marginHorizontal="20dp"
-                        app:iconifiedByDefault="false"
-                        app:queryHint="Search Here..."
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/search_border"/>
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:layout_marginHorizontal="10dp"
+                        android:weightSum="1">
 
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycleviewnews"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/alumni"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:textColor="#201F1F"
+                            android:text="alumni"/>
+
+
+                    </LinearLayout>
+
+
+
+
+                        <ProgressBar
+                            android:id="@+id/progress"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:visibility="gone" />
+
+
+
+
                 </LinearLayout>
-                </androidx.cardview.widget.CardView>
+
 
             </LinearLayout>
 
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/naview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:elevation="120dp"
+                app:itemIconSize="25dp"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/homenav" />
 
 
 
+        </RelativeLayout>
 
-
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/naview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:elevation="120dp"
-            app:itemIconSize="25dp"
-            app:labelVisibilityMode="labeled"
-            app:menu="@menu/homenav" />
-
-
-
-    </RelativeLayout>
 
     </androidx.drawerlayout.widget.DrawerLayout>
+
 </LinearLayout>

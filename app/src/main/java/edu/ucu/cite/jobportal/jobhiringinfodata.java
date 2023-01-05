@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,6 +60,9 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
     ProgressDialog progressDialog;
     Button ButtonSave,ButtonSaved;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    Button ButtonApplyNow,ButtonTitleJob;
+    String StringTitleLength,StringTitleOverflow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -154,6 +158,85 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
 
         validationsave(this);
 
+
+        ButtonApplyNow = findViewById(R.id.ApplyNow);
+        ButtonApplyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progressDialog = new ProgressDialog(jobhiringinfodata.this);
+                progressDialog.setMessage("Please wait...");
+
+                String id = getIntent().getStringExtra("id");
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                        Constants.URL_APPLYNOW,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+                                try {
+
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    SendMail();
+                                    progressDialog.dismiss();
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                    Log.e("anyText", response);
+                                }
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                            }
+                        }) {
+                    @Nullable
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("id",id);
+                        return params;
+
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(jobhiringinfodata.this);
+                requestQueue.add(stringRequest);
+
+
+            }
+        });
+
+        ButtonTitleJob = findViewById(R.id.TitleJob);
+        StringTitleLength =  getIntent().getStringExtra("jobtitle");
+
+        if (14 >= StringTitleLength.length() ){
+            ButtonTitleJob.setText(getIntent().getStringExtra("jobtitle"));
+        }else {
+            StringTitleOverflow = getSafeSubstring(getIntent().getStringExtra("jobtitle"), 11);
+            ButtonTitleJob.setText(StringTitleOverflow + "...");
+        }
+    }
+
+    public String getSafeSubstring(String s, int maxLength){
+        if(!TextUtils.isEmpty(s)){
+            if(s.length() >= maxLength){
+                return s.substring(0, maxLength);
+            }
+        }
+        return s;
+    }
+    private void SendMail() {
+        String recipientList = getIntent().getStringExtra("email");
+        String[] recipients = recipientList.split(",");
+
+        Intent intent = new Intent (Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, recipients);
+
+        intent.setType("message/rfc8222");
+        startActivity(Intent.createChooser(intent, "Choose an Email Client"));
     }
 
     private void validationsave(jobhiringinfodata jobhiringinfodata) {
@@ -202,21 +285,17 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
 
         switch (item.getItemId()){
 
-            case R.id.profile:
-                Intent intent1 = new Intent(jobhiringinfodata.this,profile.class);
+            case R.id.Alumni:
+                Intent intent1 = new Intent(jobhiringinfodata.this,alumni.class);
                 startActivity(intent1);
                 break;
-            case R.id.jobhiring:
-                Intent intent2 = new Intent(jobhiringinfodata.this,jobhiringinfo.class);
+            case R.id.Trending:
+                Intent intent2 = new Intent(jobhiringinfodata.this,trendinginfo.class);
                 startActivity(intent2);
                 break;
-            case R.id.news:
-                Intent intent3 = new Intent(jobhiringinfodata.this,newsinfo.class);
+            case R.id.Bookmark:
+                Intent intent3 = new Intent(jobhiringinfodata.this,bookmarkinfo.class);
                 startActivity(intent3);
-                break;
-            case R.id.event:
-                Intent intent4 = new Intent(jobhiringinfodata.this,eventinfo.class);
-                startActivity(intent4);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
@@ -224,6 +303,7 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
                 Intent intent5 = new Intent(jobhiringinfodata.this,login.class);
                 startActivity(intent5);
                 break;
+
 
 
         }
@@ -443,5 +523,9 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    public void back(View view) {
+        finish();
     }
 }

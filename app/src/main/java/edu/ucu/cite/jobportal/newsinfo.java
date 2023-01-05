@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -34,6 +35,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
@@ -65,6 +67,7 @@ public class newsinfo extends AppCompatActivity implements NavigationView.OnNavi
     SearchView searchView;
     RecyclerAdapterNews adapterNews;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +88,34 @@ public class newsinfo extends AppCompatActivity implements NavigationView.OnNavi
         String idno = SharedPrefManager.getInstance(this).getIDno();
         String graduatedimage = SharedPrefManager.getInstance(this).getGraduatedimage();
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.naview);
+        bottomNavigationView.setItemIconTintList(null);
+        bottomNavigationView.setSelectedItemId(R.id.News);
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
+            switch (menuItem.getItemId()){
 
+                case R.id.Jobs:
+                    startActivity(new Intent(getApplicationContext(),jobhiringinfo.class));
+                    finish();
+                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                    return true;
+                case R.id.News:
+                    return true;
+                case R.id.Events:
+                    startActivity(new Intent(getApplicationContext(),eventinfo.class));
+                    finish();
+                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                    return true;
+                case R.id.Profile:
+                    startActivity(new Intent(getApplicationContext(),profile.class));
+                    finish();
+                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
+                    return true;
+
+
+            }
+            return false;
+        });
 
         Glide.with(newsinfo.this).load(graduatedimage).into(ImageViewNavProfile);
         TextViewNavFullname.setText(firstname + " " + middlename + " " + lastname);
@@ -143,7 +173,8 @@ public class newsinfo extends AppCompatActivity implements NavigationView.OnNavi
 
 
     private void loadNews() {
-
+        progressDialog = new ProgressDialog(newsinfo.this);
+        progressDialog.setMessage("Please wait...");
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL_NEWS,
                 new Response.Listener<String>() {
                     @Override
@@ -170,6 +201,7 @@ public class newsinfo extends AppCompatActivity implements NavigationView.OnNavi
                                         news.getString("newsdate")
                                 ));
 
+                                progressDialog.dismiss();
 
 
 
@@ -227,21 +259,17 @@ public class newsinfo extends AppCompatActivity implements NavigationView.OnNavi
 
         switch (item.getItemId()){
 
-            case R.id.profile:
-                Intent intent1 = new Intent(newsinfo.this,profile.class);
+            case R.id.Alumni:
+                Intent intent1 = new Intent(newsinfo.this,alumni.class);
                 startActivity(intent1);
                 break;
-            case R.id.jobhiring:
-                Intent intent2 = new Intent(newsinfo.this,jobhiringinfo.class);
+            case R.id.Trending:
+                Intent intent2 = new Intent(newsinfo.this,trendinginfo.class);
                 startActivity(intent2);
                 break;
-            case R.id.news:
-                Intent intent3 = new Intent(newsinfo.this,newsinfo.class);
+            case R.id.Bookmark:
+                Intent intent3 = new Intent(newsinfo.this,bookmarkinfo.class);
                 startActivity(intent3);
-                break;
-            case R.id.event:
-                Intent intent4 = new Intent(newsinfo.this,eventinfo.class);
-                startActivity(intent4);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();

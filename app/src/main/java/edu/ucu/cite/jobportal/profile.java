@@ -392,21 +392,17 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
 
         switch (item.getItemId()){
 
-            case R.id.profile:
-                Intent intent1 = new Intent(profile.this,profile.class);
+            case R.id.Alumni:
+                Intent intent1 = new Intent(profile.this,alumni.class);
                 startActivity(intent1);
                 break;
-            case R.id.jobhiring:
-                Intent intent2 = new Intent(profile.this,jobhiringinfo.class);
+            case R.id.Trending:
+                Intent intent2 = new Intent(profile.this,trendinginfo.class);
                 startActivity(intent2);
                 break;
-            case R.id.news:
-                Intent intent3 = new Intent(profile.this,newsinfo.class);
+            case R.id.Bookmark:
+                Intent intent3 = new Intent(profile.this,bookmarkinfo.class);
                 startActivity(intent3);
-                break;
-            case R.id.event:
-                Intent intent4 = new Intent(profile.this,eventinfo.class);
-                startActivity(intent4);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();

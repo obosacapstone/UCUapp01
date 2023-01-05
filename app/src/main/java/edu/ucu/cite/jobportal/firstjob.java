@@ -532,21 +532,17 @@ public class firstjob extends AppCompatActivity implements View.OnClickListener,
 
         switch (item.getItemId()){
 
-            case R.id.profile:
-                Intent intent1 = new Intent(firstjob.this,profile.class);
+            case R.id.Alumni:
+                Intent intent1 = new Intent(firstjob.this,alumni.class);
                 startActivity(intent1);
                 break;
-            case R.id.jobhiring:
-                Intent intent2 = new Intent(firstjob.this,jobhiringinfo.class);
+            case R.id.Trending:
+                Intent intent2 = new Intent(firstjob.this,trendinginfo.class);
                 startActivity(intent2);
                 break;
-            case R.id.news:
-                Intent intent3 = new Intent(firstjob.this,newsinfo.class);
+            case R.id.Bookmark:
+                Intent intent3 = new Intent(firstjob.this,bookmarkinfo.class);
                 startActivity(intent3);
-                break;
-            case R.id.event:
-                Intent intent4 = new Intent(firstjob.this,eventinfo.class);
-                startActivity(intent4);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();

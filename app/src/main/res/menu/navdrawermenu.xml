@@ -4,24 +4,19 @@
 
 
     <item
-        android:id="@+id/profile"
-        android:icon="@drawable/profile"
-        android:title="Profile"
+        android:id="@+id/Alumni"
+        android:icon="@drawable/alumni"
+        android:title="Alumni"
         />
     <item
-        android:id="@+id/jobhiring"
-        android:icon="@drawable/jobhiring"
-        android:title="Job Hiring"/>
+        android:id="@+id/Trending"
+        android:icon="@drawable/trending"
+        android:title="Trending"/>
 
     <item
-        android:id="@+id/news"
-        android:icon="@drawable/news"
-        android:title="News"/>
-    <item
-        android:id="@+id/event"
-        android:icon="@drawable/event"
-        android:title="Event"/>
-
+        android:id="@+id/Bookmark"
+        android:icon="@drawable/saved"
+        android:title="Bookmark"/>
 
     <item
         android:id="@+id/logout"

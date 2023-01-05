@@ -399,21 +399,17 @@ public class employment extends AppCompatActivity implements View.OnClickListene
 
         switch (item.getItemId()){
 
-            case R.id.profile:
-                Intent intent1 = new Intent(employment.this,profile.class);
+            case R.id.Alumni:
+                Intent intent1 = new Intent(employment.this,alumni.class);
                 startActivity(intent1);
                 break;
-            case R.id.jobhiring:
-                Intent intent2 = new Intent(employment.this,jobhiringinfo.class);
+            case R.id.Trending:
+                Intent intent2 = new Intent(employment.this,trendinginfo.class);
                 startActivity(intent2);
                 break;
-            case R.id.news:
-                Intent intent3 = new Intent(employment.this,newsinfo.class);
+            case R.id.Bookmark:
+                Intent intent3 = new Intent(employment.this,bookmarkinfo.class);
                 startActivity(intent3);
-                break;
-            case R.id.event:
-                Intent intent4 = new Intent(employment.this,eventinfo.class);
-                startActivity(intent4);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
