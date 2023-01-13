@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -27,7 +29,7 @@ import com.google.android.material.navigation.NavigationView;
 import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
 
 public class profile extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,PopupMenu.OnMenuItemClickListener{
-    TextView TextViewfullname , TextViewidno,TextViewcourse , TextViewyeargrad, TextViewbirthdate , TextViewgender , TextViewcivilstatus , TextViewcontact , TextViewemail , TextViewskill , TextViewaddress ;
+    TextView TextViewfullname , TextViewidno,TextViewcourse ,TextViewcourse1, TextViewyeargrad,TextViewyeargrad1, TextViewbirthdate , TextViewgender , TextViewcivilstatus , TextViewcontact , TextViewemail , TextViewskill , TextViewaddress ;
     TextView TextViewnotification , TextViewnewsnotification, TextVieweventnotification, TextViewpostgraduate, TextViewpostgraduatey1, TextViewpostgraduatey2, TextViewemployed, TextViewemployedy1, TextViewemployedy2, TextViewemployedy3, TextViewemployedy4, TextViewemployedy5, TextViewemployedn1, TextViewfirstjob, TextViewfirstjoby1, TextViewfirstjoby2, TextViewfirstjoby3, TextViewfirstjoby4, TextViewfirstjoby4y1,TextViewfirstjoby5,TextViewfirstjoby6;
     TextView qTextViewpostgraduate, qTextViewpostgraduatey1, qTextViewpostgraduatey2, qTextViewemployed, qTextViewemployedy1, qTextViewemployedy2, qTextViewemployedy3, qTextViewemployedy4, qTextViewemployedy5, qTextViewemployedn1, qTextViewfirstjob, qTextViewfirstjoby1, qTextViewfirstjoby2, qTextViewfirstjoby3, qTextViewfirstjoby4, qTextViewfirstjoby4y1,qTextViewfirstjoby5,qTextViewfirstjoby6;
     ImageView ImageViewgraduatedimage;
@@ -49,6 +51,9 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
     //firstjob
     LinearLayout LinearlayoutFirstjobGuide,LinearlayoutFirstjobYes;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -158,7 +163,9 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
 
 
         String course = SharedPrefManager.getInstance(this).getCourse();
+        String course1 = SharedPrefManager.getInstance(this).getCourse1();
         String yeargrad = SharedPrefManager.getInstance(this).getYeargrad();
+        String yeargrad1 = SharedPrefManager.getInstance(this).getYeargrad1();
         String gender = SharedPrefManager.getInstance(this).getGender();
         String birthdate = SharedPrefManager.getInstance(this).getBirthdate();
         String civilstatus = SharedPrefManager.getInstance(this).getCivilstatus();
@@ -200,6 +207,11 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
         TextViewidno.setText(idno);
         TextViewcourse.setText(course);
         TextViewyeargrad.setText(yeargrad);
+        if (course1 != ""){
+            TextViewcourse.setText(course + ", " + course1);
+            TextViewyeargrad.setText(yeargrad+ ", " + yeargrad1);
+        }
+
         TextViewgender.setText(gender);
         TextViewbirthdate.setText(birthdate);
         TextViewcivilstatus.setText(civilstatus);
@@ -395,20 +407,24 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
             case R.id.Alumni:
                 Intent intent1 = new Intent(profile.this,alumni.class);
                 startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Trending:
                 Intent intent2 = new Intent(profile.this,trendinginfo.class);
                 startActivity(intent2);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Bookmark:
                 Intent intent3 = new Intent(profile.this,bookmarkinfo.class);
                 startActivity(intent3);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
                 finishAffinity();
                 Intent intent5 = new Intent(profile.this,login.class);
                 startActivity(intent5);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
 
 
@@ -423,7 +439,6 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
             case R.id.profilepic:
                 Intent intent1 = new Intent(profile.this,profilepic.class);
                 startActivity(intent1);
-
                 return true;
             case R.id.password:
                 Intent intent2 = new Intent(profile.this,password.class);
@@ -454,31 +469,37 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
     public void GeneralInfo(View view) {
         Intent intent = new Intent(profile.this,generalinfo.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void AdvanceStudy(View view) {
         Intent intent = new Intent(profile.this,advancestudy.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void FirstJob(View view) {
         Intent intent = new Intent(profile.this,firstjob.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void Employment(View view) {
         Intent intent = new Intent(profile.this,employment.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void ChangeProfile(View view) {
         Intent intent = new Intent(profile.this,profilepic.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void Password(View view) {
         Intent intent = new Intent(profile.this,password.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
 }

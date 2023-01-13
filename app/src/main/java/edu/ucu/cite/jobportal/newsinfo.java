@@ -25,6 +25,7 @@ import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -53,7 +54,6 @@ public class newsinfo extends AppCompatActivity implements NavigationView.OnNavi
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle mtoggle=null,mytoggle=null;
     androidx.appcompat.widget.Toolbar toolbar;
-    ProgressBar progressBar;
     RecyclerView recyclerViewNews;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager managernews;
@@ -67,7 +67,8 @@ public class newsinfo extends AppCompatActivity implements NavigationView.OnNavi
     SearchView searchView;
     RecyclerAdapterNews adapterNews;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
-    ProgressDialog progressDialog;
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +82,8 @@ public class newsinfo extends AppCompatActivity implements NavigationView.OnNavi
         ImageViewNavProfile = findViewById(R.id.navprofile);
         TextViewNavFullname = findViewById(R.id.navfullname);
         TextViewNavIdno = (TextView)  findViewById(R.id.navidno);
+        progressBar = findViewById(R.id.progress);
+        relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
         String firstname = SharedPrefManager.getInstance(this).getFirstname();
         String middlename = SharedPrefManager.getInstance(this).getMiddlename();
@@ -173,8 +176,8 @@ public class newsinfo extends AppCompatActivity implements NavigationView.OnNavi
 
 
     private void loadNews() {
-        progressDialog = new ProgressDialog(newsinfo.this);
-        progressDialog.setMessage("Please wait...");
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL_NEWS,
                 new Response.Listener<String>() {
                     @Override
@@ -201,8 +204,9 @@ public class newsinfo extends AppCompatActivity implements NavigationView.OnNavi
                                         news.getString("newsdate")
                                 ));
 
-                                progressDialog.dismiss();
 
+                                progressBar.setVisibility(View.GONE);
+                                relativeLayoutProgressBar.setVisibility(View.GONE);
 
 
 
@@ -262,20 +266,24 @@ public class newsinfo extends AppCompatActivity implements NavigationView.OnNavi
             case R.id.Alumni:
                 Intent intent1 = new Intent(newsinfo.this,alumni.class);
                 startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Trending:
                 Intent intent2 = new Intent(newsinfo.this,trendinginfo.class);
                 startActivity(intent2);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Bookmark:
                 Intent intent3 = new Intent(newsinfo.this,bookmarkinfo.class);
                 startActivity(intent3);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
                 finishAffinity();
                 Intent intent5 = new Intent(newsinfo.this,login.class);
                 startActivity(intent5);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
 
 

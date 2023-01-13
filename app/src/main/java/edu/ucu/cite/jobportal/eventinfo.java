@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -46,7 +47,6 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
     DrawerLayout drawerLayout;
     androidx.appcompat.widget.Toolbar toolbar;
     ActionBarDrawerToggle mtoggle=null,mytoggle=null;
-    ProgressBar progressBar;
     TextView TextViewTitleNav;
     DrawerLayout mydrawer;
     RecyclerView recyclerViewEvent;
@@ -59,7 +59,9 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
     RecyclerAdapterEvent adapterEvent;
     SearchView searchView;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
-    ProgressDialog progressDialog;
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +69,8 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
         ImageViewNavProfile = findViewById(R.id.navprofile);
         TextViewNavFullname = findViewById(R.id.navfullname);
         TextViewNavIdno = (TextView)  findViewById(R.id.navidno);
+        progressBar = findViewById(R.id.progress);
+        relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
 
         String firstname = SharedPrefManager.getInstance(this).getFirstname();
@@ -162,8 +166,10 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
 
 
     private void loadEvent() {
-        progressDialog = new ProgressDialog(eventinfo.this);
-        progressDialog.setMessage("Please wait...");
+
+
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL_EVENT,
                 new Response.Listener<String>() {
                     @Override
@@ -207,8 +213,8 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
 
 
 
-                                progressDialog.dismiss();
-
+                                progressBar.setVisibility(View.GONE);
+                                relativeLayoutProgressBar.setVisibility(View.GONE);
 
                             }
 
@@ -267,20 +273,24 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
             case R.id.Alumni:
                 Intent intent1 = new Intent(eventinfo.this,alumni.class);
                 startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Trending:
                 Intent intent2 = new Intent(eventinfo.this,trendinginfo.class);
                 startActivity(intent2);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Bookmark:
                 Intent intent3 = new Intent(eventinfo.this,bookmarkinfo.class);
                 startActivity(intent3);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
                 finishAffinity();
                 Intent intent5 = new Intent(eventinfo.this,login.class);
                 startActivity(intent5);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
 
 
@@ -306,5 +316,6 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
     public void ALlEvents(View view) {
         Intent intent = new Intent(eventinfo.this,eventinfoall.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }

@@ -25,6 +25,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,6 +70,8 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
     TextView TextViewTitleNav;
     ImageView ImageViewtambling;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +84,8 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
         String lastname = SharedPrefManager.getInstance(this).getLastname();
         String idno = SharedPrefManager.getInstance(this).getIDno();
         String graduatedimage = SharedPrefManager.getInstance(this).getGraduatedimage();
+        progressBar = findViewById(R.id.progress);
+        relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
 
         Glide.with(profilepic.this).load(graduatedimage).into(ImageProfile);
@@ -124,10 +130,8 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
             public void onClick(View view) {
 
 
-                progressDialog = new ProgressDialog(profilepic.this);
-                progressDialog.setTitle("Uploading");
-                progressDialog.setMessage("Please wait....");
-                progressDialog.show();
+                progressBar.setVisibility(View.VISIBLE);
+                relativeLayoutProgressBar.setVisibility(View.VISIBLE);
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, Constants.URL_PROFILEPIC, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -147,9 +151,11 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
                                                 jsonObject.getString("firstname"),
                                                 jsonObject.getString("middlename"),
                                                 jsonObject.getString("lastname"),
-                                                jsonObject.getString("course"),
-                                                jsonObject.getString("college"),
                                                 jsonObject.getString("yeargrad"),
+                                                jsonObject.getString("yeargrad1"),
+                                                jsonObject.getString("college"),
+                                                jsonObject.getString("course"),
+                                                jsonObject.getString("course1"),
                                                 jsonObject.getString("gender"),
                                                 jsonObject.getString("birthdate"),
                                                 jsonObject.getString("civilstatus"),
@@ -192,7 +198,8 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
 
 
                                         );
-
+                                progressBar.setVisibility(View.GONE);
+                                relativeLayoutProgressBar.setVisibility(View.GONE);
                                 startActivity(new Intent(getApplicationContext(), profile.class));
                                 finish();
 
@@ -346,5 +353,6 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
 
     public void back(View view) {
         finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

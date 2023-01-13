@@ -130,7 +130,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
 
                 <androidx.cardview.widget.CardView
@@ -422,6 +424,27 @@
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+                    <RelativeLayout
+                        android:id="@+id/relativeprogress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/white_circle"
+                        android:elevation="8dp"
+                        android:visibility="gone">
+
+                        <ProgressBar
+                            android:id="@+id/progress"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:visibility="gone" />
+
+                    </RelativeLayout>
+
+
+
+                </RelativeLayout>
             </LinearLayout>
 
 

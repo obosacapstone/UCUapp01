@@ -20,6 +20,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,12 +59,12 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
     ActionBarDrawerToggle mytoggle=null;
     TextView TextViewNavFullname, TextViewNavIdno;
     ImageView ImageViewNavProfile;
-    ProgressDialog progressDialog;
     Button ButtonSave,ButtonSaved;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     Button ButtonApplyNow,ButtonTitleJob;
     String StringTitleLength,StringTitleOverflow;
-
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +72,8 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
         ImageViewNavProfile = findViewById(R.id.navprofile);
         TextViewNavFullname = findViewById(R.id.navfullname);
         TextViewNavIdno = (TextView)  findViewById(R.id.navidno);
-
+        progressBar = findViewById(R.id.progress);
+        relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
         String firstname = SharedPrefManager.getInstance(this).getFirstname();
         String middlename = SharedPrefManager.getInstance(this).getMiddlename();
@@ -163,8 +166,8 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
         ButtonApplyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDialog = new ProgressDialog(jobhiringinfodata.this);
-                progressDialog.setMessage("Please wait...");
+                progressBar.setVisibility(View.VISIBLE);
+                relativeLayoutProgressBar.setVisibility(View.VISIBLE);
 
                 String id = getIntent().getStringExtra("id");
 
@@ -178,7 +181,9 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
 
                                     JSONObject jsonObject = new JSONObject(response);
                                     SendMail();
-                                    progressDialog.dismiss();
+
+                                    progressBar.setVisibility(View.GONE);
+                                    relativeLayoutProgressBar.setVisibility(View.GONE);
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -288,20 +293,24 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
             case R.id.Alumni:
                 Intent intent1 = new Intent(jobhiringinfodata.this,alumni.class);
                 startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Trending:
                 Intent intent2 = new Intent(jobhiringinfodata.this,trendinginfo.class);
                 startActivity(intent2);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Bookmark:
                 Intent intent3 = new Intent(jobhiringinfodata.this,bookmarkinfo.class);
                 startActivity(intent3);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
                 finishAffinity();
                 Intent intent5 = new Intent(jobhiringinfodata.this,login.class);
                 startActivity(intent5);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
 
 
@@ -328,8 +337,9 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
     }
 
     public void Save(View view) {
-        progressDialog = new ProgressDialog(jobhiringinfodata.this);
-        progressDialog.setMessage("Please wait....");
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
+
         String idno = SharedPrefManager.getInstance(this).getIDno();
         String id = getIntent().getStringExtra("id");
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
@@ -337,7 +347,7 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
+
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 //                            Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
@@ -350,9 +360,11 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
                                             jsonObject.getString("firstname"),
                                             jsonObject.getString("middlename"),
                                             jsonObject.getString("lastname"),
-                                            jsonObject.getString("course"),
-                                            jsonObject.getString("college"),
                                             jsonObject.getString("yeargrad"),
+                                            jsonObject.getString("yeargrad1"),
+                                            jsonObject.getString("college"),
+                                            jsonObject.getString("course"),
+                                            jsonObject.getString("course1"),
                                             jsonObject.getString("gender"),
                                             jsonObject.getString("birthdate"),
                                             jsonObject.getString("civilstatus"),
@@ -397,6 +409,10 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
                             ButtonSave.setVisibility(LinearLayout.GONE);
                             ButtonSaved.setVisibility(LinearLayout.VISIBLE);
 
+
+                            progressBar.setVisibility(View.GONE);
+                            relativeLayoutProgressBar.setVisibility(View.GONE);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Log.e("anyText",response);
@@ -427,8 +443,9 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
     }
 
     public void Saved(View view) {
-        progressDialog = new ProgressDialog(jobhiringinfodata.this);
-        progressDialog.setMessage("Please wait....");
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
+
         String idno = SharedPrefManager.getInstance(this).getIDno();
         String id = getIntent().getStringExtra("id");
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
@@ -436,7 +453,7 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
+
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 //                            Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
@@ -449,9 +466,11 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
                                             jsonObject.getString("firstname"),
                                             jsonObject.getString("middlename"),
                                             jsonObject.getString("lastname"),
-                                            jsonObject.getString("course"),
-                                            jsonObject.getString("college"),
                                             jsonObject.getString("yeargrad"),
+                                            jsonObject.getString("yeargrad1"),
+                                            jsonObject.getString("college"),
+                                            jsonObject.getString("course"),
+                                            jsonObject.getString("course1"),
                                             jsonObject.getString("gender"),
                                             jsonObject.getString("birthdate"),
                                             jsonObject.getString("civilstatus"),
@@ -495,6 +514,8 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
 
                             ButtonSave.setVisibility(LinearLayout.VISIBLE);
                             ButtonSaved.setVisibility(LinearLayout.GONE);
+                            progressBar.setVisibility(View.GONE);
+                            relativeLayoutProgressBar.setVisibility(View.GONE);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -527,5 +548,6 @@ public class jobhiringinfodata extends AppCompatActivity implements NavigationVi
 
     public void back(View view) {
         finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

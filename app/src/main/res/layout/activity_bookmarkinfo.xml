@@ -68,7 +68,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -83,8 +83,6 @@
                         layout="@layout/app_bar"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
-
-
 
 
                     <androidx.cardview.widget.CardView
@@ -105,17 +103,17 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginHorizontal="7dp"
-                        android:layout_marginBottom="80dp"
                         android:paddingBottom="10dp"
                         app:cardCornerRadius="7dp"
                         app:cardElevation="10dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:paddingBottom="50dp">
 
                             <androidx.appcompat.widget.SearchView
                                 android:id="@+id/search_view"
@@ -139,17 +137,10 @@
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recycleview"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="match_parent" />
 
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
-
-
-                    <ProgressBar
-                        android:id="@+id/progress"
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:visibility="gone" />
 
 
                 </LinearLayout>
@@ -166,6 +157,26 @@
                 app:itemIconSize="25dp"
                 app:labelVisibilityMode="labeled"
                 app:menu="@menu/homenav" />
+
+
+
+            <RelativeLayout
+                android:id="@+id/relativeprogress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/white_circle"
+                android:elevation="8dp"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
 
 
 

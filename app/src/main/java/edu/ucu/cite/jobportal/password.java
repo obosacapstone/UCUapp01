@@ -6,7 +6,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -19,6 +18,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +36,6 @@ import com.google.android.material.navigation.NavigationView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,12 +54,16 @@ public class password extends AppCompatActivity  implements View.OnClickListener
     TextView TextViewTitleNav;
     NavigationView navigationView;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password);
         TextViewTitleNav = findViewById(R.id.titlenav);
         TextViewTitleNav.setText("Change Password");
+        progressBar = findViewById(R.id.progress);
+        relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
 
         ImageViewNavProfile = findViewById(R.id.navprofile);
@@ -140,8 +144,8 @@ public class password extends AppCompatActivity  implements View.OnClickListener
                 if (Stringpassword.equals(oldpassword)) {
 
                     if (Stringnewpassword.equals(Stringconfirmpassword)) {
-                        progressDialog = new ProgressDialog(password.this);
-                        progressDialog.setMessage("Please wait....");
+                        progressBar.setVisibility(View.VISIBLE);
+                        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
                         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                                 Constants.URL_PASSOWRD,
                                 new Response.Listener<String>() {
@@ -163,9 +167,11 @@ public class password extends AppCompatActivity  implements View.OnClickListener
                                                                 jsonObject.getString("firstname"),
                                                                 jsonObject.getString("middlename"),
                                                                 jsonObject.getString("lastname"),
-                                                                jsonObject.getString("course"),
-                                                                jsonObject.getString("college"),
                                                                 jsonObject.getString("yeargrad"),
+                                                                jsonObject.getString("yeargrad1"),
+                                                                jsonObject.getString("college"),
+                                                                jsonObject.getString("course"),
+                                                                jsonObject.getString("course1"),
                                                                 jsonObject.getString("gender"),
                                                                 jsonObject.getString("birthdate"),
                                                                 jsonObject.getString("civilstatus"),
@@ -206,7 +212,8 @@ public class password extends AppCompatActivity  implements View.OnClickListener
 
 
                                                         );
-
+                                                progressBar.setVisibility(View.GONE);
+                                                relativeLayoutProgressBar.setVisibility(View.GONE);
                                                 startActivity(new Intent(getApplicationContext(), profile.class));
                                                 finish();
 
@@ -340,5 +347,6 @@ public class password extends AppCompatActivity  implements View.OnClickListener
 
     public void back(View view) {
         finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

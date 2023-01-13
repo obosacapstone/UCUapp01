@@ -1,5 +1,6 @@
 package edu.ucu.cite.jobportal;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -62,7 +63,9 @@ public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEv
 
         return new RecyclerAdapterEvent.ProductViewHolder(view);
     }
-
+    private Context getContext() {
+        return mCtx;
+    }
     @Override
     public void onBindViewHolder(ProductViewHolder holder, int position) {
         eventlist productevent = eventlists.get(position);
@@ -91,6 +94,7 @@ public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEv
                 intent.putExtra("eventnotinterested", productevent.getNotinterested());
 
                 mCtx.startActivity(intent);
+                ((Activity) getContext()).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         //uploaded date
@@ -217,14 +221,18 @@ public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEv
         String StringCollegeAlumni = SharedPrefManager.getInstance(mCtx.getApplicationContext()).getCollege();;
         //related event
         holder.btnevent.setVisibility(LinearLayout.GONE);
+
+        String splitcollegeuser[] = StringCollegeAlumni.split(", ");
         String splitcollege[] = StringCollege.split(",,,");
 
-        for(int i =0; i<splitcollege.length; i++){
+        for(int ii =0; ii<splitcollegeuser.length; ii++) {
+            for (int i = 0; i < splitcollege.length; i++) {
 
-            if (splitcollege[i].equals(StringCollegeAlumni)){
-                holder.btnevent.setVisibility(LinearLayout.VISIBLE);
+                if (splitcollege[i].equals(splitcollegeuser[ii])) {
+                    holder.btnevent.setVisibility(LinearLayout.VISIBLE);
+                }
+
             }
-
         }
 
 

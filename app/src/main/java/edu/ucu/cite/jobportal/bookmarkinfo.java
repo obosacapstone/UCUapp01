@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -44,7 +45,6 @@ import java.util.List;
 import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
 
 public class bookmarkinfo extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    ProgressBar progressBar;
     RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager manager;
@@ -66,6 +66,8 @@ public class bookmarkinfo extends AppCompatActivity implements NavigationView.On
     ArrayList list;
     TextView TextViewsearchempty;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +79,8 @@ public class bookmarkinfo extends AppCompatActivity implements NavigationView.On
         TextViewNavFullname = findViewById(R.id.navfullname);
         TextViewNavIdno = (TextView)  findViewById(R.id.navidno);
         progressBar = findViewById(R.id.progress);
+        relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
+
 
         String firstname = SharedPrefManager.getInstance(this).getFirstname();
         String middlename = SharedPrefManager.getInstance(this).getMiddlename();
@@ -86,6 +90,7 @@ public class bookmarkinfo extends AppCompatActivity implements NavigationView.On
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.naview);
         bottomNavigationView.setItemIconTintList(null);
+        bottomNavigationView.getMenu().getItem(0).setCheckable(false);
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()){
 
@@ -230,7 +235,8 @@ public class bookmarkinfo extends AppCompatActivity implements NavigationView.On
 
     }
     private void loadProducts() {
-
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL_JOBHIRING,
                 new Response.Listener<String>() {
                     @Override
@@ -277,6 +283,8 @@ public class bookmarkinfo extends AppCompatActivity implements NavigationView.On
 
                             }
 
+                            progressBar.setVisibility(View.GONE);
+                            relativeLayoutProgressBar.setVisibility(View.GONE);
                             //creating adapter object and setting it to recyclerview
                             adapter = new RecyclerAdapterBookmark(bookmarkinfo.this, productList);
                             recyclerView.setAdapter(adapter);
@@ -322,20 +330,24 @@ public class bookmarkinfo extends AppCompatActivity implements NavigationView.On
             case R.id.Alumni:
                 Intent intent1 = new Intent(bookmarkinfo.this,alumni.class);
                 startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Trending:
                 Intent intent2 = new Intent(bookmarkinfo.this,trendinginfo.class);
                 startActivity(intent2);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Bookmark:
                 Intent intent3 = new Intent(bookmarkinfo.this,bookmarkinfo.class);
                 startActivity(intent3);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
                 finishAffinity();
                 Intent intent5 = new Intent(bookmarkinfo.this,login.class);
                 startActivity(intent5);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
 
 

@@ -20,8 +20,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,10 +68,14 @@ public class advancestudy extends AppCompatActivity implements View.OnClickListe
     ArrayAdapter<String> adapterStringpostgraduateyes2;
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advancestudy);
+        progressBar = findViewById(R.id.progress);
+        relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
         //motherpostgraduate
         RadioGroupqpostgraduateyesno = findViewById(R.id.qpostgraduateyesno);
@@ -169,8 +175,8 @@ public class advancestudy extends AppCompatActivity implements View.OnClickListe
 
 
 
-        progressDialog = new ProgressDialog(advancestudy.this);
-        progressDialog.setMessage("Please wait....");
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.URL_ADVANCESTUDY,
                 new Response.Listener<String>() {
@@ -189,9 +195,11 @@ public class advancestudy extends AppCompatActivity implements View.OnClickListe
                                                 jsonObject.getString("firstname"),
                                                 jsonObject.getString("middlename"),
                                                 jsonObject.getString("lastname"),
-                                                jsonObject.getString("course"),
-                                                jsonObject.getString("college"),
                                                 jsonObject.getString("yeargrad"),
+                                                jsonObject.getString("yeargrad1"),
+                                                jsonObject.getString("college"),
+                                                jsonObject.getString("course"),
+                                                jsonObject.getString("course1"),
                                                 jsonObject.getString("gender"),
                                                 jsonObject.getString("birthdate"),
                                                 jsonObject.getString("civilstatus"),
@@ -234,7 +242,8 @@ public class advancestudy extends AppCompatActivity implements View.OnClickListe
 
 
                                         );
-
+                                progressBar.setVisibility(View.GONE);
+                                relativeLayoutProgressBar.setVisibility(View.GONE);
                                 startActivity(new Intent(getApplicationContext(), profile.class));
                                 finish();
 
@@ -334,6 +343,7 @@ public class advancestudy extends AppCompatActivity implements View.OnClickListe
 
     public void back(View view) {
         finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
     @Override
     protected void onStart() {

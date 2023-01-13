@@ -1,5 +1,6 @@
 package edu.ucu.cite.jobportal;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.icu.util.Calendar;
@@ -43,7 +44,9 @@ public class RecyclerAdapterEventAll extends RecyclerView.Adapter<RecyclerAdapte
 
         return new RecyclerAdapterEventAll.ProductViewHolder(view);
     }
-
+    private Context getContext() {
+        return mCtx;
+    }
     @Override
     public void onBindViewHolder(RecyclerAdapterEventAll.ProductViewHolder holder, int position) {
         eventlist productevent = eventlists.get(position);
@@ -72,6 +75,7 @@ public class RecyclerAdapterEventAll extends RecyclerView.Adapter<RecyclerAdapte
                 intent.putExtra("eventnotinterested", productevent.getNotinterested());
 
                 mCtx.startActivity(intent);
+                ((Activity) getContext()).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         //uploaded date

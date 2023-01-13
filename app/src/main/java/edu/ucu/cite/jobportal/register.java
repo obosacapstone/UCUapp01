@@ -37,8 +37,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
@@ -141,10 +143,15 @@ public class register extends AppCompatActivity implements View.OnClickListener,
 
     EditText EditTextHouse;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        progressBar = findViewById(R.id.progress);
+        relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
+
         EditTextlastname = findViewById(R.id.lastname);
         EditTextfirstname = findViewById(R.id.firstname);
         EditTextmiddlename = findViewById(R.id.middlename);
@@ -481,13 +488,15 @@ public class register extends AppCompatActivity implements View.OnClickListener,
 
 
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Please wait...");
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
         //submit
         ButtonSubmit = findViewById(R.id.submit);
         ButtonSubmit.setOnClickListener(this);
 
 
+        progressBar.setVisibility(View.GONE);
+        relativeLayoutProgressBar.setVisibility(View.GONE);
 
 
         

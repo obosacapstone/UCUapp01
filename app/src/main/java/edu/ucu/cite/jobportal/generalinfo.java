@@ -23,6 +23,8 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -85,6 +87,8 @@ public class generalinfo extends AppCompatActivity  implements View.OnClickListe
     String[] StringskillArray = {"Accounting/Finance & Benifits","Admin/Human Resources","Sales/Marketing","Arts/Media/Communications","Services","Hotel/Restaurant","Education/Training",
             "Computer/Information Technology","Engineering","Manufacturing","Building/Construction","Sciences","Healthcare","Journalst/Editors","General Work","Publishing"};
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +100,8 @@ public class generalinfo extends AppCompatActivity  implements View.OnClickListe
         ImageViewNavProfile = findViewById(R.id.navprofile);
         TextViewNavFullname = findViewById(R.id.navfullname);
         TextViewNavIdno = (TextView)  findViewById(R.id.navidno);
+        progressBar = findViewById(R.id.progress);
+        relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
 
         String firstname = SharedPrefManager.getInstance(this).getFirstname();
@@ -318,9 +324,8 @@ public class generalinfo extends AppCompatActivity  implements View.OnClickListe
         if(!contact.isEmpty() && !skills.isEmpty() && email.matches(emailPattern)){
 
 
-
-        progressDialog = new ProgressDialog(generalinfo.this);
-        progressDialog.setMessage("Please wait....");
+            progressBar.setVisibility(View.VISIBLE);
+            relativeLayoutProgressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.URL_GENERALINFO,
                 new Response.Listener<String>() {
@@ -339,9 +344,11 @@ public class generalinfo extends AppCompatActivity  implements View.OnClickListe
                                                 jsonObject.getString("firstname"),
                                                 jsonObject.getString("middlename"),
                                                 jsonObject.getString("lastname"),
-                                                jsonObject.getString("course"),
-                                                jsonObject.getString("college"),
                                                 jsonObject.getString("yeargrad"),
+                                                jsonObject.getString("yeargrad1"),
+                                                jsonObject.getString("college"),
+                                                jsonObject.getString("course"),
+                                                jsonObject.getString("course1"),
                                                 jsonObject.getString("gender"),
                                                 jsonObject.getString("birthdate"),
                                                 jsonObject.getString("civilstatus"),
@@ -384,7 +391,8 @@ public class generalinfo extends AppCompatActivity  implements View.OnClickListe
 
 
                                         );
-
+                                progressBar.setVisibility(View.GONE);
+                                relativeLayoutProgressBar.setVisibility(View.GONE);
                                 startActivity(new Intent(getApplicationContext(), profile.class));
                                 finish();
 
@@ -491,6 +499,7 @@ public class generalinfo extends AppCompatActivity  implements View.OnClickListe
 
     public void back(View view) {
         finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
     @Override
     protected void onStart() {

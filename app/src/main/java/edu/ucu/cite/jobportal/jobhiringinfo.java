@@ -27,6 +27,7 @@ import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,7 +56,6 @@ import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
 
 public class jobhiringinfo extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    ProgressBar progressBar;
     RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager manager;
@@ -77,7 +77,8 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
     ArrayList list;
     TextView TextViewsearchempty;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
-    ProgressDialog progressDialog;
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +91,7 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
         TextViewNavFullname = findViewById(R.id.navfullname);
         TextViewNavIdno = (TextView)  findViewById(R.id.navidno);
         progressBar = findViewById(R.id.progress);
-
+        relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
         String firstname = SharedPrefManager.getInstance(this).getFirstname();
         String middlename = SharedPrefManager.getInstance(this).getMiddlename();
         String lastname = SharedPrefManager.getInstance(this).getLastname();
@@ -207,7 +208,6 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
     }
 
     private void fetchData() {
-        progressBar.setVisibility(View.VISIBLE);
      new Handler().postDelayed(new Runnable() {
          @Override
          public void run() {
@@ -241,8 +241,8 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
 
     }
     private void loadProducts() {
-        progressDialog = new ProgressDialog(jobhiringinfo.this);
-        progressDialog.setMessage("Please wait...");
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL_JOBHIRING,
                 new Response.Listener<String>() {
                     @Override
@@ -284,8 +284,9 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
                                 ));
 
 
-                                progressDialog.dismiss();
 
+                                progressBar.setVisibility(View.GONE);
+                                relativeLayoutProgressBar.setVisibility(View.GONE);
 
                             }
 
@@ -334,20 +335,24 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
             case R.id.Alumni:
                 Intent intent1 = new Intent(jobhiringinfo.this,alumni.class);
                 startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Trending:
                 Intent intent2 = new Intent(jobhiringinfo.this,trendinginfo.class);
                 startActivity(intent2);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Bookmark:
                 Intent intent3 = new Intent(jobhiringinfo.this,bookmarkinfo.class);
                 startActivity(intent3);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
                 finishAffinity();
                 Intent intent5 = new Intent(jobhiringinfo.this,login.class);
                 startActivity(intent5);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
 
 

@@ -19,6 +19,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,7 +49,6 @@ public class interested extends AppCompatActivity implements View.OnClickListene
     TextView TextViewEventDetailData, TextViewEventDateData, TextViewdatedurationdata,TextViewAddressData,TextViewVenueData,
             TextViewDescriptionData,TextViewSponsorData,TextViewOrganizerData;
     ImageView ImageVieweventimagedata;
-    ProgressDialog progressDialog;
     String eventid,StringInterestedPlain,StringNotInterestedPlain,StringInterestedSelected,StringNotInterestedSelected;
     Date DateUploaded,DateStartDate , DateEndDate,qEndDate,qStartDate,qCurrentDate;
     String StringStartDate,StringEndDate,StartTime,EndTime,StringqStartDate,StringqEndDate,StringqCurrentDate;
@@ -64,12 +65,17 @@ public class interested extends AppCompatActivity implements View.OnClickListene
     ImageView imageUpload ,ImageProfile;
     Button ButtonTitleEvent;
     String StringTitleLength,StringTitleOverflow;
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interested);
         TextViewTitleNav = findViewById(R.id.titlenav);
         TextViewTitleNav.setText("Event Information");
+        progressBar = findViewById(R.id.progress);
+        relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
         ImageViewNavProfile = findViewById(R.id.navprofile);
         TextViewNavFullname = findViewById(R.id.navfullname);
@@ -369,8 +375,10 @@ public class interested extends AppCompatActivity implements View.OnClickListene
 
 
     public void SubmitInterested(View view) {
-        progressDialog = new ProgressDialog(interested.this);
-        progressDialog.setMessage("Please wait....");
+
+
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
         String eventid = getIntent().getStringExtra("eventid");
         String interested = getIntent().getStringExtra("eventinterested");
         String notinterested = getIntent().getStringExtra("eventnotinterested");
@@ -379,11 +387,12 @@ public class interested extends AppCompatActivity implements View.OnClickListene
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
+
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
-
+                            progressBar.setVisibility(View.GONE);
+                            relativeLayoutProgressBar.setVisibility(View.GONE);
                             startActivity(new Intent(getApplicationContext(), eventinfo.class));
                             finish();
 
@@ -421,8 +430,10 @@ public class interested extends AppCompatActivity implements View.OnClickListene
     }
 
     public void SubmitNotInterested(View view) {
-        progressDialog = new ProgressDialog(interested.this);
-        progressDialog.setMessage("Please wait....");
+
+
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
         String eventid = getIntent().getStringExtra("eventid");
         String interested = getIntent().getStringExtra("eventinterested");
         String notinterested = getIntent().getStringExtra("eventnotinterested");
@@ -431,11 +442,12 @@ public class interested extends AppCompatActivity implements View.OnClickListene
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
+
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
-
+                            progressBar.setVisibility(View.GONE);
+                            relativeLayoutProgressBar.setVisibility(View.GONE);
                             startActivity(new Intent(getApplicationContext(), eventinfo.class));
                             finish();
 
@@ -507,20 +519,24 @@ public class interested extends AppCompatActivity implements View.OnClickListene
             case R.id.Alumni:
                 Intent intent1 = new Intent(interested.this,alumni.class);
                 startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Trending:
                 Intent intent2 = new Intent(interested.this,trendinginfo.class);
                 startActivity(intent2);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Bookmark:
                 Intent intent3 = new Intent(interested.this,bookmarkinfo.class);
                 startActivity(intent3);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
                 finishAffinity();
                 Intent intent5 = new Intent(interested.this,login.class);
                 startActivity(intent5);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
 
 
@@ -531,5 +547,6 @@ public class interested extends AppCompatActivity implements View.OnClickListene
 
     public void back(View view) {
         finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

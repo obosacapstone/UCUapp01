@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -44,7 +45,6 @@ public class eventinfoall extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     androidx.appcompat.widget.Toolbar toolbar;
     ActionBarDrawerToggle mtoggle=null,mytoggle=null;
-    ProgressBar progressBar;
     TextView TextViewTitleNav;
     DrawerLayout mydrawer;
     RecyclerView recyclerViewEvent;
@@ -57,7 +57,9 @@ public class eventinfoall extends AppCompatActivity implements NavigationView.On
     RecyclerAdapterEventAll adapterEvent;
     SearchView searchView;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
-    ProgressDialog progressDialog;
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +67,8 @@ public class eventinfoall extends AppCompatActivity implements NavigationView.On
         ImageViewNavProfile = findViewById(R.id.navprofile);
         TextViewNavFullname = findViewById(R.id.navfullname);
         TextViewNavIdno = (TextView)  findViewById(R.id.navidno);
+        progressBar = findViewById(R.id.progress);
+        relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
 
         String firstname = SharedPrefManager.getInstance(this).getFirstname();
@@ -158,8 +162,10 @@ public class eventinfoall extends AppCompatActivity implements NavigationView.On
 
 
     private void loadEvent() {
-        progressDialog = new ProgressDialog(eventinfoall.this);
-        progressDialog.setMessage("Please wait...");
+
+
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL_EVENT,
                 new Response.Listener<String>() {
                     @Override
@@ -201,7 +207,8 @@ public class eventinfoall extends AppCompatActivity implements NavigationView.On
 
                                 ));
 
-                                progressDialog.dismiss();
+                                progressBar.setVisibility(View.GONE);
+                                relativeLayoutProgressBar.setVisibility(View.GONE);
 
 
 
@@ -264,20 +271,24 @@ public class eventinfoall extends AppCompatActivity implements NavigationView.On
             case R.id.Alumni:
                 Intent intent1 = new Intent(eventinfoall.this,alumni.class);
                 startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Trending:
                 Intent intent2 = new Intent(eventinfoall.this,trendinginfo.class);
                 startActivity(intent2);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.Bookmark:
                 Intent intent3 = new Intent(eventinfoall.this,bookmarkinfo.class);
                 startActivity(intent3);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case R.id.logout:
                 SharedPrefManager.getInstance(this).logout();
                 finishAffinity();
                 Intent intent5 = new Intent(eventinfoall.this,login.class);
                 startActivity(intent5);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
 
 
@@ -305,5 +316,6 @@ public class eventinfoall extends AppCompatActivity implements NavigationView.On
     public void RelatedEvents(View view) {
         Intent intent = new Intent(eventinfoall.this,eventinfo.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
