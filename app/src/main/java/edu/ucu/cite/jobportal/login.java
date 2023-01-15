@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -35,7 +37,8 @@ import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
 public class login extends AppCompatActivity implements View.OnClickListener{
     EditText textInputEditTextidnumber, textInputEditTextpassword;
     Button buttonLogin,buttonpopupregister;
-    private ProgressDialog progressDialog;
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
     Dialog dialog;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
@@ -69,8 +72,8 @@ public class login extends AppCompatActivity implements View.OnClickListener{
         textInputEditTextpassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.Login);
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Please wait...");
+        progressBar = findViewById(R.id.progress);
+        relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
         buttonLogin.setOnClickListener(this);
     }
@@ -95,7 +98,8 @@ public class login extends AppCompatActivity implements View.OnClickListener{
         }
         if (!idnumber.isEmpty() && !password.isEmpty() ){
 
-            progressDialog.show();
+            progressBar.setVisibility(View.VISIBLE);
+            relativeLayoutProgressBar.setVisibility(View.VISIBLE);
 
             StringRequest stringRequest = new StringRequest(
                     Request.Method.POST,
@@ -103,7 +107,8 @@ public class login extends AppCompatActivity implements View.OnClickListener{
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            progressDialog.dismiss();
+                            progressBar.setVisibility(View.GONE);
+                            relativeLayoutProgressBar.setVisibility(View.GONE);
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
                                 Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
@@ -180,9 +185,10 @@ public class login extends AppCompatActivity implements View.OnClickListener{
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            progressDialog.hide();
+                            progressBar.setVisibility(View.GONE);
+                            relativeLayoutProgressBar.setVisibility(View.GONE);
 
-                            Toast.makeText(getApplicationContext(), "Please Reload ", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), "Please Reload ", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -207,14 +213,16 @@ public class login extends AppCompatActivity implements View.OnClickListener{
     }
 
     public void RegisterYes(View view) {
-        progressDialog.show();
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 Constants.URL_DATABASE,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
+                        progressBar.setVisibility(View.GONE);
+                        relativeLayoutProgressBar.setVisibility(View.GONE);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 
@@ -257,7 +265,8 @@ public class login extends AppCompatActivity implements View.OnClickListener{
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressDialog.hide();
+                        progressBar.setVisibility(View.GONE);
+                        relativeLayoutProgressBar.setVisibility(View.GONE);
 
                     }
 
@@ -276,14 +285,16 @@ public class login extends AppCompatActivity implements View.OnClickListener{
     }
     //register no
     public void RegisterNo(View view) {
-        progressDialog.show();
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 Constants.URL_DATABASE,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
+                        progressBar.setVisibility(View.GONE);
+                        relativeLayoutProgressBar.setVisibility(View.GONE);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 
@@ -326,7 +337,8 @@ public class login extends AppCompatActivity implements View.OnClickListener{
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressDialog.hide();
+                        progressBar.setVisibility(View.GONE);
+                        relativeLayoutProgressBar.setVisibility(View.GONE);
 
                     }
 
