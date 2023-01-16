@@ -2,7 +2,7 @@ package edu.ucu.cite.jobportal;
 
 public class Constants {
 
-//    private static final String ROOT_URL = "http://192.168.1.45/graduatedtracer/jobportal/";
+
 //private static final String ROOT_URL = "http://192.168.100.4/graduatedtracer/jobportal/";
 private static final String ROOT_URL = "https://ucu-graduatedtracer.website/graduatedtracer/jobportal/";
 
@@ -28,5 +28,7 @@ private static final String ROOT_URL = "https://ucu-graduatedtracer.website/grad
     public static final String URL_FORGOTPASSWORD = ROOT_URL+"forgot-password.php";
     public static final String URL_ALUMNI=ROOT_URL+"getalumni.php";
     public static final String URL_APPLYNOW=ROOT_URL+"applynow.php";
+    public static final String URL_POST=ROOT_URL+"getpost.php";
+    public static final String URL_COMMENT=ROOT_URL+"comment.php";
 
 }

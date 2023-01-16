@@ -85,7 +85,9 @@ public class register extends AppCompatActivity implements View.OnClickListener,
     private DatePickerDialog datePickerDialog;
     private Button dateButton;
 
-    private ProgressDialog progressDialog;
+    ProgressBar progressBar;
+    RelativeLayout relativeLayoutProgressBar;
+
     private SimpleAdapter mAdapter;
     TextView TextViewyeargradko;
     //civilstatus
@@ -143,14 +145,14 @@ public class register extends AppCompatActivity implements View.OnClickListener,
 
     EditText EditTextHouse;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
-    ProgressBar progressBar;
-    RelativeLayout relativeLayoutProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         progressBar = findViewById(R.id.progress);
         relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
+
 
         EditTextlastname = findViewById(R.id.lastname);
         EditTextfirstname = findViewById(R.id.firstname);
@@ -590,6 +592,9 @@ public class register extends AppCompatActivity implements View.OnClickListener,
 
     private void RegisterUser(){
 
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
+
         String lastname,firstname,middlename,email,contact,birthdate,idno;
         String gender,civilstatus,course,skills,classification,yeargrad;
         String region,province,city,barangay,house;
@@ -635,10 +640,7 @@ public class register extends AppCompatActivity implements View.OnClickListener,
             EditTextfirstname.setError("Please fill up");
             EditTextfirstname.requestFocus();
         }
-        if (middlename.isEmpty()) {
-            EditTextmiddlename.setError("Please fill up");
-            EditTextmiddlename.requestFocus();
-        }
+
         if (email.isEmpty()) {
             EditTextemail.setError("Please fill up");
             EditTextemail.requestFocus();
@@ -709,16 +711,17 @@ public class register extends AppCompatActivity implements View.OnClickListener,
 
 
 
-            if (!lastname.isEmpty() && !firstname.isEmpty() && !middlename.isEmpty() && !email.isEmpty() && email.matches(emailPattern) && !contact.isEmpty() && contact.length() == 11 && !birthdate.isEmpty()&& !gender.isEmpty() && !civilstatus.isEmpty()  && !course.isEmpty() && !skills.isEmpty() && !classification.isEmpty() &&
+            if (!lastname.isEmpty() && !firstname.isEmpty() && !email.isEmpty() && email.matches(emailPattern) && !contact.isEmpty() && contact.length() == 11 && !birthdate.isEmpty()&& !gender.isEmpty() && !civilstatus.isEmpty()  && !course.isEmpty() && !skills.isEmpty() && !classification.isEmpty() &&
                 !yeargrad.isEmpty()){
                 if(classification.equals("Alumni")){
-                    progressDialog.show();
+                    progressBar.setVisibility(View.VISIBLE);
+                    relativeLayoutProgressBar.setVisibility(View.VISIBLE);
                     StringRequest stringRequest = new StringRequest(Request.Method.POST,
                             Constants.URL_REGISTER,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
-                                    progressDialog.dismiss();
+
                                     try {
                                         JSONObject jsonObject = new JSONObject(response);
 
@@ -737,7 +740,8 @@ public class register extends AppCompatActivity implements View.OnClickListener,
 
 
 
-
+                                        progressBar.setVisibility(View.GONE);
+                                        relativeLayoutProgressBar.setVisibility(View.GONE);
 
 
 
@@ -786,13 +790,15 @@ public class register extends AppCompatActivity implements View.OnClickListener,
                     requestQueue.add(stringRequest);
                 }
                 if(classification.equals("Graduating") && !idno.isEmpty()){
-                    progressDialog.show();
+                    progressBar.setVisibility(View.VISIBLE);
+                    relativeLayoutProgressBar.setVisibility(View.VISIBLE);
+
                     StringRequest stringRequest = new StringRequest(Request.Method.POST,
                             Constants.URL_REGISTER,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
-                                    progressDialog.dismiss();
+
                                     try {
                                         JSONObject jsonObject = new JSONObject(response);
 
@@ -806,7 +812,8 @@ public class register extends AppCompatActivity implements View.OnClickListener,
 
                                             Toast.makeText(getApplicationContext(),jsonObject.getString("message"),Toast.LENGTH_LONG).show();
                                         }
-
+                                        progressBar.setVisibility(View.GONE);
+                                        relativeLayoutProgressBar.setVisibility(View.GONE);
 
                                     } catch (JSONException e) {
                                         e.printStackTrace();
