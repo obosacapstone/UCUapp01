@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -54,6 +55,9 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
 
     ProgressBar progressBar;
     RelativeLayout relativeLayoutProgressBar;
+    String Facebook,Instagram,LinkedIn;
+    ImageView ImageViewFacebook,ImageViewInstagram,ImageViewLinkedin;
+    ImageView ImageViewAdvanceStudyCheck,ImageViewAdvanceStudyNotCheck,ImageViewFirstJobCheck,ImageViewFirstJobNotCheck,ImageViewEmploymentCheck,ImageViewEmploymentNotCheck;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +109,9 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
         TextViewskill = findViewById(R.id.specialization);
         TextViewaddress = findViewById(R.id.address);
         ImageViewgraduatedimage = findViewById(R.id.graduatedimage);
+        ImageViewFacebook = findViewById(R.id.facebook);
+        ImageViewInstagram = findViewById(R.id.instagram);
+        ImageViewLinkedin = findViewById(R.id.linkedin);
         TextViewnotification = findViewById(R.id.notification);
         TextViewnewsnotification = findViewById(R.id.newsnotification);
         TextVieweventnotification = findViewById(R.id.eventnotification);
@@ -198,6 +205,55 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
         String firstjoby4y1 = SharedPrefManager.getInstance(this).getFirstjoby4y1();
         String firstjoby5 = SharedPrefManager.getInstance(this).getFirstjoby5();
         String firstjoby6 = SharedPrefManager.getInstance(this).getFirstjoby6();
+
+
+
+        //percentage
+        ImageViewAdvanceStudyCheck = findViewById(R.id.advancestudycheck);
+        ImageViewAdvanceStudyNotCheck = findViewById(R.id.advancestudynotcheck);
+        ImageViewFirstJobCheck = findViewById(R.id.firstjobcheck);
+        ImageViewFirstJobNotCheck = findViewById(R.id.firstjobnotcheck);
+        ImageViewEmploymentCheck = findViewById(R.id.employmentcheck);
+        ImageViewEmploymentNotCheck = findViewById(R.id.employmentnotcheck);
+        if (postgraduate.length()==0){
+            ImageViewAdvanceStudyNotCheck.setVisibility(ImageView.VISIBLE);
+        }else {
+            ImageViewAdvanceStudyCheck.setVisibility(ImageView.VISIBLE);
+        }
+        if (firstjob.length()==0){
+            ImageViewFirstJobNotCheck.setVisibility(ImageView.VISIBLE);
+        }else {
+            ImageViewFirstJobCheck.setVisibility(ImageView.VISIBLE);
+        }
+        if (employed.length()==0){
+            ImageViewEmploymentNotCheck.setVisibility(ImageView.VISIBLE);
+        }else {
+            ImageViewEmploymentCheck.setVisibility(ImageView.VISIBLE);
+        }
+        //3rd party account
+         Facebook = SharedPrefManager.getInstance(this).getFacebook();
+         Instagram = SharedPrefManager.getInstance(this).getInstagram();
+         LinkedIn = SharedPrefManager.getInstance(this).getLinkedIn();
+
+        if (!(Facebook.length() == 0)){
+            ImageViewFacebook.setVisibility(TextView.VISIBLE);
+        }
+        if (!(Instagram.length() == 0)){
+            ImageViewInstagram.setVisibility(TextView.VISIBLE);
+        }
+        if (!(LinkedIn.length() == 0)){
+            ImageViewLinkedin.setVisibility(TextView.VISIBLE);
+        }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -405,7 +461,7 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
         switch (item.getItemId()){
 
             case R.id.Alumni:
-                Intent intent1 = new Intent(profile.this,alumni.class);
+                Intent intent1 = new Intent(profile.this,courseinfo.class);
                 startActivity(intent1);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
@@ -502,4 +558,22 @@ public class profile extends AppCompatActivity implements NavigationView.OnNavig
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
+    public void facebook(View view) {
+        Facebook = SharedPrefManager.getInstance(this).getFacebook();
+        goToUrl (Facebook);
+    }
+    public void instagram(View view) {
+        Instagram = SharedPrefManager.getInstance(this).getInstagram();
+        goToUrl (Instagram);
+    }
+    public void linkedin(View view) {
+        LinkedIn = SharedPrefManager.getInstance(this).getLinkedIn();
+        goToUrl (LinkedIn);
+    }
+
+    private void goToUrl(String url) {
+        Uri uriUrl = Uri.parse(url);
+        Intent WebView = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(WebView);
+    }
 }

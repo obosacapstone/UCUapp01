@@ -222,7 +222,7 @@ public class interested extends AppCompatActivity implements View.OnClickListene
         int IntegerEnddate = 0;
         String StringEndDateValidate = getIntent().getStringExtra("eventenddate");
         String StringDateeDuration;
-        
+
         if (StringEndDateValidate.isEmpty()){
             //startdate
             String date1 = getIntent().getStringExtra("eventstartdate");
@@ -287,20 +287,23 @@ public class interested extends AppCompatActivity implements View.OnClickListene
             linearLayoutdatevalidation = findViewById(R.id.datevalidationdata);
             String StringCollege =  getIntent().getStringExtra("eventcollege");
             String StringCollegeAlumni = SharedPrefManager.getInstance(this).getCollege();
-            //related event
+
+            String splitcollegeuser[] = StringCollegeAlumni.split(", ");
             String splitcollege[] = StringCollege.split(",,,");
 
-            for(int i =0; i<splitcollege.length; i++){
+            for(int ii =0; ii<splitcollegeuser.length; ii++) {
+                for (int i = 0; i < splitcollege.length; i++) {
 
-                if (splitcollege[i].equals(StringCollegeAlumni)){
-                    linearLayoutdatevalidation.setVisibility(LinearLayout.VISIBLE);
+                    if (splitcollege[i].equals(splitcollegeuser[ii])) {
+                        linearLayoutdatevalidation.setVisibility(LinearLayout.VISIBLE);
+                    }
+
                 }
-
             }
 
 
-        }
 
+        }
 
         //Sponsor Organizer
         String StringSponsor = getIntent().getStringExtra("eventsponsor");
@@ -517,7 +520,7 @@ public class interested extends AppCompatActivity implements View.OnClickListene
         switch (item.getItemId()){
 
             case R.id.Alumni:
-                Intent intent1 = new Intent(interested.this,alumni.class);
+                Intent intent1 = new Intent(interested.this,courseinfo.class);
                 startActivity(intent1);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;

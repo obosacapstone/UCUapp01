@@ -433,6 +433,7 @@ public class firstjob extends AppCompatActivity implements View.OnClickListener,
                                                 jsonObject.getString("street"),
                                                 jsonObject.getString("facebook"),
                                                 jsonObject.getString("instagram"),
+                                                jsonObject.getString("linkedin"),
                                                 jsonObject.getString("bookmark"),
                                                 jsonObject.getString("graduatedimage"),
                                                 jsonObject.getString("notification"),
@@ -542,7 +543,7 @@ public class firstjob extends AppCompatActivity implements View.OnClickListener,
         switch (item.getItemId()){
 
             case R.id.Alumni:
-                Intent intent1 = new Intent(firstjob.this,alumni.class);
+                Intent intent1 = new Intent(firstjob.this,courseinfo.class);
                 startActivity(intent1);
                 break;
             case R.id.Trending:

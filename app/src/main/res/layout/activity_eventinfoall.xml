@@ -73,8 +73,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="70dp">
+                android:orientation="vertical">
 
                 <include
                     layout="@layout/app_bar"
@@ -179,9 +178,9 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingBottom="50dp"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="50dp">
 
                         <androidx.appcompat.widget.SearchView
                             android:id="@+id/search_view"
@@ -216,6 +215,7 @@
                 app:menu="@menu/homenav" />
 
 
+
             <RelativeLayout
                 android:id="@+id/relativeprogress"
                 android:layout_width="wrap_content"
@@ -233,7 +233,6 @@
                     android:visibility="gone" />
 
             </RelativeLayout>
-
 
         </RelativeLayout>
 

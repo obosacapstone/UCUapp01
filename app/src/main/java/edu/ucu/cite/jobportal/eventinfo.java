@@ -271,7 +271,7 @@ public class eventinfo extends AppCompatActivity implements NavigationView.OnNav
         switch (item.getItemId()){
 
             case R.id.Alumni:
-                Intent intent1 = new Intent(eventinfo.this,alumni.class);
+                Intent intent1 = new Intent(eventinfo.this,courseinfo.class);
                 startActivity(intent1);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;

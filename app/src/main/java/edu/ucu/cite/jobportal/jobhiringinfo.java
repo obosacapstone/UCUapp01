@@ -333,7 +333,7 @@ public class jobhiringinfo extends AppCompatActivity implements NavigationView.O
         switch (item.getItemId()){
 
             case R.id.Alumni:
-                Intent intent1 = new Intent(jobhiringinfo.this,alumni.class);
+                Intent intent1 = new Intent(jobhiringinfo.this,courseinfo.class);
                 startActivity(intent1);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;

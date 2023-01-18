@@ -116,7 +116,7 @@ public class forgotpassword extends AppCompatActivity implements View.OnClickLis
                             new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
-                                    Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_SHORT).show();
                                 }
                             }){
                         @Nullable

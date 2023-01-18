@@ -51,6 +51,16 @@ public class RecyclerAdapterNews extends RecyclerView.Adapter<RecyclerAdapterNew
         newslist productnews = newslists.get(position);
         holder.textViewNewsDetail.setText(productnews.getNewsDetail());
 
+        holder.imageViewNewsImage.setVisibility(View.GONE);
+        holder.imageViewNewsImage1.setVisibility(View.GONE);
+        holder.imageViewNewsImage2.setVisibility(View.GONE);
+        holder.imageViewNewsImage3.setVisibility(View.GONE);
+        holder.imageViewNewsImage4.setVisibility(View.GONE);
+        holder.imageViewNewsImage5.setVisibility(View.GONE);
+        holder.imageViewNewsImage6.setVisibility(View.GONE);
+        holder.imageViewNewsImage7.setVisibility(View.GONE);
+        holder.imageViewNewsImage8.setVisibility(View.GONE);
+        holder.imageViewNewsImage9.setVisibility(View.GONE);
         holder.textViewDescription.setText(productnews.getDescription());
         ImageLopping = productnews.getNewsImage();
         String splitted[] = ImageLopping.split(",,,");

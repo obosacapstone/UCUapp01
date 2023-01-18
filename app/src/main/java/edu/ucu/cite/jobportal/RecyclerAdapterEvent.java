@@ -155,7 +155,7 @@ public class RecyclerAdapterEvent extends RecyclerView.Adapter<RecyclerAdapterEv
         String StringDescription = productevent.getDescription();
 
 
-            holder.textViewDescription.setText(HtmlCompat.fromHtml(StringDescription, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
+        holder.textViewDescription.setText(HtmlCompat.fromHtml(StringDescription, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
 
 
 

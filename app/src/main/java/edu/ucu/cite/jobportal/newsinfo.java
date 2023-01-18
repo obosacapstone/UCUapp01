@@ -74,7 +74,6 @@ public class newsinfo extends AppCompatActivity implements NavigationView.OnNavi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsinfo);
 
-
         TextViewTitleNav = findViewById(R.id.titlenav);
         TextViewTitleNav.setText("News");
 
@@ -264,7 +263,7 @@ public class newsinfo extends AppCompatActivity implements NavigationView.OnNavi
         switch (item.getItemId()){
 
             case R.id.Alumni:
-                Intent intent1 = new Intent(newsinfo.this,alumni.class);
+                Intent intent1 = new Intent(newsinfo.this,courseinfo.class);
                 startActivity(intent1);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;

@@ -269,7 +269,7 @@ public class eventinfoall extends AppCompatActivity implements NavigationView.On
 
 
             case R.id.Alumni:
-                Intent intent1 = new Intent(eventinfoall.this,alumni.class);
+                Intent intent1 = new Intent(eventinfoall.this,courseinfo.class);
                 startActivity(intent1);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;

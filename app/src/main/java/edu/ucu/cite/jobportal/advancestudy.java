@@ -213,6 +213,7 @@ public class advancestudy extends AppCompatActivity implements View.OnClickListe
                                                 jsonObject.getString("street"),
                                                 jsonObject.getString("facebook"),
                                                 jsonObject.getString("instagram"),
+                                                jsonObject.getString("linkedin"),
                                                 jsonObject.getString("bookmark"),
                                                 jsonObject.getString("graduatedimage"),
                                                 jsonObject.getString("notification"),

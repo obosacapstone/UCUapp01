@@ -14,9 +14,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -44,8 +46,7 @@ import java.util.Map;
 
 import edu.ucu.cite.jobportal.nointernetconnection.NetworkChangeListener;
 
-public class alumni extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    TextView TextViewAlumni;
+public class alumni extends AppCompatActivity{
     ProgressDialog progressDialog;
     Toolbar toolbar;
     ActionBarDrawerToggle mtoggle=null ,  mytoggle=null;
@@ -56,23 +57,29 @@ public class alumni extends AppCompatActivity implements NavigationView.OnNaviga
     DrawerLayout mydrawer ,drawerLayout;
     private MenuItem item;
     NavigationView navigationView;
-    TextView TextViewTitleNav;
+    TextView TextViewTitleNav,TextViewCourse;
 
-    String idno,yeargrad1;
+    String idno,yeargrad1,selectedcourse;
     String alumni = "";
     int courseoutput;
+    TextView TextViewAlumni,TextViewAlumni1,TextViewBatch,TextViewBatch1;
+    String OutputBatch,OutputBatch1,StringTitleLength,StringTitleOverflow;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    Button ButtonTitleJob;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alumni);
         TextViewAlumni = findViewById(R.id.alumni);
+        TextViewBatch = findViewById(R.id.batch);
+        TextViewBatch1 = findViewById(R.id.batch1);
+        TextViewAlumni = findViewById(R.id.alumni);
+        TextViewAlumni1 = findViewById(R.id.alumni1);
+
         progressBar = findViewById(R.id.progress);
         relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
-        ImageViewNavProfile = findViewById(R.id.navprofile);
-        TextViewNavFullname = findViewById(R.id.navfullname);
-        TextViewNavIdno = (TextView)  findViewById(R.id.navidno);
+
         progressBar = findViewById(R.id.progress);
         relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
@@ -83,74 +90,36 @@ public class alumni extends AppCompatActivity implements NavigationView.OnNaviga
         String idno = SharedPrefManager.getInstance(this).getIDno();
         String graduatedimage = SharedPrefManager.getInstance(this).getGraduatedimage();
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.naview);
-        bottomNavigationView.setItemIconTintList(null);
-        bottomNavigationView.getMenu().getItem(0).setCheckable(false);
-        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
-            switch (menuItem.getItemId()){
-
-                case R.id.Jobs:
-                    startActivity(new Intent(getApplicationContext(),jobhiringinfo.class));
-                    finish();
-                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
-                    return true;
-                case R.id.News:
-                    startActivity(new Intent(getApplicationContext(),newsinfo.class));
-                    finish();
-                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
-                    return true;
-                case R.id.Events:
-                    startActivity(new Intent(getApplicationContext(),eventinfo.class));
-                    finish();
-                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
-                    return true;
-                case R.id.Profile:
-                    startActivity(new Intent(getApplicationContext(),profile.class));
-                    finish();
-                    overridePendingTransition(R.anim.fadein,R.anim.fadeout);
-                    return true;
 
 
-            }
-            return false;
-        });
-
-        Glide.with(alumni.this).load(graduatedimage).into(ImageViewNavProfile);
-        TextViewNavFullname.setText(firstname + " " + middlename + " " + lastname);
-        TextViewNavIdno.setText(idno);
-
-        mydrawer = findViewById(R.id.mydrawer);
-        navigationView = findViewById(R.id.navigationdrawer);
-
-        toolbar=findViewById(R.id.sidetoolbar);
-        mytoggle = new ActionBarDrawerToggle(this,mydrawer, toolbar, R.string.open, R.string.close);
-
-        mydrawer.addDrawerListener(mytoggle);
-        navigationView.bringToFront();
-        mytoggle.syncState();
-
-        setSupportActionBar(toolbar);
-        navigationView.setNavigationItemSelectedListener(this);
-        //nav bar
-        TextViewTitleNav = findViewById(R.id.titlenav);
-        TextViewTitleNav.setText("Alumni");
 
 
+
+        ButtonTitleJob = findViewById(R.id.TitleCourse);
+        StringTitleLength =  getIntent().getStringExtra("course");
+        StringTitleOverflow = getSafeSubstring(getIntent().getStringExtra("course"), 17);
+        ButtonTitleJob.setText(StringTitleOverflow + "...");
+
+
+
+
+
+
+
+        String listalumni = SharedPrefManagerAlumni.getInstance(this).getAlumni();
 
 
         String yeargrad = SharedPrefManager.getInstance(this).getYeargrad();
-        idno = SharedPrefManager.getInstance(this).getIDno();
-        alumni = SharedPrefManagerAlumni.getInstance(this).getAlumni();
         String StringOutput = "", StringAlumniName = "", finaloutput = "";
 
-//        TextViewAlumni.setText(alumni);
-        alumnudatebase();
-
-        if(alumni != null){
-            finaloutput = "<br><b> Batch "+yeargrad+"</b><br>";
+        selectedcourse = getIntent().getStringExtra("course");
 
 
-            String splityeargrad[] = alumni.split(",/,/,/");
+
+
+
+
+            String splityeargrad[] = listalumni.split(",/,/,/");
 
 
             String splitcourses[] = splityeargrad[1].split("/&/&/");
@@ -160,63 +129,77 @@ public class alumni extends AppCompatActivity implements NavigationView.OnNaviga
 
                 String splitalumnilist[] = splitcourses[ii].split("///");
                 for (int iii = 1; iii < splitalumnilist.length; iii++) {
+                    if(splitalumnilist[0].equals(selectedcourse)) {
 
-                    String splitalumnilist1[] = splitalumnilist[1].split("&&&&");
-                    for (int iiii = 1; iiii < splitalumnilist1.length; iiii++) {
+                        String splitalumnilist1[] = splitalumnilist[1].split("&&&&");
+                        for (int iiii = 1; iiii < splitalumnilist1.length; iiii++) {
 
-                        StringAlumniName = StringAlumniName +"<br>" + "  -  " +splitalumnilist1[iiii] ;
+                            StringAlumniName = StringAlumniName + "<br>" + "  -  " + splitalumnilist1[iiii];
 
+                        }
                     }
 
                 }
-                StringOutput = "<br><br><b>" +splitalumnilist[0] + "</b><br>";
+                StringOutput = "<b>" +splitalumnilist[0] + "</b>";
 
-                finaloutput = finaloutput  + StringOutput +  StringAlumniName;
+                finaloutput = finaloutput  +  StringAlumniName;
                 StringOutput = "";
                 StringAlumniName = "";
             }
 
+        OutputBatch = "Batch "+yeargrad;
+        TextViewBatch.setText(HtmlCompat.fromHtml(OutputBatch, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
+        TextViewAlumni.setText(HtmlCompat.fromHtml(finaloutput, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
 
-
+        finaloutput = "";
 
             yeargrad1 = SharedPrefManager.getInstance(this).getYeargrad1();
             if (yeargrad1.length() == 0){
-
+                TextViewBatch1.setVisibility(View.GONE);
+                TextViewAlumni1.setVisibility(View.GONE);
             }else {
-                finaloutput = finaloutput + "<br><b>Batch "+yeargrad1+"</b><br>";
+                TextViewBatch1.setVisibility(View.VISIBLE);
+                TextViewAlumni1.setVisibility(View.VISIBLE);
             }
 
-                String splitcourses1[] = splityeargrad[2].split("/&/&/");
+            String splitcourses1[] = splityeargrad[2].split("/&/&/");
 
-                for(int ii =0; ii<splitcourses1.length; ii++) {
+            for(int ii =0; ii<splitcourses1.length; ii++) {
 
 
-                    String splitalumnilist1[] = splitcourses1[ii].split("///");
-                    for (int iii = 1; iii < splitalumnilist1.length; iii++) {
+                String splitalumnilist1[] = splitcourses1[ii].split("///");
+                for (int iii = 1; iii < splitalumnilist1.length; iii++) {
 
-                        String splitalumnilist11[] = splitalumnilist1[1].split("&&&&");
-                        for (int iiii = 1; iiii < splitalumnilist11.length; iiii++) {
+                    String splitalumnilist11[] = splitalumnilist1[1].split("&&&&");
+                    for (int iiii = 1; iiii < splitalumnilist11.length; iiii++) {
 
-                            StringAlumniName = StringAlumniName +"<br>"+ "  -  " + splitalumnilist11[iiii] ;
-
-                        }
+                        StringAlumniName = StringAlumniName +"<br>"+ "  -  " + splitalumnilist11[iiii] ;
 
                     }
-                    StringOutput = "<br><br><b>" +splitalumnilist1[0] + "</b><br>";
 
-                    finaloutput = finaloutput  + StringOutput +  StringAlumniName;
-                    StringOutput = "";
-                    StringAlumniName = "";
+                }
+                StringOutput = "<br><br><b>" +splitalumnilist1[0] + "</b>";
+
+                finaloutput = finaloutput +  StringAlumniName;
+                StringOutput = "";
+                StringAlumniName = "";
 
             }
-            TextViewAlumni.setText(HtmlCompat.fromHtml(finaloutput, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
+        OutputBatch1 = "Batch "+yeargrad1+"";
+        TextViewBatch1.setText(HtmlCompat.fromHtml(OutputBatch1, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
+        TextViewAlumni1.setText(HtmlCompat.fromHtml(finaloutput, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
 
-        }else {
-            startActivity(new Intent(getApplicationContext(), alumni.class));
-            finish();
+
+
+
+    }
+    public String getSafeSubstring(String s, int maxLength){
+        if(!TextUtils.isEmpty(s)){
+            if(s.length() >= maxLength){
+                return s.substring(0, maxLength);
+            }
         }
-
-
+        return s;
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -225,67 +208,6 @@ public class alumni extends AppCompatActivity implements NavigationView.OnNaviga
             return true;
         }
         return super.onOptionsItemSelected(item);
-
-    }
-    private void alumnudatebase() {
-        idno = SharedPrefManager.getInstance(this).getIDno();
-        progressBar.setVisibility(View.VISIBLE);
-        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
-
-        StringRequest stringRequest = new StringRequest(
-                Request.Method.POST,
-                Constants.URL_ALUMNI,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-
-
-
-                            if (!jsonObject.getBoolean("error")) {
-                                SharedPrefManagerAlumni.getInstance(getApplicationContext())
-                                        .userDatabase(
-                                                jsonObject.getString("alumni")
-
-                                        );
-
-
-                            }
-
-                            progressBar.setVisibility(View.GONE);
-                            relativeLayoutProgressBar.setVisibility(View.GONE);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Log.e("anyText", response);
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-//                        progressDialog.hide();
-//
-//                        Toast.makeText(getApplicationContext(), "Please Reload ", Toast.LENGTH_SHORT).show();
-                        progressBar.setVisibility(View.GONE);
-                        relativeLayoutProgressBar.setVisibility(View.GONE);
-                    }
-
-
-                }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("idno", idno);
-                return params;
-
-            }
-
-        };
-
-        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
 
     }
 
@@ -303,39 +225,6 @@ public class alumni extends AppCompatActivity implements NavigationView.OnNaviga
 
 
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()){
-
-            case R.id.Alumni:
-                Intent intent1 = new Intent(alumni.this,alumni.class);
-                startActivity(intent1);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                break;
-            case R.id.Trending:
-                Intent intent2 = new Intent(alumni.this,trendinginfo.class);
-                startActivity(intent2);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                break;
-            case R.id.Bookmark:
-                Intent intent3 = new Intent(alumni.this,bookmarkinfo.class);
-                startActivity(intent3);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                break;
-            case R.id.logout:
-                SharedPrefManager.getInstance(this).logout();
-                finishAffinity();
-                Intent intent5 = new Intent(alumni.this,login.class);
-                startActivity(intent5);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                break;
-
-
-        }
-
-        return true;
-    }
 
 
 
@@ -352,4 +241,8 @@ public class alumni extends AppCompatActivity implements NavigationView.OnNaviga
         super.onStop();
     }
 
+    public void back(View view) {
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 }

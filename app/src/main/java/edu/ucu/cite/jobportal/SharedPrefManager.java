@@ -32,6 +32,7 @@ public class SharedPrefManager {
     private static final String KEY_STREET = "street";
     private static final String KEY_FACEBOOK = "facebook";
     private static final String KEY_INSTAGRAM = "instagram";
+    private static final String KEY_LINKEDIN = "linkedin";
     private static final String KEY_BOOKMARK = "bookmark";
     private static final String KEY_GRADUATEDIMAGE = "graduatedimage";
     private static final String KEY_NOTIFICATION = "notification";
@@ -75,7 +76,7 @@ public class SharedPrefManager {
         return mInstance;
     }
     public boolean userLogin( String idno, String password, String firstname, String middlename, String lastname,  String yeargrad,  String yeargrad1, String college , String course, String course1, String gender, String birthdate, String civilstatus, String contact, String email, String specialization, String region, String province, String city, String barangay, String street,
-            String facebook, String instagram, String bookmark,String graduatedimage, String notification, String newsnotification, String eventnotification
+            String facebook, String instagram, String linkedin,String bookmark,String graduatedimage, String notification, String newsnotification, String eventnotification
     , String postgraduate, String postgraduatey1, String postgraduatey2, String employed, String employedy1, String employedy2, String employedy3, String employedy4, String employedy5, String employedn1, String firstjob, String firstjoby1, String firstjoby2, String firstjoby3, String firstjoby4, String firstjoby4y1, String firstjoby5, String firstjoby6){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -104,6 +105,7 @@ public class SharedPrefManager {
         editor.putString(KEY_STREET, street);
         editor.putString(KEY_FACEBOOK, facebook);
         editor.putString(KEY_INSTAGRAM, instagram);
+        editor.putString(KEY_LINKEDIN, linkedin);
         editor.putString(KEY_BOOKMARK, bookmark);
         editor.putString(KEY_GRADUATEDIMAGE, graduatedimage);
         editor.putString(KEY_NOTIFICATION, notification);
@@ -240,6 +242,9 @@ public class SharedPrefManager {
     }public String getInstagram(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_INSTAGRAM, null);
+    }public String getLinkedIn(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_LINKEDIN, null);
     }public String getBookmark(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_BOOKMARK, null);

@@ -279,7 +279,7 @@ public class jobhiringinfoall extends AppCompatActivity implements NavigationVie
         switch (item.getItemId()){
 
             case R.id.Alumni:
-                Intent intent1 = new Intent(jobhiringinfoall.this,alumni.class);
+                Intent intent1 = new Intent(jobhiringinfoall.this,courseinfo.class);
                 startActivity(intent1);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;

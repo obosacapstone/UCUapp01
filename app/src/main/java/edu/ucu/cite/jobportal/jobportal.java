@@ -68,7 +68,7 @@ public class jobportal extends AppCompatActivity  implements NavigationView.OnNa
         switch (item.getItemId()){
 
             case R.id.Alumni:
-                Intent intent1 = new Intent(jobportal.this,alumni.class);
+                Intent intent1 = new Intent(jobportal.this,courseinfo.class);
                 startActivity(intent1);
                 break;
             case R.id.Trending:

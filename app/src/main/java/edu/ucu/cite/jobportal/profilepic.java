@@ -169,6 +169,7 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
                                                 jsonObject.getString("street"),
                                                 jsonObject.getString("facebook"),
                                                 jsonObject.getString("instagram"),
+                                                jsonObject.getString("linkedin"),
                                                 jsonObject.getString("bookmark"),
                                                 jsonObject.getString("graduatedimage"),
                                                 jsonObject.getString("notification"),
@@ -315,7 +316,7 @@ public class profilepic extends AppCompatActivity implements View.OnClickListene
 
 
             case R.id.Alumni:
-                Intent intent1 = new Intent(profilepic.this,alumni.class);
+                Intent intent1 = new Intent(profilepic.this,courseinfo.class);
                 startActivity(intent1);
                 break;
             case R.id.Trending:

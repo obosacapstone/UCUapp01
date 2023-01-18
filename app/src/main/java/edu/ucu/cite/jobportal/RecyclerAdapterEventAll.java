@@ -32,6 +32,8 @@ public class RecyclerAdapterEventAll extends RecyclerView.Adapter<RecyclerAdapte
 
     String StringInterested, StringNotInterested,StringIdno;
     Integer IntegerInterested;
+    String date1,date2;
+    SimpleDateFormat input1,input2,output1,output2;
     public RecyclerAdapterEventAll(Context mCtx, List<eventlist> eventlists) {
         this.mCtx = mCtx;
         this.eventlists = eventlists;
@@ -165,17 +167,6 @@ public class RecyclerAdapterEventAll extends RecyclerView.Adapter<RecyclerAdapte
 
 
 
-        //enddate
-        String date3 = productevent.getEndDate();
-        SimpleDateFormat input3 = new SimpleDateFormat("yy-MM-dd");
-        SimpleDateFormat output3 = new SimpleDateFormat("yMMdd");
-        try {
-            qEndDate = input.parse(date3);
-            StringqEndDate = output3.format(qEndDate);
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
         //currentdate
         Calendar c = Calendar.getInstance();
         SimpleDateFormat sdf1 = new SimpleDateFormat("yMMdd");
@@ -184,16 +175,51 @@ public class RecyclerAdapterEventAll extends RecyclerView.Adapter<RecyclerAdapte
         String StringEndDateValidate = productevent.getEndDate();
         String StringDateeDuration;
         if (StringEndDateValidate.isEmpty()){
+            //startdate
+             date1 = productevent.getStartDate();
+             input1 = new SimpleDateFormat("yy-MM-dd");
+             output1 = new SimpleDateFormat("dd MMM yyyy");
+            try {
+                DateStartDate = input1.parse(date1);
+                StringStartDate = output1.format(DateStartDate);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
             StringDateeDuration = "<b>Date: </b>" + StringStartDate ;
             holder.textViewDateDuration.setText(HtmlCompat.fromHtml(StringDateeDuration, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
 
         }
-        if (!StringEndDateValidate.isEmpty()) {
+        if (!StringEndDateValidate.isEmpty()){
+            //startdate
+            date1 = productevent.getStartDate();
+             input1 = new SimpleDateFormat("M/dd/yyyyy");
+             output1 = new SimpleDateFormat("dd MMM yyyy");
+            try {
+                DateStartDate = input1.parse(date1);
+                StringStartDate = output1.format(DateStartDate);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            //enddate
+            date2 = productevent.getEndDate();
+             input2 = new SimpleDateFormat("M/dd/yyyyy");
+             output2 = new SimpleDateFormat("dd MMM yyyy");
+            try {
+                DateEndDate = input2.parse(date2);
+                StringEndDate = output2.format(DateEndDate);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             StringDateeDuration = "<b>Date: </b>" + StringStartDate + " to " + StringEndDate;
             holder.textViewDateDuration.setText(HtmlCompat.fromHtml(StringDateeDuration, HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH));
+
+
         }
-
-
 
 
         String StringCourse = SharedPrefManager.getInstance(mCtx.getApplicationContext()).getYeargrad();

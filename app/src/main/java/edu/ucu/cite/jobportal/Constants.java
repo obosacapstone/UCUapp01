@@ -5,6 +5,7 @@ public class Constants {
 
 //private static final String ROOT_URL = "http://192.168.100.4/graduatedtracer/jobportal/";
 private static final String ROOT_URL = "https://ucu-graduatedtracer.website/graduatedtracer/jobportal/";
+//    private static final String ROOT_URL = "http://10.68.249.79/graduatedtracer/jobportal/";
 
     public static final String URL_LOGIN=ROOT_URL+"login.php";
     public static final String URL_REGISTER=ROOT_URL+"insert.php";
@@ -30,5 +31,6 @@ private static final String ROOT_URL = "https://ucu-graduatedtracer.website/grad
     public static final String URL_APPLYNOW=ROOT_URL+"applynow.php";
     public static final String URL_POST=ROOT_URL+"getpost.php";
     public static final String URL_COMMENT=ROOT_URL+"comment.php";
+    public static final String URL_COURSE=ROOT_URL+"getcourse.php";
 
 }

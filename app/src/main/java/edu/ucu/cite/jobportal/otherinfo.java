@@ -337,6 +337,7 @@ public class otherinfo extends AppCompatActivity  implements View.OnClickListene
                                                 jsonObject.getString("street"),
                                                 jsonObject.getString("facebook"),
                                                 jsonObject.getString("instagram"),
+                                                jsonObject.getString("linkedin"),
                                                 jsonObject.getString("bookmark"),
                                                 jsonObject.getString("graduatedimage"),
                                                 jsonObject.getString("notification"),
@@ -444,7 +445,7 @@ public class otherinfo extends AppCompatActivity  implements View.OnClickListene
         switch (item.getItemId()){
 
             case R.id.Alumni:
-                Intent intent1 = new Intent(otherinfo.this,alumni.class);
+                Intent intent1 = new Intent(otherinfo.this,courseinfo.class);
                 startActivity(intent1);
                 break;
             case R.id.Trending:
