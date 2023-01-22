@@ -4,15 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/background_gray.xml" value="0.184" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/background_save.xml" value="0.1395" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/backgroundtwo.xml" value="0.1875" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/birthdate_border.xml" value="0.2095" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/border_gray.xml" value="0.1185" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/briefcase.xml" value="0.2055" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/button_border.xml" value="0.149" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/cardview_cancel.xml" value="0.1185" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/contact.xml" value="0.2055" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/email.xml" value="0.2055" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.149" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/ic_login_bk.xml" value="0.1875" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/no_border_edittext.xml" value="0.1405" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/oval.xml" value="0.1405" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/popup_register.xml" value="0.191" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/register_background.xml" value="0.176" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/drawable/search.xml" value="0.1795" />
@@ -23,10 +28,12 @@
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_advancestudy.xml" value="0.2" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_alumni.xml" value="0.152" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_bookmarkinfo.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_commentinfo.xml" value="0.2" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_courseinfo.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_custom_place_picker.xml" value="0.25" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_editpost.xml" value="0.1936725096194955" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_employment.xml" value="0.2" />
-        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_eventinfo.xml" value="0.2" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_eventinfo.xml" value="0.176" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_eventinfoall.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_firstjob.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_forgotpassword.xml" value="0.2359375" />
@@ -44,6 +51,8 @@
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_newsinfodata.xml" value="0.176" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_otherinfo.xml" value="0.264" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_password.xml" value="0.264" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_popuppost.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_postforum.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_postinfo.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_profile.xml" value="0.2" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_profilepic.xml" value="0.2" />
@@ -53,18 +62,22 @@
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_splashscreen.xml" value="0.22962962962962963" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/activity_trendinginfo.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/app_bar.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/background_gray.xml" value="0.20436083796494228" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/custom_confirm_address.xml" value="0.25" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/custom_register.xml" value="0.264" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/custompopup.xml" value="0.2" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/item.xml" value="0.25" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/list_item.xml" value="0.25" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/list_item_post.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/navheader.xml" value="0.25" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/no_internet.xml" value="0.20436083796494228" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/popup.xml" value="0.152" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/popup_comment.xml" value="0.20436083796494228" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/popup_setting.xml" value="0.20436083796494228" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/recyceeventall.xml" value="0.20261713803292528" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/recyclealumni.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/recyclebookmark.xml" value="0.20436083796494228" />
-        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/recyclecomment.xml" value="0.20436083796494228" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/recyclecomment.xml" value="0.2" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/recyclecourse.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/recycleevent.xml" value="0.25" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/recycleeventall.xml" value="0.264" />
@@ -72,12 +85,14 @@
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/recyclejobhiringall.xml" value="0.25" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/recyclenews.xml" value="0.264" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/recyclepost.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/recycletrending.xml" value="0.2" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/layout/region.xml" value="0.1875" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/menu/classification_menu.xml" value="0.25" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/menu/homenav.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/menu/my_menu.xml" value="0.25" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/menu/navdrawermenu.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/menu/popup_menu.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/menu/popup_post.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/menu/search.xml" value="0.25" />
         <entry key="..\:/Users/criso/.android/AndroidStudioProjects/JobPortal/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>

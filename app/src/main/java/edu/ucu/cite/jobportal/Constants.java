@@ -2,10 +2,9 @@ package edu.ucu.cite.jobportal;
 
 public class Constants {
 
-
+//    private static final String ROOT_URL = "http://10.68.249.79/graduatedtracer/jobportal/";
 //private static final String ROOT_URL = "http://192.168.100.4/graduatedtracer/jobportal/";
 private static final String ROOT_URL = "https://ucu-graduatedtracer.website/graduatedtracer/jobportal/";
-//    private static final String ROOT_URL = "http://10.68.249.79/graduatedtracer/jobportal/";
 
     public static final String URL_LOGIN=ROOT_URL+"login.php";
     public static final String URL_REGISTER=ROOT_URL+"insert.php";
@@ -30,7 +29,16 @@ private static final String ROOT_URL = "https://ucu-graduatedtracer.website/grad
     public static final String URL_ALUMNI=ROOT_URL+"getalumni.php";
     public static final String URL_APPLYNOW=ROOT_URL+"applynow.php";
     public static final String URL_POST=ROOT_URL+"getpost.php";
-    public static final String URL_COMMENT=ROOT_URL+"comment.php";
+    public static final String URL_UPLOADPOST=ROOT_URL+"post.php";
+    public static final String URL_POSTID=ROOT_URL+"getpostid.php";
+    public static final String URL_COMMENT=ROOT_URL+"getcomment.php";
     public static final String URL_COURSE=ROOT_URL+"getcourse.php";
+    public static final String URL_COMMENTPOST=ROOT_URL+"commentpost.php";
+    public static final String URL_POSTLIKE=ROOT_URL+"postlike.php";
+        public static final String URL_POSTLIKED=ROOT_URL+"postliked.php";
+    public static final String URL_EDITPOST=ROOT_URL+"editpost.php";
+    public static final String URL_EDITCOMMENT=ROOT_URL+"editcomment.php";
+    public static final String URL_DELETEPOST=ROOT_URL+"deletepost.php";
+    public static final String URL_DELETECOMMENT=ROOT_URL+"deletecomment.php";
 
 }

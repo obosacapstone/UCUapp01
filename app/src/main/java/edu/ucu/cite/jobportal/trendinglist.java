@@ -1,10 +1,16 @@
 package edu.ucu.cite.jobportal;
 
-public class commentlist {
+public class trendinglist {
     public String heading;
-    private String idcomment, idno, idpost ,comment, date, time, img,firstname,middlename,lastname;
+    private String id,idno,post,img,date,time,reactcount,commentcount,firstname,middlename,lastname;
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getIdno() {
         return idno;
@@ -14,20 +20,20 @@ public class commentlist {
         this.idno = idno;
     }
 
-    public String getIdpost() {
-        return idpost;
+    public String getPost() {
+        return post;
     }
 
-    public void setIdpost(String idpost) {
-        this.idpost = idpost;
+    public void setPost(String post) {
+        this.post = post;
     }
 
-    public String getComment() {
-        return comment;
+    public String getImg() {
+        return img;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getDate() {
@@ -44,14 +50,6 @@ public class commentlist {
 
     public void setTime(String time) {
         this.time = time;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
     }
 
     public String getFirstname() {
@@ -78,26 +76,41 @@ public class commentlist {
         this.lastname = lastname;
     }
 
-    public String getIdcomment() {
-        return idcomment;
+    public String getReactcount() {
+        return reactcount;
     }
 
-    public void setIdcomment(String idcomment) {
-        this.idcomment = idcomment;
+    public void setReactcount(String reactcount) {
+        this.reactcount = reactcount;
     }
 
-    public commentlist(String idcomment, String idno, String idpost
-            , String comment, String date, String time, String img, String firstname, String middlename, String lastname) {
-        this.idcomment = idcomment;
+    public String getCommentcount() {
+        return commentcount;
+    }
+
+    public void setCommentcount(String commentcount) {
+        this.commentcount = commentcount;
+    }
+
+    public trendinglist(String id, String idno, String post, String img, String date, String time, String reactcount, String commentcount, String firstname, String middlename, String lastname) {
+        this.id = id;
         this.idno = idno;
-        this.idpost = idpost;
-        this.comment = comment;
+        this.post = post;
+        this.img = img;
         this.date = date;
         this.time = time;
-        this.img = img;
+        this.reactcount = reactcount;
+        this.commentcount = commentcount;
         this.firstname = firstname;
         this.middlename = middlename;
         this.lastname = lastname;
 
     }
+
+
+
+
+
+
+
 }

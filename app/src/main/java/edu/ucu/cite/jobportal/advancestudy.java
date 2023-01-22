@@ -74,6 +74,8 @@ public class advancestudy extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advancestudy);
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
         progressBar = findViewById(R.id.progress);
         relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
@@ -175,8 +177,7 @@ public class advancestudy extends AppCompatActivity implements View.OnClickListe
 
 
 
-        progressBar.setVisibility(View.VISIBLE);
-        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 Constants.URL_ADVANCESTUDY,
                 new Response.Listener<String>() {
@@ -243,13 +244,13 @@ public class advancestudy extends AppCompatActivity implements View.OnClickListe
 
 
                                         );
-                                progressBar.setVisibility(View.GONE);
-                                relativeLayoutProgressBar.setVisibility(View.GONE);
-                                startActivity(new Intent(getApplicationContext(), profile.class));
-                                finish();
+
 
                             }
-
+                            progressBar.setVisibility(View.GONE);
+                            relativeLayoutProgressBar.setVisibility(View.GONE);
+                            startActivity(new Intent(getApplicationContext(), profile.class));
+                            finish();
 
 
                         } catch (JSONException e) {

@@ -72,6 +72,9 @@ public class bookmarkinfo extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bookmarkinfo);
+        progressBar.setVisibility(View.VISIBLE);
+        relativeLayoutProgressBar.setVisibility(View.VISIBLE);
+
         TextViewsearchempty = findViewById(R.id.searchempty);
         searchView = findViewById(R.id.search_view);
 

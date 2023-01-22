@@ -80,8 +80,6 @@ public class alumni extends AppCompatActivity{
         relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
 
-        progressBar = findViewById(R.id.progress);
-        relativeLayoutProgressBar = findViewById(R.id.relativeprogress);
 
 
         String firstname = SharedPrefManager.getInstance(this).getFirstname();
